@@ -1,0 +1,10 @@
+{
+    "manifest_version": 2,
+    "name": "Velocity Ratptor",
+    "description": "Track your developer velocity with velocity raptor!",
+    "version": "1.0",
+    "browser_action": {
+        "default_icon": "./root/images/icons/raptorIcon.png",
+        "default_popup": "root/html/index.html"
+    }
+}
