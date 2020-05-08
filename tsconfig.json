@@ -1,28 +1,28 @@
-{ 
-   "compilerOptions":{ 
-      "target":"es5",
-      "moduleResolution":"node",
-      "module":"commonjs",
-      "declaration":false,
-      "noLib":false,
-      "emitDecoratorMetadata":true,
-      "experimentalDecorators":true,
-      "pretty":true,
-      "allowUnreachableCode":true,
-      "allowUnusedLabels":true,
-      "noImplicitAny":true,
-      "noImplicitReturns":false,
-      "noImplicitUseStrict":false,
-      "outDir":"src/js",
-      "baseUrl":"src/",
-      "listFiles":false,
-      "noEmitHelpers":true
+{
+   "compilerOptions": {
+      "target": "es5",
+      "moduleResolution": "node",
+      "module": "commonjs",
+      "declaration": false,
+      "noLib": false,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "pretty": true,
+      "allowUnreachableCode": true,
+      "allowUnusedLabels": true,
+      "noImplicitAny": true,
+      "noImplicitReturns": false,
+      "noImplicitUseStrict": false,
+      "outDir": "src/js",
+      "baseUrl": "src/",
+      "listFiles": false,
+      "noEmitHelpers": true
    },
-   "include":[ 
-      "src/**/*"
+   "include": [
+      "/src/**/*"
    ],
-   "exclude":[ 
+   "exclude": [
       "node_modules"
    ],
-   "compileOnSave":false
+   "compileOnSave": false
 }
