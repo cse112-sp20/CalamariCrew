@@ -13,3 +13,8 @@ Clone the repository and download dependencies by running
 
 It will build the app by compiling the typescript files into javascript files and recursively placing them into the `src/js` directory.
 
+(Note: Step will fail if the `src/ts` is empty.)
+
+### `npm test`
+
+It will run all the unit tests in the `test` directory. The test files have to end with the extension `(test|spec).(ts|tsx|js)` in order to be picked up by jest.

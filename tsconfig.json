@@ -13,13 +13,13 @@
       "noImplicitAny": true,
       "noImplicitReturns": false,
       "noImplicitUseStrict": false,
-      "outDir": "src/js",
-      "baseUrl": "src/",
+      "outDir": "root/src/js",
+      "baseUrl": "root/src/",
       "listFiles": false,
       "noEmitHelpers": true
    },
    "include": [
-      "/src/**/*"
+      "root/src"
    ],
    "exclude": [
       "node_modules"
