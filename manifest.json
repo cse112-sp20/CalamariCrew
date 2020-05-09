@@ -3,6 +3,9 @@
     "name": "Velocity Ratptor",
     "description": "Track your developer velocity with velocity raptor!",
     "version": "1.0",
+    "permissions": [
+        "storage"
+    ],
     "browser_action": {
         "default_icon": "./root/media/icons/raptorIcon.png",
         "default_popup": "root/html/index.html"
