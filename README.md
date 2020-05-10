@@ -15,6 +15,10 @@ It will build the app by compiling the typescript files into javascript files an
 
 (Note: Step will fail if the `src/ts` is empty.)
 
+### `npm run lint`
+
+It will run ESLint across all the typecript and javascript files found in the project that are not listed apart of the `.eslintignore`.
+
 ### `npm test`
 
 It will run all the unit tests in the `test` directory. The test files have to end with the extension `(test|spec).(ts|tsx|js)` in order to be picked up by jest.
