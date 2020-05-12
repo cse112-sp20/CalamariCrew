@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --passWithNoTests",
     "build": "rm -rf root/src/js/ && tsc",
-    "lint": "eslint"
+    "lint": "eslint '*/**/*.{js,ts}' --fix"
   },
   "keywords": [],
   "author": "MoHo Khaleqi",
