@@ -17,7 +17,9 @@ It will build the app by compiling the typescript files into javascript files an
 
 ### `npm run lint`
 
-It will run ESLint across all the typecript and javascript files found in the project that are not listed apart of the `.eslintignore`.
+It will run ESLint across all the typecript and javascript files found in the root folder that are not whitelisted on `.eslintignore`.
+
+It will run HTMLHint across all the HTML files found in the root folder.
 
 ### `npm test`
 
