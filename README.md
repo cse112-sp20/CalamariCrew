@@ -21,6 +21,8 @@ It will run ESLint across all the typecript and javascript files found in the ro
 
 It will run HTMLHint across all the HTML files found in the root folder.
 
+It will run StyleLint (CSS Linter) across all CSS files found in the root folder.
+
 ### `npm test`
 
 It will run all the unit tests in the `test` directory. The test files have to end with the extension `(test|spec).(ts|tsx|js)` in order to be picked up by jest.
