@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest --passWithNoTests",
     "build": "rm -rf root/src/js/ && tsc",
-    "lint": "eslint '*/**/*.{js,ts}' --fix"
+    "lint": "eslint root/**/*.{js,ts} --fix && htmlhint root/**/*.html && npx stylelint root/**/*.css --fix",
+    "lint-js": "eslint 'root/**/*.{js,ts}' --fix",
+    "lint-html": "htmlhint root/**/*.html",
+    "lint-css": "npx stylelint root/**/*.css"
   },
   "keywords": [],
   "author": "MoHo Khaleqi",
@@ -17,7 +20,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,json,css,md}": [
+    "root/**/*.{ts,json,css,md}": [
       "prettier --single-quote --write",
       "git add"
     ]
@@ -27,19 +30,26 @@
       ".(ts|tsx)": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
-    "eslint": "^6.2.1",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "htmlhint": "^0.11.0",
     "husky": "^3.0.4",
     "jest": "^25.0.0",
     "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^25.5.0",
     "typescript": "^3.5.3"
   }
