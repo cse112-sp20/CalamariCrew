@@ -5,14 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velocity Raptor</title>
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-    <button id="oauth-button">
-        Login with github
-    </button>
+ <div class="container" style="min-width: 100px;min-height: 100px;">
+   
+    <h1>Liron's Github Authentication</h1>
+    <a type="button" class="btn btn-success" id="oauth-button">
+        Login with GitHub
+    </a>
+
+
     
+    <a class="btn btn-primary" href="/root/html/user_main.html">User's Main Page</a>
+   </div> 
     <script src = '../src/js/main.js'></script>
     <script src = '../src/libs/chrome-ex-oauth2/oauth2.js'></script>
     <!-- <script src = '../src/libs/chrome-ex-oauth2/script.js'></script> -->

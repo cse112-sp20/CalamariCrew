@@ -10,7 +10,7 @@
     ],
     "content_scripts":[{
 		"matches":["http://localhost:3000/oauth/register"],
-		"js":["root/src/libs/chrome-ex-oauth2/injection.js"],
+		"js":["root/src/libs/chrome-ex-oauth2/injection.js","/root/src/js/settings.js"],
 		"run_at":"document_start"
     }],
     "web_accessible_resources": [
