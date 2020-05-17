@@ -9,7 +9,8 @@
     "lint": "eslint root/**/*.{js,ts} --fix && htmlhint root/**/*.html && npx stylelint root/**/*.css --fix",
     "lint-js": "eslint 'root/**/*.{js,ts}' --fix",
     "lint-html": "htmlhint root/**/*.html",
-    "lint-css": "npx stylelint root/**/*.css"
+    "lint-css": "npx stylelint root/**/*.css",
+    "start": "node root/backend/app.js"
   },
   "keywords": [],
   "author": "MoHo Khaleqi",
@@ -52,5 +53,12 @@
     "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^25.5.0",
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3",
+    "superagent": "^5.2.2"
   }
 }
