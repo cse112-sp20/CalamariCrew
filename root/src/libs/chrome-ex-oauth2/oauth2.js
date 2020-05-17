@@ -16,16 +16,18 @@
 
    	*http://www.apache.org/licenses/LICENSE-2.0
 */
+//var crypto = require('crypto');
 
 (function() {
     window.oauth2 = {
-        access_token_url: "https://github.com/login/oauth/access_token",
-        authorization_url: "https://github.com/login/oauth/authorize",
-        client_id: "Iv1.f21e019d2f5b90b2",
-        client_secret: "c28cfe8ec55cfe8857bc1c37871aede099ebdd92",
-        redirect_url: "http://localhost:3000/oauth/register",
-        scopes: ['Administration', 'Contents', 'Issues', 'Metadata', 'Members'],
-
+        access_token_url: 'https://github.com/login/oauth/access_token',
+        authorization_url: 'https://github.com/login/oauth/authorize',
+        client_id: '7bcb36f5f81ae16c2808',
+        client_secret: '8335a4acc7f2b01a8464d0616f146b7024cd8f93',
+        redirect_url: 'http://localhost:3000/oauth/register',
+        scopes: ['repo'],
+        //state: crypto.randomBytes(8).toString('hex'),
+        //'Administration', 'Contents', 'Issues', 'Metadata', 'Members'
         key: "oauth2_token",
 
         /**
@@ -33,13 +35,14 @@
          */
         start: function() {
             window.close();
-            var url = this.authorization_url + "?client_id=" + this.client_id + "&redirect_uri=" + this.redirect_url + "&scopes=";
-            for(var i in this.scopes) {
-                url += (this.scopes[i] + '%20');
-            }
-            console.log(url);
-            url = url.substring(0, url.length - 3);
-            chrome.tabs.create({url: url, active: true});
+            const url =
+                this.authorization_url +
+                '?client_id=' +
+                this.client_id +
+                '&scope=repo' +
+                '&redirect_uri' +
+                this.redirect_url;
+            chrome.tabs.create({ url: url, active: true });
         },
 
         /**
@@ -98,9 +101,9 @@
                     }
                 });
                 xhr.open('POST', this.access_token_url, true);
-                xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-                xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-                xhr.setRequestHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-type, Accept');
+                //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                //xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+                //xhr.setRequestHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-type, Accept');
                 xhr.send(data);
             }
         },

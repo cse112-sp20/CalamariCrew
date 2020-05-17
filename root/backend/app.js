@@ -2,11 +2,10 @@
 const express = require('express');
 const path = require('path');
 const superagent = require('superagent');
-const cors = require('cors');
 
 // Client ID and secret from github application setup
-const clientId = 'Iv1.f21e019d2f5b90b2';
-const clientSecret = 'c28cfe8ec55cfe8857bc1c37871aede099ebdd92';
+const clientId = '7bcb36f5f81ae16c2808';
+const clientSecret = '8335a4acc7f2b01a8464d0616f146b7024cd8f93';
 
 // Create a new express application and use
 // the express static middleware, to serve all files
@@ -31,7 +30,6 @@ app.get('/oauth/register', (req, res) => {
             message: 'Error: no code',
         });
     }
-    //console.log(code);
     superagent
         .post(
             `https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`
@@ -39,11 +37,7 @@ app.get('/oauth/register', (req, res) => {
         .set('Accept', 'application/json')
         .end((err, response) => {
             const { access_token } = response.body;
-            //const data = response.body;
-            //console.log(data);
-            //res.send(access_token);
-            console.log(typeof(access_token));
-            console.log(access_token);
+            const data = response.body;
             res.render('signedInSuccess', { data: access_token });
         });
 });
