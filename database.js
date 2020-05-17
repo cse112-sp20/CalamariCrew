@@ -3,11 +3,11 @@ const mysql = require('mysql');
 const app = express();
 
 // Create connection
-var db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '12345678',
-    database : 'my_db'
+const db = mysql.createConnection({
+    host     : 'bu9exkwyeuotcknzzpxe-mysql.services.clever-cloud.com',
+    user     : 'uf9qxwhlqbcb6igt',
+    password : 'k3ao4iNmNo4B5strKhru',
+    database : 'bu9exkwyeuotcknzzpxe'
 });
 
 // Connect
@@ -34,7 +34,7 @@ app.get('/createdb', (req, res) => {
 
 // Create table
 app.get('/createtable', (req, res) =>{
-    let sql = 'CREATE TABLE table2(id int AUTO_INCREMENT, text VARCHAR(255), primary key (id))';
+    let sql = 'CREATE TABLE users(id int AUTO_INCREMENT, text VARCHAR(255), primary key (id))';
     db.query(sql, (err, result) => {
         if(err) throw err;
         console.log(result);
@@ -44,7 +44,7 @@ app.get('/createtable', (req, res) =>{
 
 // Read/Print table
 app.get('/readtable', (req, res) =>{
-    let sql = 'SELECT * from table2';
+    let sql = 'SELECT * from users';
     db.query(sql, (err, rows, fields) => {
         if(err) throw err;
         console.log('Table printed');
@@ -54,7 +54,7 @@ app.get('/readtable', (req, res) =>{
 
 // Insert values into table
 app.get('/insertintotable', (req, res) =>{
-    let sql = "INSERT INTO table2 (text) VALUES ('this is first')";
+    let sql = "INSERT INTO users (text) VALUES ('this is first')";
     db.query(sql, (err, rows, fields) => {
         if(err) throw err;
         console.log('info inserted...');
@@ -76,3 +76,5 @@ app.get('/updatetable', (req, res) =>{
 app.listen('3000', () =>{
     console.log('Server started on port 3000');
 });
+
+module.exports = db;
