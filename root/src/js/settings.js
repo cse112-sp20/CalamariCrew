@@ -17,6 +17,18 @@ window.onload = function (event) {
      * PrevActive takes cares of the ones activated before to disable them
      * More buttons should be added here
     */
+   //to clear all the items in the raptor
+   document.getElementById("clearAll").addEventListener('click',function(){
+       const list = ["tail","head","hand","back"];
+        for(const bodyPart of list){
+                if(localStorage.getItem(bodyPart)!=null){
+                    document.getElementById(localStorage.getItem(bodyPart)+"_").style.display = "none";
+                }
+        }
+       localStorage.clear();
+
+   })
+
     GeneralButton.addEventListener('click', function () {
         prevActive.classList.remove("active");
         GeneralButton.classList.add("active");
@@ -46,25 +58,68 @@ window.onload = function (event) {
      * for the right one and hides other accesories. PrevAcc keeps
      * track of the latest shown accesories
     */
+
+
+   
+
     options.addEventListener('change', function (event) {
         prevAcc.style.display = "none";
         switch (event.target.value) {
             case 'head':
                 prevAcc = document.getElementById("headAccesories");
                 prevAcc.style.display = "block";
+                currentlyActive("head","headAccesories");
                 break;
             case 'back':
                 prevAcc = document.getElementById("backAccesories");
                 prevAcc.style.display = "block";
+                currentlyActive("back","backAccesories");
                 break;
             case 'tail':
                 prevAcc = document.getElementById("tailAccesories");
                 prevAcc.style.display = "block";
+                currentlyActive("tail","tailAccesories");
                 break;
             case 'hand':
                 prevAcc = document.getElementById("handAccesories");
                 prevAcc.style.display = "block";
+                currentlyActive("hand","handAccesories");
                 break;
         }
     });
+
+    function currentlyActive(bodyPart,accesory){
+        const container = document.querySelector("#"+accesory);//container by ID
+        const matches = container.querySelectorAll("img");//all the elements inside container
+        for (const backAccesory of matches) {
+            backAccesory.addEventListener('click', function(event) {
+              if(localStorage.getItem(bodyPart)!=null){
+                document.getElementById(localStorage.getItem(bodyPart)+"_").style.display = "none";
+              }  
+              localStorage.setItem(bodyPart, backAccesory.id); //for main page
+
+              document.getElementById(backAccesory.id+"_").style.display = "block";
+            })
+          }
+    }
+
+    currentlyActive("head","headAccesories");
+
+
+    //to dress the raptor
+    if(localStorage.length!=0){
+        //get everything and activate listeners to dress raptor with info from other page
+
+     ///switch cases with same ids for both
+     const list = ["tail","back","head","hand"];
+     
+     for( bodyPart of list){
+      if(localStorage.getItem(bodyPart)!=null){
+         //should do code injection here ! create element from here and inject the code...
+         document.getElementById(localStorage.getItem(bodyPart)+"_").style.display="block";
+      }     
+    }
+
+   }
+
 };
