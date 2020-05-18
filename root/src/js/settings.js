@@ -3,10 +3,12 @@ window.onload = function(event) {
     var GeneralButton = document.getElementById('generalbtn');
     var VelocityRaptorButton = document.getElementById('raptorbutton');
     var MyTeamButton = document.getElementById('myteambtn');
+    var GithubRepoButton = document.getElementById('repobtn');
     //HTML hidden Elements
     var VelocityRaptorDisplay = document.getElementById('myvelocityraptor');
     var GeneralDisplay = document.getElementById('general');
     var MyTeamDisplay = document.getElementById('myTeamDisplay');
+    var MyGithubRepoDisplay = document.getElementById('myGithubRepo');
     //Highlight pressed button
     var prevActive = GeneralButton;
     //Options for accesories
@@ -37,6 +39,7 @@ window.onload = function(event) {
         VelocityRaptorDisplay.style.display = 'none';
         MyTeamDisplay.style.display = 'none';
         GeneralDisplay.style.display = 'block';
+        MyGithubRepoDisplay.style.display = 'none';
     });
     VelocityRaptorButton.addEventListener('click', function() {
         prevActive.classList.remove('active');
@@ -45,6 +48,7 @@ window.onload = function(event) {
         MyTeamDisplay.style.display = 'none';
         GeneralDisplay.style.display = 'none';
         VelocityRaptorDisplay.style.display = 'block';
+        MyGithubRepoDisplay.style.display = 'none';
     });
     MyTeamButton.addEventListener('click', function() {
         prevActive.classList.remove('active');
@@ -53,6 +57,17 @@ window.onload = function(event) {
         GeneralDisplay.style.display = 'none';
         VelocityRaptorDisplay.style.display = 'none';
         MyTeamDisplay.style.display = 'block';
+        MyGithubRepoDisplay.style.display = 'none';
+    });
+
+    GithubRepoButton.addEventListener('click', function() {
+        prevActive.classList.remove('active');
+        GithubRepoButton.classList.add('active');
+        prevActive = GithubRepoButton;
+        GeneralDisplay.style.display = 'none';
+        VelocityRaptorDisplay.style.display = 'none';
+        MyTeamDisplay.style.display = 'none';
+        MyGithubRepoDisplay.style.display = 'block';
     });
     /* QuerySelector checked all the list elements in the options
      * when there's a change in the current selection, it looks

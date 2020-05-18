@@ -5,7 +5,6 @@
       <title>Velocity Raptor</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="/root/src/js/settings.js"></script>
    </head>
    <body>
       <div class="container" style="width: 500px; height: 315px;">
@@ -19,6 +18,7 @@
                   </a>
                   <a href="#" class="list-group-item list-group-item-action" id ="raptorbutton">My VelocityRaptor</a>
                   <a href="#"  class="list-group-item list-group-item-action" id="myteambtn">My Team</a>
+                  <a href="#"  id="repobtn" class="list-group-item list-group-item-action">Github Repo</a>
                </div>
                <a href="/root/html/index.html"> <i class="fa fa-arrow-left "></i></a>
             </div>
@@ -99,7 +99,27 @@
                   </div>
                </div>
             </div>
+
+            <div class="col" id="myGithubRepo" style="display: none;">
+               <br>
+               <div class="card text-center">
+                  <div class="card-header">
+                     Repositories
+                  </div>
+                  <div class="card-body" style="height:150px;overflow:auto;">
+                     <table id="repoTable" class="table table-bordered table-striped mb-0">
+                        <tbody id="repoTableBody">
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class="card-footer text-muted">
+                     <button id="selectRepoButton" type="button" class="btn btn-success">Select</button>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
+      <script src="/root/src/js/settings.js"></script>
+      <script src="/root/src/js/github/repo.js"></script>
    </body>
 </html>
