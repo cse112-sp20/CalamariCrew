@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const superagent = require('superagent');
 
+const storage = require('node-persist');
+storage.init(/*·options·...·*/);
+
 // Client ID and secret from github application setup
 const clientId = '7bcb36f5f81ae16c2808';
 const clientSecret = '8335a4acc7f2b01a8464d0616f146b7024cd8f93';
@@ -20,6 +23,21 @@ app.use(
     express.static(__dirname + '/../src/libs/chrome-ex-oauth2')
 );
 
+app.get('/oauth/token/fetch', async (req, res) => {
+    const authToken = await storage.getItem('token');
+
+    if (!authToken) {
+        res.status(404).send('Token not found');
+    }
+
+    res.status(200).send(await storage.getItem('token'));
+});
+
+app.get('/oauth/token/delete', async (req, res) => {
+    await storage.removeItem('token');
+    res.sendStatus(200);
+});
+
 app.get('/oauth/register', (req, res) => {
     const { query } = req;
     const { code } = query;
@@ -35,9 +53,10 @@ app.get('/oauth/register', (req, res) => {
             `https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`
         )
         .set('Accept', 'application/json')
-        .end((err, response) => {
+        .end(async (err, response) => {
             const { access_token } = response.body;
             const data = response.body;
+            await storage.setItem('token', access_token);
             res.render('signedInSuccess', { data: access_token });
         });
 });
