@@ -41,6 +41,6 @@
                 '&redirect_uri' +
                 this.redirect_url;
             chrome.tabs.create({ url: url, active: true });
-        }
+        },
     };
 })();

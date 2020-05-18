@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests",
-    "lint": "eslint root/**/*.js && htmlhint root/html/** && npx stylelint root/css/**",
-    "lint-js": "eslint root/**/*.js",
+    "lint": "eslint 'root/**/*.js' && htmlhint root/html/** && npx stylelint root/css/**",
+    "lint-js": "eslint 'root/**/*.js'",
     "lint-html": "htmlhint root/html/**",
     "lint-css": "npx stylelint root/css/**",
+    "lint-fix": "eslint 'root/**/*.js' --fix && htmlhint root/html/** && npx stylelint root/css/** --fix",
     "start": "node root/backend/app.js"
   },
   "keywords": [],

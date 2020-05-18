@@ -1,4 +1,10 @@
 window.onload = function(event) {
+    if (localStorage.getItem('raptor_name')) {
+        document.getElementById(
+            'userVelocityRaptorName'
+        ).innerHTML = localStorage.getItem('raptor_name');
+    }
+
     if (localStorage.length != 0) {
         //get everything and activate listeners to dress raptor with info from other page
         //if back ... contain y agarralo else ...tira
