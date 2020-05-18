@@ -27,9 +27,10 @@ window.onload = function(event) {
                 document.getElementById(
                     localStorage.getItem(bodyPart) + '_'
                 ).style.display = 'none';
+
+                localStorage.removeItem(bodyPart);
             }
         }
-        localStorage.clear();
     });
 
     GeneralButton.addEventListener('click', function() {

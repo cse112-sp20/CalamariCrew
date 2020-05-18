@@ -1,6 +1,9 @@
 const token = localStorage.getItem('token');
 
-var highlightedRow = undefined;
+var highlightedRow = {
+    repoId: undefined,
+    issueUrl: undefined,
+};
 
 // Call the user info API using the fetch browser library
 fetch('https://api.github.com/user/repos', {
@@ -15,21 +18,27 @@ fetch('https://api.github.com/user/repos', {
         let repoTableBody = document.getElementById('repoTableBody');
         res.forEach(repo => {
             if (repo.name) {
-                let tableRow = document.createElement('tr');
+                let issuesUrl = repo.issues_url.replace('{/number}', '');
+
                 let tableCell = document.createElement('td');
                 tableCell.innerHTML = repo.name;
                 tableCell.setAttribute('id', repo.name);
+                tableCell.setAttribute('issueUrl', issuesUrl);
                 tableCell.onclick = function() {
-                    if (highlightedRow) {
+                    if (highlightedRow.repoId) {
                         document
-                            .getElementById(highlightedRow)
+                            .getElementById(highlightedRow.repoId)
                             .removeAttribute('bgcolor');
                     }
 
-                    highlightedRow = this.id;
+                    highlightedRow.repoId = this.id;
+                    highlightedRow.issueUrl = this.getAttribute('issueUrl');
                     this.setAttribute('bgcolor', '#cebfff');
                 };
+
+                let tableRow = document.createElement('tr');
                 tableRow.appendChild(tableCell);
+
                 repoTableBody.appendChild(tableRow);
             }
         });
@@ -39,6 +48,6 @@ var submitButton = document.getElementById('selectRepoButton');
 
 submitButton.addEventListener('click', function() {
     if (highlightedRow) {
-        localStorage.setItem('repository', highlightedRow);
+        localStorage.setItem('repository', JSON.stringify(highlightedRow));
     }
 });

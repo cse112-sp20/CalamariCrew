@@ -6,8 +6,7 @@
     "permissions": [
         "https://github.com/login/oauth/access_token",
         "tabs",
-        "storage",
-        "runtime"
+        "storage"
     ],
     "content_scripts":[{
 		"matches":["http://localhost:3000/oauth/register"],
