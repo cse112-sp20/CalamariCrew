@@ -6,6 +6,9 @@
       <title>Velocity Raptor</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="../css/raptor_animation.css">
+      <link rel="stylesheet" href="../css/animations.css">
+
       <script src="/root/src/js/main_page.js"></script>
    </head>
    <body>
@@ -17,10 +20,14 @@
             <a style="float:right; margin-left: 10px;" href="/root/html/user_settings.html"> <i class="fa fa-gear fa-spin" value="settings"></i></a>
             <a style="float:right; " href="/root/html/teams.html"> <i class="fa fa-users "></i></a>
          </div>
+         
          <div class="card-body" style="height: 13rem;">
-            <div class="text-right" style="position: absolute; left: 50%; color: green;">GARY !!!</div>
-            <img src="/root/media/runningRaptor/background.png" style="position: absolute;"  width="250" height="180">
-            <img src="/root/media/runningRaptor/raptor2.png" style="position: absolute; left: 65px;"  width="150" height="150">
+
+
+            <!-- Animated background and raptor -->
+            <div class = "background"style="position: absolute;"></div>
+            <div class = "raptor"style="position: absolute; left: 65px;"></div>
+
             <!-- Do not change the style values -->
             <img src="/root/media/runningRaptor/Magic_hat.png" style="position: absolute; bottom: 250px; right: 150px; display: none;"  width="50" height="50" id="Magic_hat">
             <img src="/root/media/runningRaptor/Crown.png" style="position: absolute; bottom: 263px; right: 160px; display: none;"  width="30" height="30" id="Crown">

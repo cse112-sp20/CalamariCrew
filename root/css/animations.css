@@ -1,0 +1,24 @@
+  .raptor {
+    width: 150px;
+    height: 150px;
+
+    background: url('/root/media/runningRaptor/Spritesheet_Raptor.png') left center;
+    animation: playRaptor .1s steps(6) infinite;
+  }
+  
+  @keyframes playRaptor {
+      100% { background-position: -900px; }
+  }
+
+  .background {
+    width: 250px;
+    height: 180px;
+
+    background: url('/root/media/runningRaptor/Spritesheet_Background.png') left center;
+    animation: playBackground 3s steps(38) infinite;
+    
+  }
+  
+  @keyframes playBackground {
+      100% { background-position: -9500px; }
+  }
