@@ -37,7 +37,6 @@ function getGithubIssues(username) {
 
                         var found = false;
                         e.assignees.forEach(assignee => {
-                            console.log(assignee);
                             if (assignee.login == username) {
                                 found = true;
                             }
@@ -49,7 +48,17 @@ function getGithubIssues(username) {
 
                     res.forEach(issue => {
                         let listElement = document.createElement('li');
-                        listElement.innerHTML = issue.title;
+
+                        let link = document.createElement('a');
+                        link.title = issue.title;
+                        link.href = issue.html_url;
+                        link.target = '_blank';
+
+                        let linkText = document.createTextNode(issue.title);
+
+                        console.log(issue);
+                        link.appendChild(linkText);
+                        listElement.appendChild(link);
 
                         issueList.appendChild(listElement);
                     });

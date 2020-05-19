@@ -120,7 +120,34 @@ window.onload = function(event) {
         }
     }
 
+    function displayRepoName() {
+        let repoName = document.getElementById('repoName');
+
+        if (localStorage.getItem('repository')) {
+            repoName.innerHTML = JSON.parse(
+                localStorage.getItem('repository')
+            ).repoId;
+        } else {
+            repoName.innerHTML = 'Select A Repository';
+        }
+    }
+
+    function displayRaptorName() {
+        let raptorName = document.getElementById('raptorNameAccessory');
+
+        if (localStorage.getItem('raptor_name')) {
+            raptorName.innerHTML =
+                "Hi, I'm " + localStorage.getItem('raptor_name') + '!';
+        } else {
+            raptorName.innerHTML = 'Close Extension to refresh';
+        }
+    }
+
     currentlyActive('head', 'headAccesories');
+
+    displayRepoName();
+
+    displayRaptorName();
 
     //to dress the raptor
     if (localStorage.length != 0) {

@@ -47,7 +47,8 @@ fetch('https://api.github.com/user/repos', {
 var submitButton = document.getElementById('selectRepoButton');
 
 submitButton.addEventListener('click', function() {
-    if (highlightedRow) {
+    if (highlightedRow.repoId) {
         localStorage.setItem('repository', JSON.stringify(highlightedRow));
+        window.location.href = '/root/html/index.html';
     }
 });
