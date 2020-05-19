@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+    
       <meta charset="UTF-8">
       <title>Velocity Raptor</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="/root/src/js/settings.js"></script>
+      <script src="/root/src/js/user_settings.js"></script>
+      <link rel="stylesheet" type="text/css" href="/root/css/user_settings.css">
+      
    </head>
    <body>
-      <div class="container" style="width: 500px; height: 315px;">
+      <div class="container" id="div-1">
          <div class="row">
-            <div class="col-5" >
+            <div class="col-5">
                <h2>VelocityRaptor</h2>
                <h6>Settings</h6>
-               <div class="list-group" >
-                  <a href="#" id ="generalbtn" class="list-group-item list-group-item-action active">
+               <div class="list-group">
+                  <a href="#" id="generalbtn" class="list-group-item list-group-item-action active">
                   General
                   </a>
-                  <a href="#" class="list-group-item list-group-item-action" id ="raptorbutton">My VelocityRaptor</a>
-                  <a href="#"  class="list-group-item list-group-item-action" id="myteambtn">My Team</a>
+                  <a href="#" class="list-group-item list-group-item-action" id="raptorbutton">My VelocityRaptor</a>
+                  <a href="#" class="list-group-item list-group-item-action" id="myteambtn">My Team</a>
                </div>
                <a href="/root/html/user_main.html"> <i class="fa fa-arrow-left "></i></a>
             </div>
@@ -29,7 +32,7 @@
                      General
                   </div>
                   <div class="card-body">
-                     <p>&#9744; Display Animations</p>
+                     <p>☐ Display Animations</p>
                      <p class="card-text">My Github: CalamariCrew</p>
                      <p class="card-text">Team Velocity: 120/MPH</p>
                   </div>
@@ -38,25 +41,25 @@
                   </div>
                </div>
             </div>
-            <div class="col" id="myvelocityraptor" style="display: none;">
+            <div class="col" id="myvelocityraptor">
                <br>
-               <div class="card text-center" >
+               <div class="card text-center">
                   <div class="card-header">
                      My VelocityRaptor
                   </div>
-                  <div class="card-body" style="min-height: 10rem;">
-                     <button class="button" href="#" style="position: absolute; right: 1px; top: 50px;font-size: 10px;" id="clearAll"> Clear All</button>
-                     <img src="/root/media/runningRaptor/raptor2.png" style="position: absolute; bottom: 130px; left: 80px;" width="100" height="100">
-                     <img src="/root/media/runningRaptor/Magic_hat.png" style="position: absolute; bottom: 183px; right: 136px; display: none"  width="30" height="30" id="Magic_hat_">
-                     <img src="/root/media/runningRaptor/Head_AfroBrown.png" style="position: absolute; bottom: 183px; right: 136px; display: none"  width="30" height="30" id="Head_AfroBrown_">
-                     <img src="/root/media/runningRaptor/Crown.png" style="position: absolute; bottom: 185px; right: 138px; display: none;"  width="30" height="30" id="Crown_">
-                     <img  src="/root/media/runningRaptor/Saber_blue.png" style="position: absolute; bottom: 156px; left: 89px; display: none;"  width="50" height="50" id="Saber_blue_">
-                     <img  src="/root/media/runningRaptor/Back_AngelWing.png" style="position: absolute; bottom: 160px; left: 100px; display: none;"  width="60" height="60" id="Back_AngelWing_">
-                     <img  src="/root/media/runningRaptor/SpikedTail_Orange.png" style="position: absolute; bottom: 158px; left: 135px; display: none;"  width="50" height="50" id="SpikedTail_Orange_">
-                     <img  src="/root/media/runningRaptor/Tail_SpikedGreen.png" style="position: absolute; bottom: 159px; left: 135px; display: none;"  width="50" height="50" id="Tail_SpikedGreen_">
-                     <div style="position: absolute; bottom: 80px; left: 50px;">
+                  <div class="card-body" id="div-2">
+                     <button class="button" href="#" id="clearAll"> Clear All</button>
+                     <img src="/root/media/runningRaptor/raptor2.png" width="100" height="100" id="img-1">
+                     <img src="/root/media/runningRaptor/Magic_hat.png" width="30" height="30" id="Magic_hat_">
+                     <img src="/root/media/runningRaptor/Head_AfroBrown.png" width="30" height="30" id="Head_AfroBrown_">
+                     <img src="/root/media/runningRaptor/Crown.png" width="30" height="30" id="Crown_">
+                     <img src="/root/media/runningRaptor/Saber_blue.png" width="50" height="50" id="Saber_blue_">
+                     <img src="/root/media/runningRaptor/Back_AngelWing.png" width="60" height="60" id="Back_AngelWing_">
+                     <img src="/root/media/runningRaptor/SpikedTail_Orange.png" width="50" height="50" id="SpikedTail_Orange_">
+                     <img src="/root/media/runningRaptor/Tail_SpikedGreen.png" width="50" height="50" id="Tail_SpikedGreen_">
+                     <div id="div-3">
                         <h6>Hi, I'm Gary!</h6>
-                        <h9 style="font-size: 15px;">My Accesories:</h9>
+                        <h9 id="h9-1">My Accesories:</h9>
                         <select class="options" id="options">
                            <option value="head">Head</option>
                            <option value="back">Back</option>
@@ -65,24 +68,24 @@
                         </select>
                      </div>
                   </div>
-                  <div class="card-footer text-muted"  id="headAccesories">
-                     <a href="#">  <img src="/root/media/runningRaptor/Magic_hat.png"  width="40" height="40"  id="Magic_hat"> </a>
-                     <a href="#">  <img src="/root/media/runningRaptor/Crown.png"  width="40" height="40"  id="Crown"> </a>
-                     <a href="#">  <img src="/root/media/runningRaptor/Head_AfroBrown.png"  width="40" height="40"  id="Head_AfroBrown"> </a>
+                  <div class="card-footer text-muted" id="headAccesories">
+                     <a href="#">  <img src="/root/media/runningRaptor/Magic_hat.png" width="40" height="40" id="Magic_hat"> </a>
+                     <a href="#">  <img src="/root/media/runningRaptor/Crown.png" width="40" height="40" id="Crown"> </a>
+                     <a href="#">  <img src="/root/media/runningRaptor/Head_AfroBrown.png" width="40" height="40" id="Head_AfroBrown"> </a>
                   </div>
-                  <div class="card-footer text-muted" style="display: none;" id="backAccesories" >
-                     <a href="#" > <img src="/root/media/runningRaptor/Back_AngelWing.png"  width="40" height="40" id="Back_AngelWing"> </a>
+                  <div class="card-footer text-muted" id="backAccesories">
+                     <a href="#"> <img src="/root/media/runningRaptor/Back_AngelWing.png" width="40" height="40" id="Back_AngelWing"> </a>
                   </div>
-                  <div class="card-footer text-muted" style="display: none;" id="tailAccesories" >
-                     <a href="#"> <img src="/root/media/runningRaptor/SpikedTail_Orange.png"  width="40" height="40" id="SpikedTail_Orange"></a>
-                     <a href="#">  <img src="/root/media/runningRaptor/Tail_SpikedGreen.png"  width="40" height="40" id="Tail_SpikedGreen" ></a>
+                  <div class="card-footer text-muted" id="tailAccesories">
+                     <a href="#"> <img src="/root/media/runningRaptor/SpikedTail_Orange.png" width="40" height="40" id="SpikedTail_Orange"></a>
+                     <a href="#">  <img src="/root/media/runningRaptor/Tail_SpikedGreen.png" width="40" height="40" id="Tail_SpikedGreen"></a>
                   </div>
-                  <div class="card-footer text-muted" style="display: none;" id="handAccesories" >
-                     <a href="#">     <img src="/root/media/runningRaptor/Saber_blue.png"  width="40" height="40" id="Saber_blue"></a>
+                  <div class="card-footer text-muted" id="handAccesories">
+                     <a href="#">     <img src="/root/media/runningRaptor/Saber_blue.png" width="40" height="40" id="Saber_blue"></a>
                   </div>
                </div>
             </div>
-            <div class="col" id="myTeamDisplay" style="display: none;">
+            <div class="col" id="myTeamDisplay">
                <br>
                <div class="card text-center">
                   <div class="card-header">
