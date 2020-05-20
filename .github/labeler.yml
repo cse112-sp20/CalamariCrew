@@ -1,0 +1,16 @@
+config:
+  - ./*
+
+actions:
+  - .github/*
+  - .github/**/*
+
+media:
+  - root/media/**/*
+
+source:
+  - root/src/**/*
+
+test:
+  - test/**/*.test.ts
+  - test/**/*.spec.ts

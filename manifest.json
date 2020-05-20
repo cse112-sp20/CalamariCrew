@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "Velocity Ratptor",
+    "description": "Track your developer velocity with velocity raptor!",
+    "version": "1.0",
+    "permissions": [
+        "https://github.com/login/oauth/access_token",
+        "tabs",
+        "storage"
+    ],
+    "content_scripts":[{
+		"matches":["http://localhost:3000/oauth/register"],
+		"js":["root/src/libs/chrome-ex-oauth2/injection.js","/root/src/js/settings.js"],
+		"run_at":"document_start"
+    }],
+    "web_accessible_resources": [
+        "root/src/libs/*"
+    ],
+    "browser_action": {
+        "default_icon": "./root/media/icons/raptorIcon.png",
+        "default_popup": "root/html/index.html"
+    },
+    "background": {
+        "scripts": ["./root/src/js/main.js"]
+    }
+}
