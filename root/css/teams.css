@@ -1,0 +1,15 @@
+div.card#div-1 {
+    width: 18rem;
+}
+
+div.card-header#div-2 {
+    display: block;
+}
+
+div#div-3 {
+    float: left;
+}
+
+a#a-1 {
+    float: right;
+}
