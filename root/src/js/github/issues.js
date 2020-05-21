@@ -45,6 +45,7 @@ function getGithubIssues(username) {
                         return found;
                     });
                     var issueList = document.getElementById('githubIssuesList');
+                    var speed = document.getElementById('div-4');
 
                     res.forEach(issue => {
                         let listElement = document.createElement('li');
@@ -61,6 +62,8 @@ function getGithubIssues(username) {
                         listElement.appendChild(link);
 
                         issueList.appendChild(listElement);
+
+                        speed.innerHTML = "Raptor's Speed: 25km/h";
                         issueList.onresize(
                             document.documentElement.style.setProperty(
                                 '--raptorSpeed',
