@@ -8,21 +8,18 @@
    </head>
    <body>
       <div class="container" style="max-width:  18rem; max-height:  25rem;">
-         <img src="/root/media/runningRaptor/LineLogo.png"   >
+         <img alt="Raptor Line Logo" src="/root/media/runningRaptor/LineLogo.png"   >
          <br> <br>
          <div class="text-center">
             <h1>Welcome!</h1>
          </div>
-         <img src="/root/media/runningRaptor/raptor2.png" style="position: relative; margin-top: -45px; margin-left: -30px;" width="300" height="300">
+         <img alt="Default Raptor" src="/root/media/runningRaptor/raptor2.png" style="position: relative; margin-top: -45px; margin-left: -30px;" width="300" height="300">
          <div class="text-center" style="bottom: 10px; position: relative;">
             <h5>What will you call your new raptor?</h5>
-            <form>
-               <div class="form-group">
-                  <input  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="~~~~~~Raptor's Name~~~~~~">
-               </div>
-               <button type="submit" class="btn btn-outline-primary">Submit</button>
-            </form>
+            <input type="text" class="form-control" name="raptorName" placeholder="~~~~~~Raptor's Name~~~~~~">
+            <button id="raptorNameSubmit" type="submit" class="btn btn-outline-primary">Submit</button>
          </div>
       </div>
+      <script src="/root/src/js/raptor_name.js"></script>
    </body>
 </html>

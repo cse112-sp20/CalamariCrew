@@ -1,9 +1,14 @@
+  :root{
+    --raptorSpeed: 0.3s;
+  }
+
   .raptor {
+    
     width: 150px;
     height: 150px;
 
     background: url('/root/media/runningRaptor/Spritesheet_Raptor.png') left center;
-    animation: playRaptor .1s steps(6) infinite;
+    animation: playRaptor var(--raptorSpeed)  steps(6) infinite;
   }
   
   @keyframes playRaptor {
@@ -11,11 +16,12 @@
   }
 
   .background {
+    
     width: 250px;
     height: 180px;
 
     background: url('/root/media/runningRaptor/Spritesheet_Background.png') left center;
-    animation: playBackground 3s steps(38) infinite;
+    animation: playBackground calc(var(--raptorSpeed)*11) steps(38) infinite;
     
   }
   

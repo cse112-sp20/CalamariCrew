@@ -1,100 +1,109 @@
 div.container#div-1 {
-    width: 500px;
-    height: 315px;
+  width: 500px;
+  height: 315px;
 }
 
 div.col#myvelocityraptor {
-    display: none;
+  display: none;
 }
 
 div.card-body#div-2 {
-    min-height: 10rem;
+  min-height: 10rem;
 }
 
 button.button#clearAll {
-    position: absolute;
-    right: 1px;
-    top: 50px;
-    font-size: 10px;
+  position: absolute;
+  right: 1px;
+  top: 50px;
+  font-size: 10px;
 }
 
 img#img-1 {
-    position: absolute;
-    bottom: 130px;
-    left: 80px;
+  position: absolute;
+  bottom: 130px;
+  left: 80px;
 }
 
 img#Magic_hat_ {
-    position: absolute;
-    bottom: 183px;
-    right: 136px;
-    display: none;
+  position: absolute;
+  bottom: 183px;
+  right: 136px;
+  display: none;
 }
 
 img#Head_AfroBrown_ {
-    position: absolute;
-    bottom: 183px;
-    right: 136px;
-    display: none;
+  position: absolute;
+  bottom: 183px;
+  right: 136px;
+  display: none;
 }
 
 img#Crown_ {
-    position: absolute;
-    bottom: 185px;
-    right: 138px;
-    display: none;
+  position: absolute;
+  bottom: 185px;
+  right: 138px;
+  display: none;
 }
 
 img#Saber_blue_ {
-    position: absolute;
-    bottom: 156px;
-    left: 89px;
-    display: none;
+  position: absolute;
+  bottom: 156px;
+  left: 89px;
+  display: none;
 }
 
 img#Back_AngelWing_ {
-    position: absolute;
-    bottom: 160px;
-    left: 100px;
-    display: none;
+  position: absolute;
+  bottom: 160px;
+  left: 100px;
+  display: none;
 }
 
 img#SpikedTail_Orange_ {
-    position: absolute;
-    bottom: 158px;
-    left: 135px;
-    display: none;
+  position: absolute;
+  bottom: 158px;
+  left: 135px;
+  display: none;
 }
 
 img#Tail_SpikedGreen_ {
-    position: absolute;
-    bottom: 159px;
-    left: 135px;
-    display: none;
+  position: absolute;
+  bottom: 159px;
+  left: 135px;
+  display: none;
 }
 
 div#div-3 {
-    position: absolute;
-    bottom: 80px;
-    left: 50px;
+  position: absolute;
+  bottom: 80px;
+  left: 50px;
 }
 
-h9#h9-1 {
-    font-size: 15px;
+#h9-1 {
+  font-size: 15px;
 }
 
 #backAccesories {
-    display: none;
+  display: none;
 }
 
 #tailAccesories {
-    display: none;
+  display: none;
 }
 
 #handAccesories {
-    display: none;
+  display: none;
 }
 
 div.col#myTeamDisplay {
-    display: none;
+  display: none;
+}
+
+div.col#myGithubRepo {
+  display: none;
+}
+
+div.card-body#div-4 {
+  height: 150px;
+  overflow: auto;
 }

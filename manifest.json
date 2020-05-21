@@ -18,7 +18,7 @@
     ],
     "browser_action": {
         "default_icon": "./root/media/icons/raptorIcon.png",
-        "default_popup": "root/html/index.html"
+        "default_popup": "root/html/setup/auth.html"
     },
     "background": {
         "scripts": ["./root/src/js/main.js"]
