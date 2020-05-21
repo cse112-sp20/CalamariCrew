@@ -1,6 +1,7 @@
 const fs = require('fs');
 const totalThreshhold = 0.7;
 const path = 'coverage/coverage-summary.json';
+var totalLineCoverage = 0;
 try{
     // Reads coverage summary for only total code coverage
     if (!fs.existsSync(path)) {
@@ -10,7 +11,7 @@ try{
     else{
         var reportFile = fs.readFileSync(path);
         var reportData = JSON.parse(reportFile);
-        var totalLineCoverage = reportData['total']['lines']['covered'] / reportData['total']['lines']['total'];
+        totalLineCoverage = reportData['total']['lines']['covered'] / reportData['total']['lines']['total'];
 
         for (var file in reportData){
             for(var category in reportData[file]){
