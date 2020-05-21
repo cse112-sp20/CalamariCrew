@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --coverage",
     "lint": "eslint 'root/**/*.js' && htmlhint root/html/** && npx stylelint root/css/**",
     "lint-js": "eslint 'root/**/*.js'",
     "lint-html": "htmlhint root/html/**",
@@ -27,7 +27,8 @@
     ]
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "coverageReporters": ["json-summary"]
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
