@@ -132,5 +132,10 @@ function fetchUsername(authToken) {
 //     );
 // }
 
+// REMOVE IN PRODUCTION. JUST USED TO QUICKLY RESET APP
+app.get('/clear', async (req, res) => {
+    await storage.clear();
+});
+
 // Start the server on port 3000
 app.listen(3000, () => console.log('App started on port 3000'));
