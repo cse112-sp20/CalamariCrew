@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const storage = require('node-persist');
 storage.init(/*·options·...·*/);
 
-const database = require('./database');
+// const database = require('./database');
 var username = '';
 
 // Client ID and secret from github application setup
@@ -99,38 +99,38 @@ function fetchUsername(authToken) {
             //console.log(res.body.login);
             //await storage.setItem('github_username', res.body.login);
             username = res.body.login;
-            createUser(res.body.login);
+            //createUser(res.body.login);
         });
 }
 
 // to create a user using the username as the id(key)
-function createUser(user_id) {
-    let sql_select = `SELECT * FROM users WHERE id='${user_id}'`;
-    database.query(sql_select, (err, rows) => {
-        if (err) throw err;
-        else if (rows && rows.length) {
-            //console.log('same username was found!');
-            return;
-        } else {
-            //console.log('your username is ' + user_id);
-            let sql = `INSERT INTO users (id, raptor_name) VALUES ('${user_id}', 'rap')`;
-            database.query(sql, (err, rows, fields) => {
-                if (err) throw err;
-            });
-            //console.log('new user is added!');
-        }
-    });
-}
+// function createUser(user_id) {
+//     let sql_select = `SELECT * FROM users WHERE id='${user_id}'`;
+//     database.query(sql_select, (err, rows) => {
+//         if (err) throw err;
+//         else if (rows && rows.length) {
+//             //console.log('same username was found!');
+//             return;
+//         } else {
+//             //console.log('your username is ' + user_id);
+//             let sql = `INSERT INTO users (id, raptor_name) VALUES ('${user_id}', 'rap')`;
+//             database.query(sql, (err, rows, fields) => {
+//                 if (err) throw err;
+//             });
+//             //console.log('new user is added!');
+//         }
+//     });
+// }
 
-function setRaptorName(raptor_name) {
-    database.query(
-        `UPDATE users SET raptor_name = '${raptor_name}' WHERE id ='${username}'`,
-        (err, rows, fields) => {
-            if (err) throw err;
-            //console.log('table updated...');
-        }
-    );
-}
+// function setRaptorName(raptor_name) {
+//     database.query(
+//         `UPDATE users SET raptor_name = '${raptor_name}' WHERE id ='${username}'`,
+//         (err, rows, fields) => {
+//             if (err) throw err;
+//             //console.log('table updated...');
+//         }
+//     );
+// }
 
 // Start the server on port 3000
 app.listen(3000, () => console.log('App started on port 3000'));

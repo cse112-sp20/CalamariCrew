@@ -17,7 +17,7 @@ submitButton.addEventListener('click', event => {
     })
         .then(() => {
             localStorage.setItem('raptor_name', raptorNameText);
-            window.location.href = '/root/html/index.html';
+            window.location.href = '/root/html/setup/choose_repo.html';
         })
         .catch(error => {
             console.error('Error:', error);
