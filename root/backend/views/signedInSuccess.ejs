@@ -10,8 +10,19 @@
     <h1 id='token' style='visibility:hidden'><%= data %></h1>
     
     <script>
-        const val = document.getElementById('token').innerHTML;
-        window.localStorage.setItem('velocityKey', val);
+        const token = document.getElementById('token').innerHTML;
+        window.localStorage.setItem('velocityKey', token);
+        
+        fetch('https://api.github.com/user', {
+            headers: {
+                // Include the token in the Authorization header
+                Authorization: 'token ' + token,
+            },
+        }).then(res => res.json())
+        .then(res => {
+            const login = res.login;
+            localStorage.setItem('github_username', login);
+        });
     </script>
 </body>
 </html>
