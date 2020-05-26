@@ -1,5 +1,5 @@
 const fs = require('fs');
-const totalThreshhold = 0.7;
+const totalThreshhold = 0.5;
 const path = 'coverage/coverage-summary.json';
 var totalLineCoverage = 0;
 try{
