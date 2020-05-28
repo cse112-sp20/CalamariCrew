@@ -30,35 +30,46 @@ app.use(
 // to support json
 app.use(bodyParser.json());
 
-app.get('/oauth/token/fetch', async (req, res) => {
-    const authToken = await storage.getItem('token');
+app.get('/fetch/:item', async (req, res) => {
+    const itemName = req.params.item;
+    const item = await storage.getItem(itemName);
 
-    if (!authToken) {
+    if (!item) {
         res.status(404).send('Token not found');
     }
 
-    res.status(200).send(authToken);
+    res.status(200).send(item);
 });
+
+// app.get('/oauth/token/fetch', async (req, res) => {
+//     const authToken = await storage.getItem('token');
+
+//     if (!authToken) {
+//         res.status(404).send('Token not found');
+//     }
+
+//     res.status(200).send(authToken);
+// });
 
 app.get('/oauth/token/delete', async (req, res) => {
     await storage.removeItem('token');
     res.sendStatus(200);
 });
 
-app.get('/raptor/name/fetch', async (req, res) => {
-    const raptorName = await storage.getItem('raptor-name');
+// app.get('/raptor/name/fetch', async (req, res) => {
+//     const raptorName = await storage.getItem('raptor-name');
 
-    if (!raptorName) {
-        res.status(404).send('Raptor name not found');
-    }
+//     if (!raptorName) {
+//         res.status(404).send('Raptor name not found');
+//     }
 
-    res.status(200).send(raptorName);
-});
+//     res.status(200).send(raptorName);
+// });
 
 app.post('/raptor/name/set', async (req, res) => {
     await storage.setItem('raptor-name', req.body.name);
     //console.log('raptor name is ' + req.body.name);
-    setRaptorName(req.body.name);
+    //setRaptorName(req.body.name);
     res.sendStatus(200);
 });
 

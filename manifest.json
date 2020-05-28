@@ -1,12 +1,13 @@
 {
     "manifest_version": 2,
-    "name": "Velocity Ratptor",
+    "name": "Velocity Raptor",
     "description": "Track your developer velocity with velocity raptor!",
     "version": "1.0",
     "permissions": [
         "https://github.com/login/oauth/access_token",
         "tabs",
-        "storage"
+        "storage",
+        "identity"
     ],
     "content_scripts":[{
 		"matches":["http://localhost:3000/oauth/register"],
@@ -22,5 +23,6 @@
     },
     "background": {
         "scripts": ["./root/src/js/main.js"]
-    }
+    },
+    // "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApUSJgJzNHuZ2wornwcAvI0agd8DS7As4hRys1vAbAJlAtbsvVcnVEGvqqz98WugpYZMJBtp23AqiO03eAqARAeZHrzFz/b3pmJEpVQnGNV43r6TF4PC4hfiawuhkHYI7TEIy5GkmsEZxXdtu1iqlSmSyTVu3nlP0X0CffdEQg8F7+191k57OCo15paVdXvVoCXVElOilC9AJ4AhGo+z3WOwFq3wnzJ+yJsjq5My2hLNJFqIZ/+t5dereDluK2OjJh0GjmARGiCafrlACuZ1aY1a9Xi/i2KmYRizb7nTpOGqie0CVUzHkcySNEXdK7SeKaS1opNc5LGdVMcvfY3gyEwIDAQAB"
 }

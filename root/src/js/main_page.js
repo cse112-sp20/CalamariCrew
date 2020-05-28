@@ -24,4 +24,17 @@ window.onload = function(event) {
             }
         }
     }
+
+    const userName = localStorage.getItem('github_username');
+    const repo = JSON.parse(localStorage.getItem('repository'));
+    // alert(userName);
+    alert(repo);
+    const repoName = repo.repoId;
+
+    fetch(`https://api.github.com/repos/${userName}/${repoName}/milestones`, {
+        headers: {
+            //get all issues
+            state: 'all',
+        },
+    }).then(res => alert(res));
 };
