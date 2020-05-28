@@ -73,6 +73,34 @@ img#Tail_SpikedGreen_ {
   display: none;
 }
 
+img#BackPack_Blue_ {
+  position: absolute;
+  bottom: 175px;
+  left: 110px;
+  display: none;
+}
+
+img#Hand_Yoyo_ {
+  position: absolute;
+  bottom: 148px;
+  left: 83px;
+  display: none;
+}
+
+img#RocketBooster_ {
+  position: absolute;
+  bottom: 143px;
+  left: 81px;
+  display: none;
+}
+
+img#Back_HappyBlob_ {
+  position: absolute;
+  bottom: 134px;
+  left: 81px;
+  display: none;
+}
+
 div#div-3 {
   position: absolute;
   bottom: 80px;
@@ -83,15 +111,15 @@ div#div-3 {
   font-size: 15px;
 }
 
-#backAccesories {
+#backAccessories {
   display: none;
 }
 
-#tailAccesories {
+#tailAccessories {
   display: none;
 }
 
-#handAccesories {
+#handAccessories {
   display: none;
 }
 
