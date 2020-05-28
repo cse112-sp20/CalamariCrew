@@ -1,19 +1,25 @@
-# CalamariCrew
+# Velocity Raptor Chrome Extension
 
-## Getting started
+## Setup / Running the Extension
 
-Make sure you have npm installed. If you do not, download [here](https://www.npmjs.com/get-npm).
+* Make sure you have npm installed. If you do not, download [here](https://www.npmjs.com/get-npm).
 
-Clone the repository and download dependencies by running
+* From the base directory, install all dependencies using the following
+
 ### `npm install`
 
-***
+* Now to run, go ahead and run with the following command:
 
-### `npm run build`
+### `npm start .`
 
-It will build the app by compiling the typescript files into javascript files and recursively placing them into the `src/js` directory.
+* Now open up Google Chrome, and navigate to [chrome://extensions/](chrome://extensions/)
 
-(Note: Step will fail if the `src/ts` is empty.)
+* On the top-left corner, click "Load Unpacked".
+* When prompted, select the directory of the cloned repository
+* Now, a raptor icon should appear on the top right corner.
+* Click the icon to open the extension!
+
+# Development 
 
 ### `npm run lint`
 
