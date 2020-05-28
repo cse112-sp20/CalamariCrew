@@ -93,7 +93,7 @@ div.text-center#div-4 {
 }
 
 ul#githubIssuesList {
-  list-style-type: square;
+  list-style-type: none;
   height: 73px;
   overflow: auto;
 }
