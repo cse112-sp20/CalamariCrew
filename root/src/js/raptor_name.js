@@ -1,16 +1,92 @@
 var submitButton = document.getElementById('raptorNameSubmit');
-// import Filter from 'bad-words';
+
+// const DOMPurify = require('dompurify');
 
 submitButton.addEventListener('click', event => {
     var raptorNameText = document.getElementsByName('raptorName')[0].value;
-    // filter = new Filter();
-    // if (filter.isProfane("Fuck")) {
-    //     alert("Name must be appropriate");
-    //     return false;
-    // }
-    const bad_words = ['FUCK', 'FK', 'SHIT', 'ASS'];
-    if (bad_words.includes(raptorNameText.trim().toUpperCase())) {
-        alert('Name must be appropriate');
+
+    // var clean = DOMPurify.sanitize(dirty);
+    const bad_words = [
+        'anal',
+        'anus',
+        'arse',
+        'ass',
+        'ballsack',
+        'balls',
+        'bastard',
+        'bitch',
+        'biatch',
+        'bloody',
+        'blowjob',
+        'blow job',
+        'bollock',
+        'bollok',
+        'boner',
+        'boob',
+        'bugger',
+        'bum',
+        'butt',
+        'buttplug',
+        'clitoris',
+        'cock',
+        'coon',
+        'crap',
+        'cunt',
+        'damn',
+        'dick',
+        'dildo',
+        'dyke',
+        'fag',
+        'feck',
+        'fellate',
+        'fellatio',
+        'felching',
+        'fuck',
+        'f u c k',
+        'fudgepacker',
+        'fudge packer',
+        'flange',
+        'Goddamn',
+        'God damn',
+        'hell',
+        'homo',
+        'jerk',
+        'jizz',
+        'knobend',
+        'knob end',
+        'labia',
+        'lmao',
+        'lmfao',
+        'muff',
+        'nigger',
+        'nigga',
+        'omg',
+        'penis',
+        'piss',
+        'poop',
+        'prick',
+        'pube',
+        'pussy',
+        'queer',
+        'scrotum',
+        'sex',
+        'shit',
+        's hit',
+        'sh1t',
+        'slut',
+        'smegma',
+        'spunk',
+        'tit',
+        'tosser',
+        'turd',
+        'twat',
+        'vagina',
+        'wank',
+        'whore',
+        'wtf',
+    ];
+    if (bad_words.includes(raptorNameText.trim().toLowerCase())) {
+        // alert('Name must be appropriate');
         return false;
     }
     console.log(document.getElementsByName('raptorName'));
