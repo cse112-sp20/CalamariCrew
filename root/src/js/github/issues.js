@@ -30,7 +30,6 @@ function getGithubIssues(username) {
             })
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res);
                     res = res.filter(e => {
                         if (!e.assignee) {
                             return false;
