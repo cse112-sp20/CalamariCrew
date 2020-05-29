@@ -2,12 +2,12 @@ window.onload = function(event) {
     //Settings buttons
     var GeneralButton = document.getElementById('generalbtn');
     var VelocityRaptorButton = document.getElementById('raptorbutton');
-    var MyTeamButton = document.getElementById('myteambtn');
+    // var MyTeamButton = document.getElementById('myteambtn');
     var GithubRepoButton = document.getElementById('repobtn');
     //HTML hidden Elements
     var VelocityRaptorDisplay = document.getElementById('myvelocityraptor');
     var GeneralDisplay = document.getElementById('general');
-    var MyTeamDisplay = document.getElementById('myTeamDisplay');
+    // var MyTeamDisplay = document.getElementById('myTeamDisplay');
     var MyGithubRepoDisplay = document.getElementById('myGithubRepo');
     //Highlight pressed button
     var prevActive = GeneralButton;
@@ -38,7 +38,7 @@ window.onload = function(event) {
         GeneralButton.classList.add('active');
         prevActive = GeneralButton;
         VelocityRaptorDisplay.style.display = 'none';
-        MyTeamDisplay.style.display = 'none';
+        // MyTeamDisplay.style.display = 'none';
         GeneralDisplay.style.display = 'block';
         MyGithubRepoDisplay.style.display = 'none';
     });
@@ -46,20 +46,20 @@ window.onload = function(event) {
         prevActive.classList.remove('active');
         VelocityRaptorButton.classList.add('active');
         prevActive = VelocityRaptorButton;
-        MyTeamDisplay.style.display = 'none';
+        // MyTeamDisplay.style.display = 'none';
         GeneralDisplay.style.display = 'none';
         VelocityRaptorDisplay.style.display = 'block';
         MyGithubRepoDisplay.style.display = 'none';
     });
-    MyTeamButton.addEventListener('click', function() {
-        prevActive.classList.remove('active');
-        MyTeamButton.classList.add('active');
-        prevActive = MyTeamButton;
-        GeneralDisplay.style.display = 'none';
-        VelocityRaptorDisplay.style.display = 'none';
-        MyTeamDisplay.style.display = 'block';
-        MyGithubRepoDisplay.style.display = 'none';
-    });
+    // MyTeamButton.addEventListener('click', function() {
+    //     prevActive.classList.remove('active');
+    //     // MyTeamButton.classList.add('active');
+    //     prevActive = MyTeamButton;
+    //     GeneralDisplay.style.display = 'none';
+    //     VelocityRaptorDisplay.style.display = 'none';
+    //     // MyTeamDisplay.style.display = 'block';
+    //     MyGithubRepoDisplay.style.display = 'none';
+    // });
 
     GithubRepoButton.addEventListener('click', function() {
         prevActive.classList.remove('active');
@@ -67,7 +67,7 @@ window.onload = function(event) {
         prevActive = GithubRepoButton;
         GeneralDisplay.style.display = 'none';
         VelocityRaptorDisplay.style.display = 'none';
-        MyTeamDisplay.style.display = 'none';
+        // MyTeamDisplay.style.display = 'none';
         MyGithubRepoDisplay.style.display = 'block';
     });
     /* QuerySelector checked all the list elements in the options

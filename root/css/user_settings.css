@@ -14,7 +14,9 @@ div.card-body#div-2 {
   min-height: 10rem;
 }
 
+
 button.button#clearAll {
+  font-family: 'Cayetano Round';
   position: absolute;
   right: 1px;
   top: 50px;
@@ -104,6 +106,10 @@ div.col#myTeamDisplay {
 
 div.col#myGithubRepo {
   display: none;
+}
+
+.Settings{
+  font-family: 'Cayetano';
 }
 
 div.card-body#div-4 {

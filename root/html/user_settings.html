@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
    <head>
     
       <meta charset="UTF-8">
@@ -14,32 +14,32 @@
    <body>
       <div class="container" id="div-1">
          <div class="row">
-            <div class="col-5">
-               <h2 style = "font-family: 'Cayetano';">VelocityRaptor</h2>
-               <h6>Settings</h6>
-               <div class="list-group">
-                  <a href="#" id="generalbtn" class="list-group-item list-group-item-action active">
+            <div class="col-5" id = "Settings">
+               <h2 style = "font-family: 'Cayetano'; margin-top: 10px;">Settings</h2>
+               <a href="/root/html/index.html"> <img src = "/root/media/icons/BackArrow.png" style = "width: 20px; height: auto; margin-bottom: 10px;"></a>
+               <div class="list-group" style="font-family: 'Cayetano Round';">
+                  <a href="#" id="generalbtn" class="list-group-item list-group-item-action list-group-item-secondary active">
                   General
                   </a>
-                  <a href="#" class="list-group-item list-group-item-action" id="raptorbutton">My VelocityRaptor</a>
-                  <a href="#" class="list-group-item list-group-item-action" id="myteambtn">My Team</a>
-                  <a href="#" id="repobtn" class="list-group-item list-group-item-action">Github Repo</a>
+                  <a href="#" class="list-group-item list-group-item-action list-group-item-secondary" id="raptorbutton">My VelocityRaptor</a>
+                  <a href="#" id="repobtn" class="list-group-item list-group-item-action list-group-item-secondary">Github Repo</a>
                </div>
-               <a href="/root/html/index.html"> <i class="fa fa-arrow-left "></i></a>
+               
             </div>
             <div class="col" id="general">
                <br>
                <div class="card text-center">
-                  <div class="card-header">
+                  <div class="card-header" style="font-family: 'Cayetano Round';">
                      General
                   </div>
                   <div class="card-body">
-                     <p>☐ Display Animations</p>
-                     <p id="repoName" class="card-text"></p>
-                     <p class="card-text">Team Velocity: 120/MPH</p>
+                     <button id="remove_all" type="button" class="btn btn-warning"style="font-family: 'Cayetano Round';" >Reset VelocityRaptor</button>
+                     <script src="/root/src/js/remove_all.js"></script>
+
                   </div>
-                  <div class="card-footer text-muted">
-                     #CalamariCrew
+                  <div class="card-footer text-muted"style="font-family: 'Cayetano Round';">
+                     
+                     @CalamariCrew
                   </div>
                </div>
             </div>
@@ -87,7 +87,7 @@
                   </div>
                </div>
             </div>
-            <div class="col" id="myTeamDisplay">
+            <!-- <div class="col" id="myTeamDisplay">
                <br>
                <div class="card text-center">
                   <div class="card-header">
@@ -103,12 +103,12 @@
                      <button type="button" class="btn btn-success">Make a Fossil</button>
                   </div>
                </div>
-            </div>
+            </div> -->
 
             <div class="col" id="myGithubRepo">
                <br>
                <div class="card text-center">
-                  <div class="card-header">
+                  <div class="card-header" style="font-family: 'Cayetano Round';">
                      Repositories
                   </div>
                   <div class="card-body" id="div-4">
@@ -118,7 +118,7 @@
                      </table>
                   </div>
                   <div class="card-footer text-muted">
-                     <button id="selectRepoButton" type="button" class="btn btn-success">Select</button>
+                     <button id="selectRepoButton" type="button" class="btn btn-success" style="font-family: 'Cayetano Round';">Select</button>
                   </div>
                </div>
             </div>
