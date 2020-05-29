@@ -14,6 +14,19 @@ window.onload = function(event) {
     //Options for accesories
     var options = document.querySelector('.options');
     var prevAcc = document.getElementById('headAccessories');
+
+    const divBtns = document.querySelector('#switch_acc'); //container by ID UI Buttons Container
+    const uiBtns = divBtns.querySelectorAll('button'); //all the elements inside container
+
+    //To display different accessories based on category
+    uiBtns.forEach(button => {
+        button.addEventListener('click', function() {
+            prevAcc.style.display = 'none';
+            prevAcc = document.getElementById(button.value + 'Accessories');
+            prevAcc.style.display = 'block';
+            currentlyActive(button.value, button.value + 'Accessories'); //to know which ones to display
+        });
+    });
     /* When a button is clicked, it's blue color is activated
      * and the hidden content in the HTML is displayed with block
      * PrevActive takes cares of the ones activated before to disable them
@@ -75,32 +88,6 @@ window.onload = function(event) {
      * for the right one and hides other accesories. PrevAcc keeps
      * track of the latest shown accesories
      */
-
-    options.addEventListener('change', function(event) {
-        prevAcc.style.display = 'none';
-        switch (event.target.value) {
-            case 'head':
-                prevAcc = document.getElementById('headAccessories');
-                prevAcc.style.display = 'block';
-                currentlyActive('head', 'headAccessories');
-                break;
-            case 'back':
-                prevAcc = document.getElementById('backAccessories');
-                prevAcc.style.display = 'block';
-                currentlyActive('back', 'backAccessories');
-                break;
-            case 'tail':
-                prevAcc = document.getElementById('tailAccessories');
-                prevAcc.style.display = 'block';
-                currentlyActive('tail', 'tailAccessories');
-                break;
-            case 'hand':
-                prevAcc = document.getElementById('handAccessories');
-                prevAcc.style.display = 'block';
-                currentlyActive('hand', 'handAccessories');
-                break;
-        }
-    });
 
     function currentlyActive(bodyPart, accessory) {
         const container = document.querySelector('#' + accessory); //container by ID
