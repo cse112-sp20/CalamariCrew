@@ -13,7 +13,20 @@ window.onload = function(event) {
     var prevActive = GeneralButton;
     //Options for accesories
     var options = document.querySelector('.options');
-    var prevAcc = document.getElementById('headAccesories');
+    var prevAcc = document.getElementById('headAccessories');
+
+    const divBtns = document.querySelector('#switch_acc'); //container by ID UI Buttons Container
+    const uiBtns = divBtns.querySelectorAll('button'); //all the elements inside container
+
+    //To display different accessories based on category
+    uiBtns.forEach(button => {
+        button.addEventListener('click', function() {
+            prevAcc.style.display = 'none';
+            prevAcc = document.getElementById(button.value + 'Accessories');
+            prevAcc.style.display = 'block';
+            currentlyActive(button.value, button.value + 'Accessories'); //to know which ones to display
+        });
+    });
     /* When a button is clicked, it's blue color is activated
      * and the hidden content in the HTML is displayed with block
      * PrevActive takes cares of the ones activated before to disable them
@@ -76,45 +89,19 @@ window.onload = function(event) {
      * track of the latest shown accesories
      */
 
-    options.addEventListener('change', function(event) {
-        prevAcc.style.display = 'none';
-        switch (event.target.value) {
-            case 'head':
-                prevAcc = document.getElementById('headAccesories');
-                prevAcc.style.display = 'block';
-                currentlyActive('head', 'headAccesories');
-                break;
-            case 'back':
-                prevAcc = document.getElementById('backAccesories');
-                prevAcc.style.display = 'block';
-                currentlyActive('back', 'backAccesories');
-                break;
-            case 'tail':
-                prevAcc = document.getElementById('tailAccesories');
-                prevAcc.style.display = 'block';
-                currentlyActive('tail', 'tailAccesories');
-                break;
-            case 'hand':
-                prevAcc = document.getElementById('handAccesories');
-                prevAcc.style.display = 'block';
-                currentlyActive('hand', 'handAccesories');
-                break;
-        }
-    });
-
-    function currentlyActive(bodyPart, accesory) {
-        const container = document.querySelector('#' + accesory); //container by ID
+    function currentlyActive(bodyPart, accessory) {
+        const container = document.querySelector('#' + accessory); //container by ID
         const matches = container.querySelectorAll('img'); //all the elements inside container
-        for (const backAccesory of matches) {
-            backAccesory.addEventListener('click', function(event) {
+        for (const backAccessory of matches) {
+            backAccessory.addEventListener('click', function(event) {
                 if (localStorage.getItem(bodyPart) != null) {
                     document.getElementById(
                         localStorage.getItem(bodyPart) + '_'
                     ).style.display = 'none';
                 }
-                localStorage.setItem(bodyPart, backAccesory.id); //for main page
+                localStorage.setItem(bodyPart, backAccessory.id); //for main page
 
-                document.getElementById(backAccesory.id + '_').style.display =
+                document.getElementById(backAccessory.id + '_').style.display =
                     'block';
             });
         }
@@ -143,7 +130,7 @@ window.onload = function(event) {
         }
     }
 
-    currentlyActive('head', 'headAccesories');
+    currentlyActive('head', 'headAccessories');
 
     displayRepoName();
 

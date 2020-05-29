@@ -81,6 +81,34 @@ img#Head_AfroBrown {
   display: none;
 }
 
+img#Hand_Yoyo {
+  position: absolute;
+  bottom: 203px;
+  left: 72px;
+  display: none;
+}
+
+img#BackPack_Blue {
+  position: absolute;
+  bottom: 240px;
+  left: 110px;
+  display: none;
+}
+
+img#RocketBooster {
+  position: absolute;
+  bottom: 194px;
+  left: 67px;
+  display: none;
+}
+
+img#Back_HappyBlob {
+  position: absolute;
+  bottom: 186px;
+  left: 68px;
+  display: none;
+}
+
 div.text-center#div-4 {
   color: brown;
   position: absolute;
