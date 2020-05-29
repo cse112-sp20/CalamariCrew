@@ -39,7 +39,7 @@ if (raptorName && oauthToken) {
             window.location.href = '/root/html/index.html';
         } else if (oauthToken) {
             localStorage.setItem('token', oauthToken);
-            window.location.href = '/root/html/setup/succ_auth.html';
+            window.location.href = '/root/html/setup/raptor_name.html';
         }
     });
 }

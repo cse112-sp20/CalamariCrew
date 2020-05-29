@@ -1,9 +1,12 @@
 div.container#div-1 {
+  background-color: #A8936D;
   width: 500px;
   height: 315px;
 }
 
 div.col#myvelocityraptor {
+  font-family: 'Cayetano Round';
+
   display: none;
 }
 

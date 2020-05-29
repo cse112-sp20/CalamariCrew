@@ -1,12 +1,21 @@
+
+
 div.card#div-1 {
   width: 18rem;
 }
 
 div.card-header#div-2 {
+  background-color: #A8936D;
   display: block;
 }
 
+div.card-footer {
+  background-color: #F4F1EC;
+}
+
 div#userVelocityRaptorName {
+  font-family: 'Cayetano Round';
+  font-size: large;
   float: left;
 }
 
@@ -82,6 +91,7 @@ img#Head_AfroBrown {
 }
 
 div.text-center#div-4 {
+  font-family:'Bahnschrift';
   color: brown;
   position: absolute;
   left: 50px;
@@ -89,10 +99,12 @@ div.text-center#div-4 {
 }
 
 #div-5 {
+  font-family:'Bahnschrift';
   color: blue;
 }
 
 ul#githubIssuesList {
+  font-family:'Bahnschrift';
   list-style-type: square;
   height: 73px;
   overflow: auto;
