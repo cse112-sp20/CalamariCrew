@@ -50,12 +50,12 @@ function getGithubIssues(username) {
 
                     res.forEach(issue => {
                         let listElement = document.createElement('li');
+                        listElement.id = issue.number.toString();
 
                         let inputElement = document.createElement('input');
                         inputElement.type = 'checkbox';
                         inputElement.id = 'checkbox' + issue.number.toString();
 
-                        //createListener();
                         inputElement.addEventListener('change', function() {
                             if (this.checked) {
                                 // Checkbox is checked..
@@ -68,11 +68,10 @@ function getGithubIssues(username) {
                                             '/' +
                                             issue.number.toString()
                                     );
+                                    //document.getElementById(issue.number.toString()).remove();
                                 } else {
                                     inputElement.checked = false;
                                 }
-                            } else {
-                                // Checkbox is not checked..
                             }
                         });
 
@@ -90,13 +89,13 @@ function getGithubIssues(username) {
 
                         issueList.appendChild(listElement);
 
-                        speed.innerHTML = "Raptor's Speed: 25km/h";
-                        issueList.onresize(
-                            document.documentElement.style.setProperty(
-                                '--raptorSpeed',
-                                2 + 's'
-                            )
-                        );
+                        // speed.innerHTML = "Raptor's Speed: 25km/h";
+                        // issueList.onresize(
+                        //     document.documentElement.style.setProperty(
+                        //         '--raptorSpeed',
+                        //         2 + 's'
+                        //     )
+                        // );
                     });
                 });
         }
