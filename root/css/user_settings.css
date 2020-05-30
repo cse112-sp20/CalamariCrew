@@ -16,6 +16,7 @@ button.button#clearAll {
   right: -2px;
   top: -11px;
   font-size: 8px;
+  border-color: white;
 }
 
 img#img-1 {

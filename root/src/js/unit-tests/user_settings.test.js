@@ -116,7 +116,7 @@ const bodyHTML = `
 //test 1
 test('Raptor name is not defined when storage is empty', () => {
     document.body.innerHTML = bodyHTML;
-    require('./user_settings');
+    require('../user_settings');
     const raptorName = document.getElementById('raptorNameAccessory');
     expect(raptorName.innerHTML).toBe('Close Extension to refresh');
     jest.resetModules();
@@ -126,7 +126,7 @@ test('RaptorName changes when updated in localStorage', () => {
     document.body.innerHTML = bodyHTML;
     const raptorName = document.getElementById('raptorNameAccessory');
     localStorage.setItem('raptor_name', 'Gary');
-    require('./user_settings');
+    require('../user_settings');
     expect(raptorName.innerHTML).toBe("Hi, I'm Gary!");
     jest.resetModules();
 });
@@ -135,7 +135,7 @@ test('Switching between accessories render the right set', () => {
     document.body.innerHTML = bodyHTML;
     const divBtns = document.querySelector('#switch_acc'); //container by ID UI Buttons Container
     const uiBtns = divBtns.querySelectorAll('button'); //all the elements inside container
-    require('./user_settings');
+    require('../user_settings');
     containerList = [];
     uiBtns.forEach(button => {
         button.click();
@@ -144,7 +144,6 @@ test('Switching between accessories render the right set', () => {
         );
     });
     rightButtonOrder = [
-        //id of activated sets that were activated by the buttons in UI gallery
         'headAccessories',
         'backAccessories',
         'tailAccessories',
@@ -157,7 +156,7 @@ test('Switching between accessories render the right set', () => {
 test('ClearAll Btn removes all the items that Raptor is currently wearing', () => {
     document.body.innerHTML = bodyHTML;
     const list = ['tail', 'head', 'hand', 'back'];
-    require('./user_settings');
+    require('../user_settings');
     var ctr = 0;
     list.forEach(el => {
         //adding random elements to localStorage
@@ -177,15 +176,58 @@ test('ClearAll Btn removes all the items that Raptor is currently wearing', () =
 //test 5
 test('Choosing a specific accessory is correctly displayed in the raptor', () => {
     document.body.innerHTML = bodyHTML;
-    require('./user_settings');
-    expect(5 + 3).toStrictEqual(8);
+    require('../user_settings');
+    rightButtonOrder = [
+        'headAccessories',
+        'backAccessories',
+        'tailAccessories',
+        'handAccessories',
+    ];
+    const divBtns = document.querySelector('#switch_acc'); //container by ID UI Buttons Container
+    const uiBtns = divBtns.querySelectorAll('button'); //all the elements inside container
+    var ctr = 0;
+    var isDisplayed = true;
+    uiBtns.forEach(button => {
+        button.click(); //to click 4 buttons
+        var category = rightButtonOrder[ctr];
+        ctr += 1;
+        var container = document.querySelector('#' + category); //container by ID
+        var imgsInContainer = container.querySelectorAll('img'); //all the elements inside container
+        for (var accessory of imgsInContainer) {
+            accessory.click();
+            if (
+                localStorage.getItem(category.substring(0, 3)) == null &&
+                document.getElementById(accessory.id + '_').style.display !=
+                    'block'
+            ) {
+                isDisplayed = false;
+            }
+        }
+    });
+    expect(isDisplayed).toBe(true);
     jest.resetModules();
 });
 //test 6
 test('Clicking NavBars render correct element', () => {
     document.body.innerHTML = bodyHTML;
-    require('./user_settings');
-    expect(5 + 3).toStrictEqual(8);
+    require('../user_settings');
+    const genbtn = document.getElementById('generalbtn');
+    const cusbtn = document.getElementById('raptorbutton');
+    var VelocityRaptorDisplay = document.getElementById('myvelocityraptor');
+    var GeneralDisplay = document.getElementById('general');
+    const btns = [genbtn, cusbtn];
+    const displays = [GeneralDisplay, VelocityRaptorDisplay];
+    var isDisplayed = true;
+    var ctr = 0;
+    btns.forEach(button => {
+        button.click(); //to click 4 buttons
+        if (displays[ctr].style.display != 'block') {
+            isDisplayed = false;
+        }
+        ctr += 1;
+    });
+
+    expect(isDisplayed).toBe(true);
     jest.resetModules();
 });
 //test 7
@@ -203,7 +245,7 @@ test('The Raptor image in Customize Tab is correctly displayed', () => {
 //test 9
 test('NavBar Tabs change color when clicked', () => {
     document.body.innerHTML = bodyHTML;
-    require('./user_settings');
+    require('../user_settings');
     const tabsContainer = document.querySelector('.list-group');
     const buttons = tabsContainer.querySelectorAll('a');
     var flag = true;
@@ -216,10 +258,10 @@ test('NavBar Tabs change color when clicked', () => {
     expect(flag).toStrictEqual(true);
     jest.resetModules();
 });
-//test 10
+//test 10 FEATURE NOT YET IMPLEMENTED
 test('Reset VelocityBtn correctly resets the whole Extension', () => {
     document.body.innerHTML = bodyHTML;
-    require('./user_settings');
+    require('../user_settings');
     expect(5 + 3).toStrictEqual(8);
     jest.resetModules();
 });

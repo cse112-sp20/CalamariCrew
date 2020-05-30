@@ -53,7 +53,6 @@ VelocityRaptorButton.addEventListener('click', function() {
     prevActive.classList.remove('active');
     VelocityRaptorButton.classList.add('active');
     prevActive = VelocityRaptorButton;
-
     GeneralDisplay.style.display = 'none';
     VelocityRaptorDisplay.style.display = 'block';
     MyGithubRepoDisplay.style.display = 'none';
@@ -115,4 +114,3 @@ if (localStorage.length != 0) {
     }
 }
 // **************************************** To Display Current Raptor Accessories ********************************* //
-module.exports = displayRaptorName;
