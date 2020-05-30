@@ -1,0 +1,3 @@
+{"total": {"lines":{"total":63,"covered":35,"skipped":0,"pct":55.56},"statements":{"total":63,"covered":35,"skipped":0,"pct":55.56},"functions":{"total":9,"covered":4,"skipped":0,"pct":44.44},"branches":{"total":10,"covered":5,"skipped":0,"pct":50}}
+,"/Users/jsonavalos/master/root/src/js/user_settings.js": {"lines":{"total":63,"covered":35,"skipped":0,"pct":55.56},"functions":{"total":9,"covered":4,"skipped":0,"pct":44.44},"statements":{"total":63,"covered":35,"skipped":0,"pct":55.56},"branches":{"total":10,"covered":5,"skipped":0,"pct":50}}
+}
