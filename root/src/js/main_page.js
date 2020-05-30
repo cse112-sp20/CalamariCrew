@@ -27,14 +27,81 @@ window.onload = function(event) {
 
     const userName = localStorage.getItem('github_username');
     const repo = JSON.parse(localStorage.getItem('repository'));
-    // alert(userName);
-    alert(repo);
+    const token = localStorage.getItem('token');
     const repoName = repo.repoId;
+    const speed = document.getElementById('div-4');
+    const speedErrorMessage =
+        'Please add a milestone and issues to start tracking velocity.';
 
     fetch(`https://api.github.com/repos/${userName}/${repoName}/milestones`, {
         headers: {
             //get all issues
-            state: 'all',
+            Authorization: 'token ' + token,
         },
-    }).then(res => alert(res));
+    })
+        .then(res => res.json())
+        .then(milestones => {
+            if (milestones.length === 0) {
+                console.error(
+                    'You must add milestones to start tracking velocity'
+                );
+                return;
+            }
+            const curMilestone = milestones[0];
+            const { open_issues, closed_issues, number } = curMilestone;
+            const milestoneId = number;
+            // console.log(number);
+            const totalIssues = open_issues + closed_issues;
+            let userVelocity;
+            let teamVelocity;
+            if (totalIssues === 0) {
+                speed.innerHTML = speedErrorMessage;
+                teamVelocity = 0;
+            } else {
+                teamVelocity = open_issues / totalIssues;
+
+                //get user velocity
+                fetch(
+                    `https://api.github.com/repos/${userName}/${repoName}/issues?milestone=${milestoneId}&state=all&assignee=${userName}`,
+                    {
+                        headers: {
+                            Authorization: 'token ' + token,
+                        },
+                    }
+                )
+                    .then(res => res.json())
+                    .then(issues => {
+                        console.log(issues);
+                        const closedIssues = issues.filter(
+                            issue => issue.state === 'closed'
+                        );
+                        console.log(closedIssues);
+                        if (issues.length === 0) {
+                            //TODO : display screen indicating you haven't added issues.
+                            speed.innerHTML = speedErrorMessage;
+                            userVelocity = 0;
+                        } else {
+                            userVelocity = closedIssues.length / issues.length;
+                            //animation speed will be .2 in the fastest case.
+                            //this subtraction is done to flip higher values with
+                            //lower values since a lower number results in a faster
+                            //animation playback speed. (without this,
+                            //a velocity of .75 would be slower than .25)
+                            //to better distribute the times, we use a square
+                            //function to make it more visible and divide to
+                            //scale it appropriately. These were chosen through
+                            //trial and error
+                            const animationSpeed =
+                                Math.pow(5 * (1.2 - userVelocity), 2.0) / 10;
+                            console.log(animationSpeed);
+                            document.documentElement.style.setProperty(
+                                '--raptorSpeed',
+                                animationSpeed + 's'
+                            );
+                            const speedText = Math.floor(userVelocity * 100);
+                            speed.innerHTML = `Raptor's speed: ${speedText}km/h`;
+                        }
+                    });
+            }
+        });
 };
