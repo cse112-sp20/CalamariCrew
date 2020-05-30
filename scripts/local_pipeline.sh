@@ -21,7 +21,7 @@ echo -e "rm -rf node_modules\n";
 rm -rf node_modules;
 
 echo -e "npm ci\n";
-npm ci;
+npm ci || onFail;
 
 echo -e "\nnpm run build --if-present\n";
 npm run build --if-present || onFail;
@@ -38,4 +38,5 @@ npm run code-coverage-check || onFail;
 echo -e "\nnpm install\n";
 npm install;
 
+echo -e "Exiting with Code 0";
 exit 0;
