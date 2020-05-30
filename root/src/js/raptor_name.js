@@ -2,10 +2,7 @@ var submitButton = document.getElementById('raptorNameSubmit');
 
 // const DOMPurify = require('dompurify');
 
-submitButton.addEventListener('click', event => {
-    var raptorNameText = document.getElementsByName('raptorName')[0].value;
-
-    // var clean = DOMPurify.sanitize(dirty);
+function isRaptorNameValid(raptorNameText) {
     const bad_words = [
         'anal',
         'anus',
@@ -89,6 +86,14 @@ submitButton.addEventListener('click', event => {
         // alert('Name must be appropriate');
         return false;
     }
+}
+submitButton.addEventListener('click', event => {
+    var raptorNameText = document.getElementsByName('raptorName')[0].value;
+
+    if (!isRaptorNameValid(raptorNameText)) {
+        return false;
+    }
+
     console.log(document.getElementsByName('raptorName'));
     console.log(raptorNameText);
     var raptorName = {
