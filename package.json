@@ -48,6 +48,7 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
+    "leo-profanity": "^1.2.6",
     "node-persist": "^3.0.5",
     "nodemon": "^2.0.3",
     "superagent": "^5.2.2"

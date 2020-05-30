@@ -16,10 +16,12 @@
          <img alt="Default Raptor" src="/root/media/runningRaptor/raptor2.png" style="position: relative; margin-top: -45px; margin-left: -30px;" width="300" height="300">
          <div class="text-center" style="bottom: 10px; position: relative;">
             <h5>What will you call your new raptor?</h5>
+            <h7>Note: If the given name is 💩, the raptor will not accept that name!</h7>
             <input type="text" class="form-control" name="raptorName" placeholder="~~~~~~Raptor's Name~~~~~~">
             <button id="raptorNameSubmit" type="submit" class="btn btn-outline-primary">Submit</button>
          </div>
       </div>
-      <script src="/root/src/js/raptor_name.js"></script>
+      <script type="module" src="src/purify.js"></script>
+      <script type="module" src="/root/src/js/raptor_name.js"></script>
    </body>
 </html>
