@@ -42,15 +42,12 @@ window.onload = function(event) {
         .then(res => res.json())
         .then(milestones => {
             if (milestones.length === 0) {
-                console.error(
-                    'You must add milestones to start tracking velocity'
-                );
+                speed.innerHTML = speedErrorMessage;
                 return;
             }
             const curMilestone = milestones[0];
             const { open_issues, closed_issues, number } = curMilestone;
             const milestoneId = number;
-            // console.log(number);
             const totalIssues = open_issues + closed_issues;
             let userVelocity;
             let teamVelocity;
@@ -71,11 +68,9 @@ window.onload = function(event) {
                 )
                     .then(res => res.json())
                     .then(issues => {
-                        console.log(issues);
                         const closedIssues = issues.filter(
                             issue => issue.state === 'closed'
                         );
-                        console.log(closedIssues);
                         if (issues.length === 0) {
                             //TODO : display screen indicating you haven't added issues.
                             speed.innerHTML = speedErrorMessage;
@@ -93,7 +88,6 @@ window.onload = function(event) {
                             //trial and error
                             const animationSpeed =
                                 Math.pow(5 * (1.2 - userVelocity), 2.0) / 10;
-                            console.log(animationSpeed);
                             document.documentElement.style.setProperty(
                                 '--raptorSpeed',
                                 animationSpeed + 's'
