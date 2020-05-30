@@ -13,7 +13,7 @@ div.card-body#div-2 {
 
 button.button#clearAll {
   position: absolute;
-  right: 1px;
+  right: -2px;
   top: -11px;
   font-size: 8px;
 }
@@ -123,10 +123,6 @@ div#div-3 {
 }
 
 #handAccessories {
-  display: none;
-}
-
-div.col#myTeamDisplay {
   display: none;
 }
 
