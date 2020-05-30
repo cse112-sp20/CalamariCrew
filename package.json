@@ -11,7 +11,7 @@
     "lint-css": "npx stylelint root/css/**",
     "lint-fix": "eslint 'root/**/*.js' --fix && htmlhint root/html/** && npx stylelint root/css/** --fix",
     "start": "node root/backend/app.js",
-    "code-coverage-check": "node testCoverage/code_coverage.js"
+    "code-coverage-check": "node scripts/code_coverage.js"
   },
   "keywords": [],
   "author": "MoHo Khaleqi",
@@ -29,7 +29,9 @@
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "coverageReporters": ["json-summary"]
+    "coverageReporters": [
+      "json-summary"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
