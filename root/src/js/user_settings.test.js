@@ -1,3 +1,4 @@
+//everytime user_settings.html body is changed ,this must be updated
 const bodyHTML = `
 <div class="container" id="div-1">
 <div class="row">
@@ -11,7 +12,7 @@ const bodyHTML = `
          <a href="#" class="list-group-item list-group-item-action" id="raptorbutton">Customize</a>
          <a href="#" id="repobtn" class="list-group-item list-group-item-action">Github Repo</a>
       </div>
-      <a href="/root/html/index.html"> <i class="fa fa-arrow-left "></i></a>
+      <a href="/root/html/index.html" id="back_arrow"> <i class="fa fa-arrow-left "></i></a>
    </div>
 
    <div class="col" id="general">
@@ -155,8 +156,22 @@ test('Switching between accessories render the right set', () => {
 //test 4
 test('ClearAll Btn removes all the items that Raptor is currently wearing', () => {
     document.body.innerHTML = bodyHTML;
+    const list = ['tail', 'head', 'hand', 'back'];
     require('./user_settings');
-    expect(5 + 3).toStrictEqual(8);
+    var ctr = 0;
+    list.forEach(el => {
+        //adding random elements to localStorage
+        localStorage.setItem(el, 'Magic_hat');
+    });
+    document.getElementById('clearAll').click(); //removed all the elements
+    flag = true;
+    list.forEach(el => {
+        //check if they still exist in Local Storage
+        if (localStorage.getItem(el) != null) {
+            flag = false;
+        }
+    });
+    expect(flag).toStrictEqual(true);
     jest.resetModules();
 });
 //test 5
@@ -176,22 +191,29 @@ test('Clicking NavBars render correct element', () => {
 //test 7
 test('Clicking BackArrow takes you back to the Main Page', () => {
     document.body.innerHTML = bodyHTML;
-    require('./user_settings');
-    expect(5 + 3).toStrictEqual(8);
+    expect(document.getElementById('back_arrow').click()).toBe(undefined); //when clicked everything in the current page is deleted
     jest.resetModules();
 });
 //test 8
 test('The Raptor image in Customize Tab is correctly displayed', () => {
     document.body.innerHTML = bodyHTML;
-    require('./user_settings');
-    expect(5 + 3).toStrictEqual(8);
+    expect(document.getElementById('img-1').hidden).toBe(false);
     jest.resetModules();
 });
 //test 9
 test('NavBar Tabs change color when clicked', () => {
     document.body.innerHTML = bodyHTML;
     require('./user_settings');
-    expect(5 + 3).toStrictEqual(8);
+    const tabsContainer = document.querySelector('.list-group');
+    const buttons = tabsContainer.querySelectorAll('a');
+    var flag = true;
+    buttons.forEach(btn => {
+        btn.click();
+        if (!btn.classList.contains('active')) {
+            flag = false;
+        }
+    });
+    expect(flag).toStrictEqual(true);
     jest.resetModules();
 });
 //test 10
