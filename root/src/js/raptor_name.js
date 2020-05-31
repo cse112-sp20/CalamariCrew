@@ -88,30 +88,7 @@ function isRaptorNameValid(raptorNameText) {
     }
 }
 submitButton.addEventListener('click', event => {
-    var raptorNameText = document.getElementsByName('raptorName')[0].value;
-
-    if (!isRaptorNameValid(raptorNameText)) {
-        return false;
-    }
-
-    console.log(document.getElementsByName('raptorName'));
-    console.log(raptorNameText);
-    var raptorName = {
-        name: raptorNameText,
-    };
-
-    fetch('http://localhost:3000/raptor/name/set', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(raptorName),
-    })
-        .then(() => {
-            localStorage.setItem('raptor_name', raptorNameText);
-            window.location.href = '/root/html/index.html';
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    const raptorName = document.getElementsByName('raptorName')[0].value;
+    localStorage.setItem('raptor_name', raptorName);
+    window.location.href = '/root/html/setup/choose_repo.html';
 });
