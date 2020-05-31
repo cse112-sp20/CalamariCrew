@@ -1,23 +1,22 @@
 var token = localStorage.getItem('token');
 
-if (localStorage.getItem('github_username')) {
-    getGithubIssues(localStorage.getItem('github_username'));
-} else {
-    fetch('https://api.github.com/user', {
-        headers: {
-            // Include the token in the Authorization header
-            Authorization: 'token ' + token,
-        },
-    })
-        .then(res => res.json())
-        .then(res => {
-            var login = res.login;
-            localStorage.setItem('github_username', login);
-            getGithubIssues(login);
-        });
-}
+getGithubIssues(token);
 
-function getGithubIssues(username) {
+function getGithubIssues(token) {
+    var username;
+    if (localStorage.getItem('github_username')) {
+        username = localStorage.getItem('github_username');
+    } else {
+        fetch('https://api.github.com/user', {
+            headers: {
+                // Include the token in the Authorization header
+                Authorization: 'token ' + token,
+            },
+        })
+            .then(res => res.json())
+            .then(res => (username = res.login));
+    }
+
     if (localStorage.getItem('repository')) {
         var repo = JSON.parse(localStorage.getItem('repository'));
 
@@ -57,7 +56,6 @@ function getGithubIssues(username) {
 
                         inputElement.addEventListener('change', function() {
                             if (this.checked) {
-                                // Checkbox is checked..
                                 var response = confirm(
                                     'Do you want to close this issue?'
                                 );
@@ -65,9 +63,9 @@ function getGithubIssues(username) {
                                     closeIssue(
                                         repo.issueUrl +
                                             '/' +
-                                            issue.number.toString()
+                                            issue.number.toString(),
+                                        token
                                     );
-                                    //document.getElementById(issue.number.toString()).remove();
                                 } else {
                                     inputElement.checked = false;
                                 }
@@ -82,26 +80,16 @@ function getGithubIssues(username) {
                         let linkText = document.createTextNode(issue.title);
 
                         link.appendChild(linkText);
-                        //inputElement.appendChild(link);
                         listElement.appendChild(inputElement);
                         listElement.appendChild(link);
-
                         issueList.appendChild(listElement);
-
-                        // speed.innerHTML = "Raptor's Speed: 25km/h";
-                        // issueList.onresize(
-                        //     document.documentElement.style.setProperty(
-                        //         '--raptorSpeed',
-                        //         2 + 's'
-                        //     )
-                        // );
                     });
                 });
         }
     }
 }
 
-function closeIssue(issueUrl) {
+function closeIssue(issueUrl, token) {
     fetch(issueUrl, {
         method: 'PATCH',
         body: JSON.stringify({
