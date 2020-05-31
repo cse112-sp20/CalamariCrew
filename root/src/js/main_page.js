@@ -72,20 +72,19 @@ window.onload = function(event) {
                             issue => issue.state === 'closed'
                         );
                         if (issues.length === 0) {
-                            //TODO : display screen indicating you haven't added issues.
                             speed.innerHTML = speedErrorMessage;
                             userVelocity = 0;
                         } else {
                             userVelocity = closedIssues.length / issues.length;
-                            //animation speed will be .2 in the fastest case.
-                            //this subtraction is done to flip higher values with
-                            //lower values since a lower number results in a faster
-                            //animation playback speed. (without this,
-                            //a velocity of .75 would be slower than .25)
-                            //to better distribute the times, we use a square
-                            //function to make it more visible and divide to
-                            //scale it appropriately. These were chosen through
-                            //trial and error
+                            /* animation speed will be .2 in the fastest case.
+                            this subtraction is done to flip higher values with
+                            lower values since a lower number results in a faster
+                            animation playback speed. (without this,
+                            a velocity of .75 would be slower than .25)
+                            to better distribute the times, we use a square
+                            function to make it more visible and divide to
+                            scale it appropriately. These were chosen through
+                            trial and error */
                             const animationSpeed =
                                 Math.pow(5 * (1.2 - userVelocity), 2.0) / 10;
                             document.documentElement.style.setProperty(

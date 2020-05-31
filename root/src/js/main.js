@@ -1,16 +1,7 @@
-// // document.getElementById('oauth-button').addEventListener('click', function() {
-// //     window.oauth2.start();
-// // });
-
-// // document.getElementById('oauth-button').addEventListener('click', function() {
-
-// // });
 var gh = (function() {
     'use strict';
 
     var signin_button;
-    // var revoke_button;
-    // var user_info_div;
 
     var tokenFetcher = (function() {
         // Replace clientId and clientSecret with values obtained by you for your
@@ -18,7 +9,7 @@ var gh = (function() {
         var clientId = '0643ae6f6ee7a227b34b';
         // Note that in a real-production app, you may not want to store
         // clientSecret in your App code.
-        var clientSecret = '6b007dc2e66bf94df4b98654c9e0edb0878a1dae';
+        var clientSecret = 'fc0b314df99ed03f946b4817988d063ed18100d2';
         var redirectUri = chrome.identity.getRedirectURL('');
         var redirectRe = new RegExp(redirectUri + '[#?](.*)');
 
@@ -26,12 +17,6 @@ var gh = (function() {
 
         return {
             getToken: function(interactive, callback) {
-                // In case we already have an access_token cached, simply return it.
-                // if (access_token) {
-                //     callback(null, access_token);
-                //     return;
-                // }
-
                 var options = {
                     interactive: interactive,
                     url:
@@ -144,7 +129,6 @@ var gh = (function() {
                     console.log('Setting access_token: ', access_token);
                     localStorage.setItem('token', access_token);
                     window.location.href = '/root/html/setup/succ_auth.html';
-                    //callback(null, access_token);
                 }
             },
 
@@ -194,16 +178,6 @@ var gh = (function() {
             }
         }
     }
-
-    // function getUserInfo(interactive) {
-    //     xhrWithAuth(
-    //         'GET',
-    //         'https://api.github.com/user',
-    //         interactive,
-    //         onUserInfoFetched
-    //     );
-    // }
-
     // Functions updating the User Interface:
 
     function showButton(button) {
@@ -219,55 +193,6 @@ var gh = (function() {
         button.disabled = true;
     }
 
-    // function onUserInfoFetched(error, status, response) {
-    //     if (!error && status == 200) {
-    //         console.log('Got the following user info: ' + response);
-    //         var user_info = JSON.parse(response);
-    //         populateUserInfo(user_info);
-    //         hideButton(signin_button);
-    //         showButton(revoke_button);
-    //         fetchUserRepos(user_info['repos_url']);
-    //     } else {
-    //         console.log('infoFetch failed', error, status);
-    //         showButton(signin_button);
-    //     }
-    // }
-
-    // function populateUserInfo(user_info) {
-    //     var elem = user_info_div;
-    //     var nameElem = document.createElement('div');
-    //     nameElem.innerHTML =
-    //         '<b>Hello ' +
-    //         user_info.name +
-    //         '</b><br>' +
-    //         'Your github page is: ' +
-    //         user_info.html_url;
-    //     elem.appendChild(nameElem);
-    // }
-
-    // function fetchUserRepos(repoUrl) {
-    //     xhrWithAuth('GET', repoUrl, false, onUserReposFetched);
-    // }
-
-    // function onUserReposFetched(error, status, response) {
-    //     var elem = document.querySelector('#user_repos');
-    //     elem.value = '';
-    //     if (!error && status == 200) {
-    //         console.log('Got the following user repos:', response);
-    //         var user_repos = JSON.parse(response);
-    //         user_repos.forEach(function(repo) {
-    //             if (repo.private) {
-    //                 elem.value += '[private repo]';
-    //             } else {
-    //                 elem.value += repo.name;
-    //             }
-    //             elem.value += '\n';
-    //         });
-    //     } else {
-    //         console.log('infoFetch failed', error, status);
-    //     }
-    // }
-
     // Handlers for the buttons's onclick events.
     function interactiveSignIn() {
         disableButton(signin_button);
@@ -275,9 +200,6 @@ var gh = (function() {
             if (error) {
                 showButton(signin_button);
             }
-            // else {
-            //     getUserInfo(true);
-            // }
         });
     }
 
@@ -322,7 +244,6 @@ var gh = (function() {
             signin_button = document.querySelector('#signin');
             signin_button.onclick = interactiveSignIn;
             showButton(signin_button);
-            // getUserInfo(false);
         },
     };
 })();

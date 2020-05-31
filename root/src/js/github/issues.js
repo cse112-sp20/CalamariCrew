@@ -62,8 +62,6 @@ function getGithubIssues(username) {
                         listElement.appendChild(link);
 
                         issueList.appendChild(listElement);
-
-                        // speed.innerHTML = "Raptor's Speed: 25km/h";
                     });
                 });
         }
