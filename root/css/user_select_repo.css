@@ -1,10 +1,11 @@
 /* scrolltable rules */
 table { 
-    margin-top:  20px;
-    display: inline-block;
-    overflow: auto;
+  margin-top:  20px;
+  display: inline-block;
+  overflow: auto;
 }
+
 th div { 
-    margin-top: -20px;
-    position: absolute;
+  margin-top: -20px;
+  position: absolute;
 }
