@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Velocity Ratptor",
+    "name": "Velocity Raptor",
     "description": "Track your developer velocity with velocity raptor!",
     "version": "1.0",
     "permissions": [
