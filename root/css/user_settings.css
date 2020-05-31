@@ -13,9 +13,10 @@ div.card-body#div-2 {
 
 button.button#clearAll {
   position: absolute;
-  right: 1px;
-  top: 50px;
-  font-size: 10px;
+  right: -2px;
+  top: -11px;
+  font-size: 8px;
+  border-color: white;
 }
 
 img#img-1 {
@@ -73,6 +74,34 @@ img#Tail_SpikedGreen_ {
   display: none;
 }
 
+img#BackPack_Blue_ {
+  position: absolute;
+  bottom: 175px;
+  left: 110px;
+  display: none;
+}
+
+img#Hand_Yoyo_ {
+  position: absolute;
+  bottom: 148px;
+  left: 83px;
+  display: none;
+}
+
+img#RocketBooster_ {
+  position: absolute;
+  bottom: 143px;
+  left: 81px;
+  display: none;
+}
+
+img#Back_HappyBlob_ {
+  position: absolute;
+  bottom: 134px;
+  left: 81px;
+  display: none;
+}
+
 div#div-3 {
   position: absolute;
   bottom: 80px;
@@ -81,21 +110,20 @@ div#div-3 {
 
 #h9-1 {
   font-size: 15px;
+  position: absolute;
+  left: -48px;
+  bottom: 20px;
 }
 
-#backAccesories {
+#backAccessories {
   display: none;
 }
 
-#tailAccesories {
+#tailAccessories {
   display: none;
 }
 
-#handAccesories {
-  display: none;
-}
-
-div.col#myTeamDisplay {
+#handAccessories {
   display: none;
 }
 
@@ -106,4 +134,37 @@ div.col#myGithubRepo {
 div.card-body#div-4 {
   height: 150px;
   overflow: auto;
+}
+
+#raptorNameAccessory {
+  position: relative;
+  bottom: 35px;
+  right: -25px;
+}
+
+#switch_acc {
+  position: absolute;
+  width: 300px;
+  right: -120px;
+  bottom: -10px;
+}
+
+#head {
+  font-size: 10px;
+  width: 45px;
+}
+
+#back {
+  font-size: 10px;
+  width: 45px;
+}
+
+#tail {
+  font-size: 10px;
+  width: 45px;
+}
+
+#hand {
+  font-size: 10px;
+  width: 45px;
 }
