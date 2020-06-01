@@ -31,6 +31,10 @@
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "coverageReporters": [
       "json-summary"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "root/**/*.js"
     ]
   },
   "devDependencies": {
