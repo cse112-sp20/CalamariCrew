@@ -9,7 +9,7 @@ var gh = (function() {
         var clientId = '0643ae6f6ee7a227b34b';
         // Note that in a real-production app, you may not want to store
         // clientSecret in your App code.
-        var clientSecret = 'fc0b314df99ed03f946b4817988d063ed18100d2';
+        var clientSecret = '77ac50effc036ac693d07008dc365f2b9b9c3e73';
         var redirectUri = chrome.identity.getRedirectURL('');
         var redirectRe = new RegExp(redirectUri + '[#?](.*)');
 
