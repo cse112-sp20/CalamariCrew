@@ -1,13 +1,13 @@
 div.card#div-1 {
-    width: 18rem;
+  width: 18rem;
 }
 
 div.card-header#div-2 {
-    display: block;
+  display: block;
 }
 
 div#div-3 {
-    float: left;
+  float: left;
 }
 
 a#a-1 {
@@ -17,86 +17,86 @@ a#a-1 {
 }
 
 a#a-2 {
-    float: right;
+  float: right;
 }
 
 div.card-body#div-4 {
-    height: 13rem;
+  height: 13rem;
 }
 
 div.text-right#div-5 {
-    position: absolute;
-    left: 50%;
-    color: green;
+  position: absolute;
+  left: 50%;
+  color: green;
 }
 
 img#img-1 {
-    position: absolute;
+  position: absolute;
 }
 
 img#img-2 {
-    position: absolute;
-    left: 65px;
+  position: absolute;
+  left: 65px;
 }
 
 img#Magic_hat {
-    position: absolute;
-    bottom: 250px;
-    right: 150px;
-    display: none;
+  position: absolute;
+  bottom: 250px;
+  right: 150px;
+  display: none;
 }
 
 img#Crown {
-    position: absolute;
-    bottom: 263px;
-    right: 160px;
-    display: none;
+  position: absolute;
+  bottom: 263px;
+  right: 160px;
+  display: none;
 }
 
 img#Saber_blue {
-    position: absolute;
-    bottom: 226px;
-    left: 87px;
-    display: none;
+  position: absolute;
+  bottom: 226px;
+  left: 87px;
+  display: none;
 }
 
 img#Back_AngelWing {
-    position: absolute;
-    bottom: 225px;
-    left: 100px;
-    display: none;
+  position: absolute;
+  bottom: 225px;
+  left: 100px;
+  display: none;
 }
 
 img#SpikedTail_Orange {
-    position: absolute;
-    bottom: 233px;
-    left: 165px;
-    display: none;
+  position: absolute;
+  bottom: 233px;
+  left: 165px;
+  display: none;
 }
 
 img#Tail_SpikedGreen {
-    position: absolute;
-    bottom: 233px;
-    left: 165px;
-    display: none;
+  position: absolute;
+  bottom: 233px;
+  left: 165px;
+  display: none;
 }
 
 img#Head_AfroBrown {
-    position: absolute;
-    bottom: 250px;
-    right: 150px;
-    display: none;
+  position: absolute;
+  bottom: 250px;
+  right: 150px;
+  display: none;
 }
 
 div.text-center#div-6 {
-    color: brown;
-    position: absolute;
-    left: 50px;
-    bottom: 143px;
+  color: brown;
+  position: absolute;
+  left: 50px;
+  bottom: 143px;
 }
 
 #div-7 {
-    color: blue;
+  color: blue;
 }
 
 #div-4{
@@ -105,5 +105,5 @@ div.text-center#div-6 {
 }
 
 ul#ul-1 {
-    list-style-type: square;
+  list-style-type: square;
 }

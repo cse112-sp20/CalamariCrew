@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --coverage",
     "lint": "eslint 'root/**/*.js' && htmlhint root/html/** && npx stylelint root/css/**",
     "lint-js": "eslint 'root/**/*.js'",
     "lint-html": "htmlhint root/html/**",
     "lint-css": "npx stylelint root/css/**",
     "lint-fix": "eslint 'root/**/*.js' --fix && htmlhint root/html/** && npx stylelint root/css/** --fix",
-    "start": "node root/backend/app.js"
+    "start": "node root/backend/app.js",
+    "code-coverage-check": "node scripts/code_coverage.js"
   },
   "keywords": [],
   "author": "MoHo Khaleqi",
@@ -27,7 +28,10 @@
     ]
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "coverageReporters": [
+      "json-summary"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
@@ -46,6 +50,8 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
+    "leo-profanity": "^1.2.6",
+
     "node-persist": "^3.0.5",
     "nodemon": "^2.0.3",
     "superagent": "^5.2.2"
