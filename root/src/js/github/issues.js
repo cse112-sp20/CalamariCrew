@@ -1,17 +1,17 @@
-displayIssues();
+window.onload = displayIssues();
 
-function displayIssues() {
+async function displayIssues() {
     try {
         let token = fetchToken();
         let repository = fetchRepository();
-        let username = fetchUsername(token);
-        retrieveIssues(token, username, repository);
+        let username = await fetchUsername(token);
+        await retrieveIssues(token, username, repository);
     } catch (err) {
         console.log(err);
     }
 }
 
-function fetchToken() {
+export function fetchToken() {
     var token = localStorage.getItem('token');
 
     if (token) {
@@ -21,7 +21,7 @@ function fetchToken() {
     }
 }
 
-function fetchRepository(repository) {
+export function fetchRepository(repository) {
     var repository = localStorage.getItem('repository');
 
     if (repository) {
@@ -31,13 +31,13 @@ function fetchRepository(repository) {
     }
 }
 
-function fetchUsername(token) {
+export async function fetchUsername(token) {
     var username = localStorage.getItem('github_username');
 
     if (username) {
         return username;
     } else {
-        fetch('https://api.github.com/user', {
+        await fetch('https://api.github.com/user', {
             headers: {
                 Authorization: 'token ' + token,
             },
@@ -45,16 +45,19 @@ function fetchUsername(token) {
             .then(res => res.json())
             .then(name => {
                 localStorage.setItem('github_username', name.login);
+                username = name.login;
             })
             .catch(err => {
                 throw 'Username could not be retrieved';
             });
+
+        return username;
     }
 }
 
-function retrieveIssues(token, username, repo) {
+export async function retrieveIssues(token, username, repo) {
     if (repo.repoId && repo.issueUrl && token && username) {
-        fetch(repo.issueUrl, {
+        await fetch(repo.issueUrl, {
             headers: {
                 Authorization: 'token ' + token,
             },
@@ -63,11 +66,14 @@ function retrieveIssues(token, username, repo) {
             .then(issues => {
                 let filteredIssues = filterAssignedIssues(issues, username);
                 addIssuesToDOM(filteredIssues, repo, token);
+            })
+            .catch(err => {
+                throw 'Issues could not be retrieved';
             });
     }
 }
 
-function filterAssignedIssues(issues, username) {
+export function filterAssignedIssues(issues, username) {
     return issues.filter(issue => {
         if (!issue.assignee) {
             return false;
@@ -84,7 +90,7 @@ function filterAssignedIssues(issues, username) {
     });
 }
 
-function addIssuesToDOM(issues, repo, token) {
+export function addIssuesToDOM(issues, repo, token) {
     var issueList = document.getElementById('githubIssuesList');
 
     issues.forEach(issue => {
@@ -107,7 +113,7 @@ function addIssuesToDOM(issues, repo, token) {
     });
 }
 
-function createIssueCheckbox(issue, repo, token) {
+export function createIssueCheckbox(issue, repo, token) {
     let inputElement = document.createElement('input');
     inputElement.type = 'checkbox';
     inputElement.id = 'checkbox' + issue.number.toString();
@@ -129,8 +135,8 @@ function createIssueCheckbox(issue, repo, token) {
     return inputElement;
 }
 
-function closeIssue(issueUrl, token) {
-    fetch(issueUrl, {
+export async function closeIssue(issueUrl, token) {
+    await fetch(issueUrl, {
         method: 'PATCH',
         body: JSON.stringify({
             state: 'closed',
@@ -144,5 +150,8 @@ function closeIssue(issueUrl, token) {
         .then(res => res.json())
         .then(res => {
             console.log(res);
+        })
+        .catch(err => {
+            throw 'Issue could not be closed';
         });
 }

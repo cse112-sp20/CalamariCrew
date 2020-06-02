@@ -23,14 +23,14 @@ test('Switching between accessories render the right set', () => {
     const divBtns = document.querySelector('#switch_acc'); //container by ID UI Buttons Container
     const uiBtns = divBtns.querySelectorAll('button'); //all the elements inside container
     require('../root/src/js/user_settings');
-    containerList = [];
+    let containerList = [];
     uiBtns.forEach(button => {
         button.click();
         containerList.push(
             document.getElementById(button.id + 'Accessories').id
         );
     });
-    rightButtonOrder = [
+    let rightButtonOrder = [
         'headAccessories',
         'backAccessories',
         'tailAccessories',
@@ -50,7 +50,7 @@ test('ClearAll Btn removes all the items that Raptor is currently wearing', () =
         localStorage.setItem(el, 'Magic_hat');
     });
     document.getElementById('clearAll').click(); //removed all the elements
-    flag = true;
+    let flag = true;
     list.forEach(el => {
         //check if they still exist in Local Storage
         if (localStorage.getItem(el) != null) {
@@ -64,7 +64,7 @@ test('ClearAll Btn removes all the items that Raptor is currently wearing', () =
 test('Choosing a specific accessory is correctly displayed in the raptor', () => {
     document.body.innerHTML = HTML;
     require('../root/src/js/user_settings');
-    rightButtonOrder = [
+    let rightButtonOrder = [
         'headAccessories',
         'backAccessories',
         'tailAccessories',
