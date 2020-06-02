@@ -58,19 +58,20 @@ function getGithubIssues(token) {
 
                         inputElement.addEventListener('change', function() {
                             if (this.checked) {
-                                var response = confirm(
-                                    'Do you want to close this issue?'
+                                // var response = confirm(
+                                //     'Do you want to close this issue?'
+                                // );
+                                // if (response == true) {
+                                closeIssue(
+                                    repo.issueUrl +
+                                        '/' +
+                                        issue.number.toString(),
+                                    token
                                 );
-                                if (response == true) {
-                                    closeIssue(
-                                        repo.issueUrl +
-                                            '/' +
-                                            issue.number.toString(),
-                                        token
-                                    );
-                                } else {
-                                    inputElement.checked = false;
-                                }
+                                // } else {
+                                //     inputElement.checked = false;
+                                // }
+                                issueList.removeChild(listElement);
                             }
                         });
 
