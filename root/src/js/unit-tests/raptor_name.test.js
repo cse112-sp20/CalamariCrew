@@ -1,5 +1,5 @@
 var fs = require('fs');
-var HTML = fs.readFileSync('root/html/raptor_name.html', 'utf8');
+var HTML = fs.readFileSync('root/html/setup/raptor_name.html', 'utf8');
 
 describe('Raptor Name Page', () => {
     test('Raptor Name Filter works true', () => {
