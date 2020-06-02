@@ -233,8 +233,8 @@ var gh = (function() {
                 localStorage.setItem('repository', repo);
                 window.location.href = '/root/html/index.html';
             } else if (oauthToken && raptorName) {
-                localStorage.setItem('token', oauthToken);
                 localStorage.setItem('raptor_name', raptorName);
+                localStorage.setItem('token', oauthToken);
                 window.location.href = '/root/html/setup/choose_repo.html';
             } else if (oauthToken) {
                 localStorage.setItem('token', oauthToken);
