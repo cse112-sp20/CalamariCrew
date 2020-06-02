@@ -30,7 +30,8 @@
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "coverageReporters": [
-      "json-summary"
+      "json-summary",
+      "lcov"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
