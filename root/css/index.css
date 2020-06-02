@@ -1,23 +1,23 @@
 
-
 div.card#div-1 {
   width: 18rem;
 }
 
 div.card-header#div-2 {
-  background-color: #A8936D;
+  background-color: #a8936d;
   display: block;
   z-index: 2;
+
   /* margin-bottom: -19px; */
 }
 
 div.card-footer {
-  background-color: #F4F1EC;
+  background-color: #f4f1ec;
   z-index: 3;
 }
 
 div#userVelocityRaptorName {
-  font-family: 'Cayetano Round';
+  font-family: Cayetano Round, sans-serif;
   font-size: large;
   float: left;
 }
@@ -122,7 +122,7 @@ img#Back_HappyBlob {
 }
 
 div.text-center#div-4 {
-  font-family:'Cayetano Round';
+  font-family: Cayetano Round, sans-serif;
   color: black;
   position: absolute;
   left: 10px;
@@ -130,25 +130,25 @@ div.text-center#div-4 {
 }
 
 #div-5 {
-  font-family:'Bahnschrift';
+  font-family: Bahnschrift, sans-serif;
   color: #423419;
 }
 
 ul#githubIssuesList {
-  font-family:'Bahnschrift';
+  font-family: Bahnschrift, sans-serif;
   list-style-type: none;
   height: 73px;
   overflow: auto;
 }
 
-a{
-  color:#978A72
+a {
+  color: #978a72;
 }
 
-a:hover{
-  color:#463D2E
+a:hover {
+  color: #463d2e;
 }
 
-a:active{
-  color:#463D2E
+a:active {
+  color: #463d2e;
 }

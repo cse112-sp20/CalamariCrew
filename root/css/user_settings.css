@@ -1,12 +1,11 @@
 div.container#div-1 {
-  background-color: #A8936D;
+  background-color: #a8936d;
   width: 500px;
   height: 315px;
 }
 
 div.col#myvelocityraptor {
-  font-family: 'Cayetano Round';
-
+  font-family: Cayetano Round, sans-serif;
   display: none;
 }
 
@@ -14,9 +13,8 @@ div.card-body#div-2 {
   min-height: 10rem;
 }
 
-
 button.button#clearAll {
-  font-family: 'Cayetano Round';
+  font-family: Cayetano Round, sans-serif;
   position: absolute;
   right: 54px;
   top: 157px;
@@ -135,8 +133,8 @@ div.col#myGithubRepo {
   display: none;
 }
 
-.Settings{
-  font-family: 'Cayetano';
+.Settings {
+  font-family: Cayetano, sans-serif;
 }
 
 div.card-body#div-4 {
@@ -151,9 +149,9 @@ div.card-body#div-4 {
 
 #switch_acc {
   position: absolute;
-    width: 300px;
-    right: -20px;
-    bottom: 70px;
+  width: 300px;
+  right: -20px;
+  bottom: 70px;
 }
 
 #head {

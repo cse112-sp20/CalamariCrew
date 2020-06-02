@@ -11,9 +11,8 @@ div#div-3 {
 }
 
 a#a-1 {
-
-    float: right;
-    margin-left: 10px;
+  float: right;
+  margin-left: 10px;
 }
 
 a#a-2 {
@@ -99,9 +98,8 @@ div.text-center#div-6 {
   color: blue;
 }
 
-#div-4{
-    font-family: 'Caeytano';
-
+#div-4 {
+  font-family: Caeytano, sans-serif;
 }
 
 ul#ul-1 {

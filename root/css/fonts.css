@@ -1,23 +1,24 @@
 @font-face {
-    font-family: 'Cayetano';
-    src: url('../fonts/Cayetano-Bold.woff2') format('woff2'),
-        url('../fonts/Cayetano-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-  }
-
- @font-face {
-    font-family: 'Bahnschrift Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Bahnschrift Regular'), url('BAHNSCHRIFT.woff') format('woff');
+  font-family: 'Cayetano';
+  src:
+    url('../fonts/Cayetano-Bold.woff2') format('woff2'),
+    url('../fonts/Cayetano-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Cayetano Round';
-    src: url('../fonts/CayetanoRound-Bold.woff2') format('woff2'),
-        url('../fonts/CayetanoRound-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Bahnschrift Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Bahnschrift Regular'), url('BAHNSCHRIFT.woff') format('woff');
 }
-    
+
+@font-face {
+  font-family: 'Cayetano Round';
+  src:
+    url('../fonts/CayetanoRound-Bold.woff2') format('woff2'),
+    url('../fonts/CayetanoRound-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}

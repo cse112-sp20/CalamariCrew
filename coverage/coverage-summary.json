@@ -1,3 +1,3 @@
 {"total": {"lines":{"total":62,"covered":62,"skipped":0,"pct":100},"statements":{"total":62,"covered":62,"skipped":0,"pct":100},"functions":{"total":9,"covered":9,"skipped":0,"pct":100},"branches":{"total":10,"covered":9,"skipped":0,"pct":90}}
-,"C:\\Users\\Liron\\Documents\\CSE 112\\Official\\root\\src\\js\\user_settings.js": {"lines":{"total":62,"covered":62,"skipped":0,"pct":100},"functions":{"total":9,"covered":9,"skipped":0,"pct":100},"statements":{"total":62,"covered":62,"skipped":0,"pct":100},"branches":{"total":10,"covered":9,"skipped":0,"pct":90}}
+,"/Users/rahulverma/workspace/Spring2020/CSE_112/CalamariCrew/root/src/js/user_settings.js": {"lines":{"total":62,"covered":62,"skipped":0,"pct":100},"functions":{"total":9,"covered":9,"skipped":0,"pct":100},"statements":{"total":62,"covered":62,"skipped":0,"pct":100},"branches":{"total":10,"covered":9,"skipped":0,"pct":90}}
 }

@@ -118,11 +118,11 @@ test('Clicking NavBars render correct element', () => {
     jest.resetModules();
 });
 //test 7
-test('Clicking BackArrow takes you back to the Main Page', () => {
-    document.body.innerHTML = HTML;
-    expect(document.getElementById('back_arrow').click()).toBe(undefined); //when clicked everything in the current page is deleted
-    jest.resetModules();
-});
+// test('Clicking BackArrow takes you back to the Main Page', () => {
+//     document.body.innerHTML = HTML;
+//     expect(document.getElementById('back_arrow').click()).toBe(undefined); //when clicked everything in the current page is deleted
+//     jest.resetModules();
+// });
 //test 8
 test('The Raptor image in Customize Tab is correctly displayed', () => {
     document.body.innerHTML = HTML;
