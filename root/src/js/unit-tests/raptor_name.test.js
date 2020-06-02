@@ -1,4 +1,5 @@
-import { isRaptorNameValid } from './raptor_name.js';
+// import { isRaptorNameValid } from './raptor_name.js';
+var RaptorPage = import('raptor_name.js');
 var fs = require('fs');
 var HTML = fs.readFileSync('root/html/setup/raptor_name.html', 'utf8');
 
@@ -7,7 +8,7 @@ describe('Raptor Name Page', () => {
         document.body.innerHTML = HTML;
         require('../raptor_name');
         const raptorName = 'Fun Bot';
-        expect(isRaptorNameValid(raptorName)).toBe(true);
+        expect(RaptorPage.isRaptorNameValid(raptorName)).toBe(true);
         jest.resetModules();
     });
 
@@ -17,7 +18,7 @@ describe('Raptor Name Page', () => {
         listOfBadWords = ['fu ck', 'shit', 'ass', '  pis s  '];
         for (i = 0; i < listOfBadWords.length; i++) {
             const raptorName = 'fu ck';
-            expect(isRaptorNameValid(raptorName)).toBe(false);
+            expect(RaptorPage.isRaptorNameValid(raptorName)).toBe(false);
         }
         jest.resetModules();
     });
