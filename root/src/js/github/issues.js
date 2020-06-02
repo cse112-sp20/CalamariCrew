@@ -19,7 +19,9 @@ function getGithubIssues(token) {
 
     if (localStorage.getItem('repository')) {
         var repo = JSON.parse(localStorage.getItem('repository'));
-
+        console.log(repo.repoId);
+        var repoName = document.getElementById('div-5');
+        repoName.innerHTML = `Repository: ${repo.repoId}`;
         if (repo.repoId && repo.issueUrl && token) {
             fetch(repo.issueUrl, {
                 headers: {

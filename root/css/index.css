@@ -106,7 +106,7 @@ img#BackPack_Blue {
 
 img#RocketBooster {
   position: absolute;
-  bottom: 194px;
+  bottom: 174px;
   left: 67px;
   display: none;
 }
@@ -128,12 +128,24 @@ div.text-center#div-4 {
 
 #div-5 {
   font-family:'Bahnschrift';
-  color: blue;
+  color: #423419;
 }
 
 ul#githubIssuesList {
   font-family:'Bahnschrift';
-  list-style-type: square;
+  list-style-type: none;
   height: 73px;
   overflow: auto;
+}
+
+a{
+  color:#978A72
+}
+
+a:hover{
+  color:#463D2E
+}
+
+a:active{
+  color:#463D2E
 }

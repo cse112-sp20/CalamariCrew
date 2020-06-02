@@ -18,8 +18,8 @@ div.card-body#div-2 {
 button.button#clearAll {
   font-family: 'Cayetano Round';
   position: absolute;
-  right: -2px;
-  top: -11px;
+  right: 54px;
+  top: 157px;
   font-size: 8px;
   border-color: white;
 }
@@ -95,8 +95,8 @@ img#Hand_Yoyo_ {
 
 img#RocketBooster_ {
   position: absolute;
-  bottom: 143px;
-  left: 81px;
+  bottom: 157px;
+  left: 107px;
   display: none;
 }
 
@@ -108,16 +108,15 @@ img#Back_HappyBlob_ {
 }
 
 div#div-3 {
-  position: absolute;
   bottom: 80px;
-  left: 50px;
+  left: 110px;
 }
 
 #h9-1 {
   font-size: 15px;
-  position: absolute;
   left: -48px;
   bottom: 20px;
+  margin-right: 40px;
 }
 
 #backAccessories {
@@ -146,16 +145,15 @@ div.card-body#div-4 {
 }
 
 #raptorNameAccessory {
-  position: relative;
-  bottom: 35px;
-  right: -25px;
+  padding-top: 65px;
+  margin-bottom: 1px;
 }
 
 #switch_acc {
   position: absolute;
-  width: 300px;
-  right: -120px;
-  bottom: -10px;
+    width: 300px;
+    right: -20px;
+    bottom: 70px;
 }
 
 #head {
