@@ -77,7 +77,9 @@ function getGithubIssues(token) {
                         link.href = issue.html_url;
                         link.target = '_blank';
 
-                        let linkText = document.createTextNode(issue.title);
+                        let linkText = document.createTextNode(
+                            ' ' + issue.title
+                        );
 
                         link.appendChild(linkText);
                         listElement.appendChild(inputElement);
