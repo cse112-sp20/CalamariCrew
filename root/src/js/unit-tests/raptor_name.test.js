@@ -1,3 +1,4 @@
+import { isRaptorNameValid } from './raptor_name.js';
 var fs = require('fs');
 var HTML = fs.readFileSync('root/html/setup/raptor_name.html', 'utf8');
 
