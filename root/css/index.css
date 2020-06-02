@@ -7,10 +7,13 @@ div.card#div-1 {
 div.card-header#div-2 {
   background-color: #A8936D;
   display: block;
+  z-index: 2;
+  /* margin-bottom: -19px; */
 }
 
 div.card-footer {
   background-color: #F4F1EC;
+  z-index: 3;
 }
 
 div#userVelocityRaptorName {
