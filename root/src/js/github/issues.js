@@ -1,4 +1,4 @@
-var token = localStorage.getItem('token');
+const token = localStorage.getItem('token');
 
 getGithubIssues(token);
 
