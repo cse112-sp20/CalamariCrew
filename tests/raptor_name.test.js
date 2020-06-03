@@ -14,9 +14,10 @@ describe('Raptor Name Page', () => {
     test('Raptor Name Filter works false', () => {
         document.body.innerHTML = HTML;
         require('../root/src/js/raptor_name');
-        listOfBadWords = ['fu ck', 'shit', 'ass', '  pis s  '];
+        const listOfBadWords = ['fuck', 'shit', 'ass', '  piss  '];
+        var i;
         for (i = 0; i < listOfBadWords.length; i++) {
-            const raptorName = 'fu ck';
+            const raptorName = listOfBadWords[i];
             expect(isRaptorNameValid(raptorName)).toBe(false);
         }
         jest.resetModules();
