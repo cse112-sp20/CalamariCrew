@@ -128,7 +128,7 @@ var gh = (function() {
                     access_token = token;
                     console.log('Setting access_token: ', access_token);
                     localStorage.setItem('token', access_token);
-                    window.location.href = '/root/html/setup/succ_auth.html';
+                    window.location.href = '/root/html/setup/raptor_name.html';
                 }
             },
 
@@ -233,12 +233,12 @@ var gh = (function() {
                 localStorage.setItem('repository', repo);
                 window.location.href = '/root/html/index.html';
             } else if (oauthToken && raptorName) {
-                localStorage.setItem('token', oauthToken);
                 localStorage.setItem('raptor_name', raptorName);
+                localStorage.setItem('token', oauthToken);
                 window.location.href = '/root/html/setup/choose_repo.html';
             } else if (oauthToken) {
                 localStorage.setItem('token', oauthToken);
-                window.location.href = '/root/html/setup/succ_auth.html';
+                window.location.href = '/root/html/setup/raptor_name.html';
             }
 
             signin_button = document.querySelector('#signin');

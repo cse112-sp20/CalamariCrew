@@ -1,13 +1,19 @@
 div.card#div-1 {
+  background-color: #f4f1ec;
+  font-family: Bahnschrift Regular, sans-serif;
   width: 18rem;
 }
 
 div.card-header#div-2 {
+  background-color: #a8936d;
   display: block;
 }
 
 div#div-3 {
   float: left;
+  font-family: Cayetano Round, sans-serif;
+  font-size: large;
+  display: block;
 }
 
 a#a-1 {

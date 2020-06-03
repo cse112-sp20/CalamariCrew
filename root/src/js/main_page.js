@@ -1,7 +1,7 @@
 if (localStorage.getItem('raptor_name')) {
     document.getElementById(
         'userVelocityRaptorName'
-    ).innerHTML = localStorage.getItem('raptor_name');
+    ).innerHTML = localStorage.getItem('raptor_name').substring(0, 11);
 }
 if (localStorage.length != 0) {
     //get everything and activate listeners to dress raptor with info from other page
