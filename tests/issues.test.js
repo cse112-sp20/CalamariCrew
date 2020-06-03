@@ -1,57 +1,74 @@
-require('jest-fetch-mock').enableMocks()
+require('jest-fetch-mock').enableMocks();
 
 import * as issues from '../root/src/js/github/issues';
 
 var fs = require('fs');
 var HTML = fs.readFileSync('root/html/index.html', 'utf8');
 
-const fakeToken = "dead-beef";
-const fakeRepo = "{\"repoId\":\"Build\",\"issueUrl\":\"https://example.com\"}";
-const fakeUsername = "fake-username";
+const fakeToken = 'dead-beef';
+const fakeRepo = '{"repoId":"Build","issueUrl":"https://example.com"}';
+const fakeUsername = 'fake-username';
 
-const filteredIssues = [{
-    title: "title-1",
-    number: 1,
-    html_url: "title-1.html",
-    assignee: "nub-scrub",
-    assignees: [{
-        login: "fake-username"
-    }]
-}, {
-    title: "title-2",
-    number: 2,
-    html_url: "title-2.html",
-    assignee: "nub-scrub",
-    assignees: [{
-        login: "fake-username"
-    }]
-}];
+const filteredIssues = [
+    {
+        title: 'title-1',
+        number: 1,
+        html_url: 'title-1.html',
+        assignee: 'nub-scrub',
+        assignees: [
+            {
+                login: 'fake-username',
+            },
+        ],
+    },
+    {
+        title: 'title-2',
+        number: 2,
+        html_url: 'title-2.html',
+        assignee: 'nub-scrub',
+        assignees: [
+            {
+                login: 'fake-username',
+            },
+        ],
+    },
+];
 
-const unfilteredIssues = [{
-    title: "title-1",
-    number: 1,
-    html_url: "title-1.html",
-    assignee: "nub-scrub",
-    assignees: [{
-        login: "fake-username"
-    }]
-}, {
-    title: "title-2",
-    number: 2,
-    html_url: "title-2.html",
-    assignee: "nub-scrub",
-    assignees: [{
-        login: "fake-username"
-    }]
-}, {
-    title: "title-3",
-    number: 3,
-    html_url: "title-3.html",
-    assignee: "nub-scrub",
-    assignees: [{
-        login: "loooool"
-    }]
-}];
+const unfilteredIssues = [
+    {
+        title: 'title-1',
+        number: 1,
+        html_url: 'title-1.html',
+        assignee: 'nub-scrub',
+        assignees: [
+            {
+                login: 'fake-username',
+            },
+        ],
+    },
+    {
+        title: 'title-2',
+        number: 2,
+        html_url: 'title-2.html',
+        assignee: 'nub-scrub',
+        assignees: [
+            {
+                login: 'fake-username',
+            },
+        ],
+    },
+    {
+        title: 'title-3',
+        number: 3,
+        html_url: 'title-3.html',
+        assignee: 'nub-scrub',
+        assignees: [
+            {
+                login: 'loooool',
+            },
+        ],
+    },
+];
 
 //test 1
 test('Fetch and return token when token is found', () => {
@@ -126,18 +143,18 @@ test('Fetch and return username when username is found', async () => {
 // test 6
 test('Fetch and return username from github when username is not found', async () => {
     let name = {
-        login: fakeUsername
+        login: fakeUsername,
     };
     fetchMock.mockResponseOnce(JSON.stringify(name));
     const localStorageGetSpy = jest.spyOn(Storage.prototype, 'getItem');
     localStorageGetSpy.mockReturnValue(undefined);
-    jest.spyOn(Storage.prototype, 'setItem').mockImplementation((key) => {});
+    jest.spyOn(Storage.prototype, 'setItem').mockImplementation(key => {});
 
     let fetchedUsername = await issues.fetchUsername(fakeToken);
 
     expect(localStorageGetSpy).toBeCalledWith('github_username');
     expect(fetchedUsername).toBe(fakeUsername);
-    
+
     fetchMock.resetMocks();
     jest.resetModules();
 });
@@ -147,7 +164,7 @@ test('Throw error when username cannot be retrieved', async () => {
     fetchMock.mockReject(new Error('fake error message'));
     const localStorageGetSpy = jest.spyOn(Storage.prototype, 'getItem');
     localStorageGetSpy.mockReturnValue(undefined);
-    jest.spyOn(Storage.prototype, 'setItem').mockImplementation((key) => {});
+    jest.spyOn(Storage.prototype, 'setItem').mockImplementation(key => {});
 
     try {
         await issues.fetchUsername(fakeToken);
@@ -155,7 +172,7 @@ test('Throw error when username cannot be retrieved', async () => {
         expect(localStorageGetSpy).toBeCalledWith('github_username');
         expect(err).toMatch('Username could not be retrieved');
     }
-    
+
     fetchMock.resetMocks();
     jest.resetModules();
 });
@@ -171,14 +188,16 @@ test('Retrieve issues from github given invalid credentials', async () => {
         expect(err).toMatch('Issues could not be retrieved');
     }
 
-
     fetchMock.resetMocks();
     jest.resetModules();
 });
 
 // test 9
 test('Filter unassigned issues', async () => {
-    let receivedIssues = issues.filterAssignedIssues(unfilteredIssues, fakeUsername);
+    let receivedIssues = issues.filterAssignedIssues(
+        unfilteredIssues,
+        fakeUsername
+    );
 
     expect(receivedIssues).toStrictEqual(filteredIssues);
 
@@ -212,15 +231,10 @@ test('Issues are added to the DOM', () => {
 
     let issueContainer = [];
     issuesLinks.forEach(element => {
-        issueContainer.push(
-            element.getAttribute('title')
-        )
+        issueContainer.push(element.getAttribute('title'));
     });
 
-    let issueTitles = [
-        'title-1',
-        'title-2'
-    ];
+    let issueTitles = ['title-1', 'title-2'];
 
     expect(issueContainer).toStrictEqual(issueTitles);
 
