@@ -1,12 +1,24 @@
+
 div.card#div-1 {
   width: 18rem;
 }
 
 div.card-header#div-2 {
+  background-color: #a8936d;
   display: block;
+  z-index: 2;
+
+  /* margin-bottom: -19px; */
+}
+
+div.card-footer {
+  background-color: #f4f1ec;
+  z-index: 3;
 }
 
 div#userVelocityRaptorName {
+  font-family: Cayetano Round, sans-serif;
+  font-size: large;
   float: left;
 }
 
@@ -97,7 +109,7 @@ img#BackPack_Blue {
 
 img#RocketBooster {
   position: absolute;
-  bottom: 194px;
+  bottom: 174px;
   left: 67px;
   display: none;
 }
@@ -110,18 +122,33 @@ img#Back_HappyBlob {
 }
 
 div.text-center#div-4 {
-  color: brown;
+  font-family: Cayetano Round, sans-serif;
+  color: black;
   position: absolute;
-  left: 50px;
+  left: 10px;
   bottom: 143px;
 }
 
 #div-5 {
-  color: blue;
+  font-family: Bahnschrift, sans-serif;
+  color: #423419;
 }
 
 ul#githubIssuesList {
+  font-family: Bahnschrift, sans-serif;
   list-style-type: none;
   height: 73px;
   overflow: auto;
+}
+
+a {
+  color: #978a72;
+}
+
+a:hover {
+  color: #463d2e;
+}
+
+a:active {
+  color: #463d2e;
 }
