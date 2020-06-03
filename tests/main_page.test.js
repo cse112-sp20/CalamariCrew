@@ -5,7 +5,7 @@ var HTML = fs.readFileSync('root/html/index.html', 'utf8');
 test('Raptor name is not defined if user has not logged into github', () => {
     document.body.innerHTML = HTML;
     var raptorName = document.getElementById('userVelocityRaptorName');
-    require('../main_page');
+    require('../root/src/js/main_page');
     expect(raptorName.innerHTML).toStrictEqual('');
     jest.resetModules();
 });
@@ -14,7 +14,7 @@ test('Raptor name is not defined if user has not logged into github', () => {
 test('If LocalStorage is empty raptor should not have accessories', () => {
     document.body.innerHTML = HTML;
     //var raptorName = document.getElementById('userVelocityRaptorName');
-    require('../main_page'); //localstorage is empty
+    require('../root/src/js/main_page'); //localstorage is empty
     var flag = true;
     var images = document.querySelectorAll('img');
     images.forEach(img => {

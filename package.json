@@ -30,17 +30,26 @@
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "coverageReporters": [
-      "json-summary"
+      "json-summary",
+      "lcov"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "root/**/*.js"
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
     "@types/jest": "^25.2.1",
+    "babel-jest": "^26.0.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "htmlhint": "^0.11.0",
     "husky": "^3.0.4",
     "jest": "^25.0.0",
+    "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
     "stylelint": "^13.3.3",

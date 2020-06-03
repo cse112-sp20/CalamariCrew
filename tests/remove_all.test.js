@@ -8,7 +8,7 @@ test('remove_all button clears user info in localStorage', () => {
     window.localStorage.setItem('github_username', 'CalamariCrew');
     window.localStorage.setItem('token', '232435trgbrrebht');
     window.localStorage.setItem('raptor_name', 'Gary');
-    require('../remove_all.js');
+    require('../root/src/js/remove_all');
     document.getElementById('remove_all').click();
     var flag = true;
     removedItems.forEach(el => {

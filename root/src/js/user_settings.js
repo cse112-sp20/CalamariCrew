@@ -105,7 +105,7 @@ displayRaptorName(); //initialize function
 // **************************************** To Display Current Raptor Accessories ********************************* //
 if (localStorage.length != 0) {
     const list = ['tail', 'back', 'head', 'hand'];
-    for (bodyPart of list) {
+    for (const bodyPart of list) {
         if (localStorage.getItem(bodyPart) != null) {
             document.getElementById(
                 localStorage.getItem(bodyPart) + '_'
