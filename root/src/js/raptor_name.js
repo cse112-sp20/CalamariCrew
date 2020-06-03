@@ -1,8 +1,15 @@
 var submitButton = document.getElementById('raptorNameSubmit');
-
 // const DOMPurify = require('dompurify');
 
-function isRaptorNameValid(raptorNameText) {
+if (submitButton) {
+    submitButton.addEventListener('click', event => {
+        const raptorName = document.getElementsByName('raptorName')[0].value;
+        localStorage.setItem('raptor_name', raptorName);
+        window.location.href = '/root/html/setup/choose_repo.html';
+    });
+}
+
+export function isRaptorNameValid(raptorNameText) {
     const bad_words = [
         'anal',
         'anus',
@@ -86,9 +93,6 @@ function isRaptorNameValid(raptorNameText) {
         // alert('Name must be appropriate');
         return false;
     }
+
+    return true;
 }
-submitButton.addEventListener('click', event => {
-    const raptorName = document.getElementsByName('raptorName')[0].value;
-    localStorage.setItem('raptor_name', raptorName);
-    window.location.href = '/root/html/setup/choose_repo.html';
-});
