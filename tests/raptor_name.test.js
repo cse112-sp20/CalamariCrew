@@ -11,7 +11,7 @@ describe('Raptor Name Page', () => {
         jest.resetModules();
     });
 
-    test('Raptor Name Filter works false', () => {
+    test('Raptor Name Filter works false', () => { 
         document.body.innerHTML = HTML;
         require('../root/src/js/raptor_name');
         const listOfBadWords = ['fuck', 'shit', 'ass', '  piss  '];
