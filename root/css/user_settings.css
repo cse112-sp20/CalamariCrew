@@ -13,7 +13,7 @@ div.card-body#div-2 {
   min-height: 10rem;
 }
 
-body{
+body {
   font-weight: bold;
 }
 
@@ -170,8 +170,8 @@ div.card-body#div-4 {
 }
 
 .btn-sm {
-  padding: .1rem .5rem;
-  font-size: .7rem;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.7rem;
   line-height: 1.5;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
 }
