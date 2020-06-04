@@ -43,7 +43,7 @@ if (localStorage.length != 0) {
                 .then(res => res.json())
                 .then(milestones => {
                     if (milestones.length === 0) {
-                        setSpeedErrorMessage();
+                        setSpeedErrorMessage(speedErrorMessage);
                     }
                     const curMilestone = milestones[0];
                     const { open_issues, closed_issues, number } = curMilestone;
@@ -52,7 +52,7 @@ if (localStorage.length != 0) {
                     let userVelocity;
                     let teamVelocity;
                     if (totalIssues === 0) {
-                        setSpeedErrorMessage();
+                        setSpeedErrorMessage(speedErrorMessage);
                         teamVelocity = 0;
                     } else {
                         teamVelocity = open_issues / totalIssues;
@@ -72,7 +72,7 @@ if (localStorage.length != 0) {
                                     issue => issue.state === 'closed'
                                 );
                                 if (issues.length === 0) {
-                                    speed.innerHTML = speedErrorMessage;
+                                    setSpeedErrorMessage(speedErrorMessage);
                                     userVelocity = 0;
                                 } else {
                                     userVelocity =
@@ -111,11 +111,10 @@ if (localStorage.length != 0) {
         });
 }
 
-function setSpeedErrorMessage() {
+function setSpeedErrorMessage(msg) {
     const speed = document.getElementById('div-4');
     const textbox = document.getElementById('textbox');
-    const speedErrorMessage =
-        'Please add a milestone and issues to start tracking velocity.';
+    const speedErrorMessage = msg;
     speed.innerHTML = speedErrorMessage;
     speed.style.left = '0px';
     textbox.style =
