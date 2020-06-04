@@ -28,6 +28,7 @@ if (localStorage.length != 0) {
             const repo = JSON.parse(localStorage.getItem('repository'));
             const repoName = repo.repoId;
             const speed = document.getElementById('div-4');
+            const textbox = document.getElementById('textbox');
             const speedErrorMessage =
                 'Please add a milestone and issues to start tracking velocity.';
             fetch(
@@ -42,8 +43,7 @@ if (localStorage.length != 0) {
                 .then(res => res.json())
                 .then(milestones => {
                     if (milestones.length === 0) {
-                        speed.innerHTML = speedErrorMessage;
-                        return;
+                        setSpeedErrorMessage();
                     }
                     const curMilestone = milestones[0];
                     const { open_issues, closed_issues, number } = curMilestone;
@@ -52,7 +52,7 @@ if (localStorage.length != 0) {
                     let userVelocity;
                     let teamVelocity;
                     if (totalIssues === 0) {
-                        speed.innerHTML = speedErrorMessage;
+                        setSpeedErrorMessage();
                         teamVelocity = 0;
                     } else {
                         teamVelocity = open_issues / totalIssues;
@@ -102,11 +102,22 @@ if (localStorage.length != 0) {
                                         issues.length !== 0 ||
                                         milestones.length !== 0
                                     ) {
-                                        speed.innerHTML = `Raptor's speed: ${speedText}km/h`;
+                                        speed.innerHTML = `Raptor's Speed: ${speedText}km/h`;
                                     }
                                 }
                             });
                     }
                 });
         });
+}
+
+function setSpeedErrorMessage() {
+    const speed = document.getElementById('div-4');
+    const textbox = document.getElementById('textbox');
+    const speedErrorMessage =
+        'Please add a milestone and issues to start tracking velocity.';
+    speed.innerHTML = speedErrorMessage;
+    speed.style.left = '0px';
+    textbox.style =
+        'top: 68px;left: -13px;position:absolute;width: 314px;height: auto;margin-bottom: 10px;z-index: 0;';
 }

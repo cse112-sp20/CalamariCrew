@@ -23,9 +23,17 @@ export function fetchToken() {
 
 export function fetchRepository(repository) {
     var repository = localStorage.getItem('repository');
+    var username = localStorage.getItem('github_username');
 
     if (repository) {
-        return JSON.parse(repository);
+        var jsonRepo = JSON.parse(repository);
+
+        var repoName = document.getElementById('div-5');
+        var url = `https://github.com/${username}/${jsonRepo.repoId}`;
+
+        repoName.innerHTML = `Repository: <a href=${url} target='_blank'>${jsonRepo.repoId}</a>`;
+
+        return jsonRepo;
     } else {
         throw 'No repository found';
     }
@@ -97,7 +105,7 @@ export function addIssuesToDOM(issues, repo, token) {
         let listElement = document.createElement('li');
         listElement.id = issue.number.toString();
 
-        let inputElement = createIssueCheckbox(issue, repo, token);
+        let inputElement = createIssueCheckbox(issue, repo, token, listElement);
 
         let link = document.createElement('a');
         link.title = issue.title;
@@ -113,22 +121,17 @@ export function addIssuesToDOM(issues, repo, token) {
     });
 }
 
-export function createIssueCheckbox(issue, repo, token) {
+export function createIssueCheckbox(issue, repo, token, listElement) {
     let inputElement = document.createElement('input');
+    let issueList = document.getElementById('githubIssuesList');
+
     inputElement.type = 'checkbox';
     inputElement.id = 'checkbox' + issue.number.toString();
 
     inputElement.addEventListener('change', function() {
         if (this.checked) {
-            var response = confirm('Do you want to close this issue?');
-            if (response == true) {
-                closeIssue(
-                    repo.issueUrl + '/' + issue.number.toString(),
-                    token
-                );
-            } else {
-                inputElement.checked = false;
-            }
+            closeIssue(repo.issueUrl + '/' + issue.number.toString(), token);
+            issueList.removeChild(listElement);
         }
     });
 

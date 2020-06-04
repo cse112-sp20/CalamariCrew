@@ -5,7 +5,7 @@ div.container#div-1 {
 }
 
 div.col#myvelocityraptor {
-  font-family: Cayetano Round, sans-serif;
+  font-family: Bahnschrift, sans-serif;
   display: none;
 }
 
@@ -13,13 +13,8 @@ div.card-body#div-2 {
   min-height: 10rem;
 }
 
-button.button#clearAll {
-  font-family: Cayetano Round, sans-serif;
-  position: absolute;
-  right: 54px;
-  top: 157px;
-  font-size: 8px;
-  border-color: white;
+body{
+  font-weight: bold;
 }
 
 img#img-1 {
@@ -114,7 +109,7 @@ div#div-3 {
   font-size: 15px;
   left: -48px;
   bottom: 20px;
-  margin-right: 40px;
+  margin-right: 10px;
 }
 
 #backAccessories {
@@ -172,4 +167,11 @@ div.card-body#div-4 {
 #hand {
   font-size: 10px;
   width: 45px;
+}
+
+.btn-sm {
+  padding: .1rem .5rem;
+  font-size: .7rem;
+  line-height: 1.5;
+  border-radius: .2rem;
 }
