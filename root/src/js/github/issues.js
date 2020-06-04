@@ -30,8 +30,9 @@ export function fetchRepository(repository) {
 
         var repoName = document.getElementById('div-5');
         var url = `https://github.com/${username}/${jsonRepo.repoId}`;
-
-        repoName.innerHTML = `Repository: <a href=${url} target='_blank'>${jsonRepo.repoId}</a>`;
+        if (repoName != null) {
+            repoName.innerHTML = `Repository: <a href=${url} target='_blank'>${jsonRepo.repoId}</a>`;
+        }
 
         return jsonRepo;
     } else {
