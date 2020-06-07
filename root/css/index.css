@@ -141,27 +141,6 @@ ul#githubIssuesList {
   overflow: auto;
 }
 
-input[type="checkbox"] {
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: 0;
-  background: #978a72;
-  height: 15px;
-  width: 15px;
-  margin-right: 15px;
-  border-radius: 2px;
-}
-
-input[type=checkbox]:checked {
-  -webkit-appearance: checkbox;
-}
-
-input[type="checkbox"]:hover {
-  filter: brightness(90%);
-}
-
 a {
   color: #978a72;
 }
