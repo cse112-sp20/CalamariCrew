@@ -1,12 +1,13 @@
 var submitButton = document.getElementById('raptorNameSubmit');
 // const DOMPurify = require('dompurify');
-
 if (submitButton) {
-    submitButton.addEventListener('click', event => {
-        const raptorName = document.getElementsByName('raptorName')[0].value;
-        localStorage.setItem('raptor_name', raptorName);
-        window.location.href = '/root/html/setup/choose_repo.html';
-    });
+    submitButton.addEventListener('click', event => saveName());
+}
+export function saveName() {
+    const raptorName = document.getElementsByName('raptorName')[0].value;
+    localStorage.setItem('raptor_name', raptorName);
+    window.location.href = '/root/html/setup/choose_repo.html';
+    return localStorage.getItem('raptor_name');
 }
 
 export function isRaptorNameValid(raptorNameText) {

@@ -1,6 +1,9 @@
-import { isRaptorNameValid } from '../root/src/js/raptor_name.js';
+import { isRaptorNameValid, saveName } from '../root/src/js/raptor_name.js';
 var fs = require('fs');
 var HTML = fs.readFileSync('root/html/setup/raptor_name.html', 'utf8');
+
+delete window.location;
+window.location = { reload: jest.fn() };
 
 describe('Raptor Name Page', () => {
     test('Raptor Name Filter works true', () => {
@@ -23,3 +26,21 @@ describe('Raptor Name Page', () => {
         jest.resetModules();
     });
 });
+describe('Raptor Name Change', () => {
+    test('Raptor Name Change works', () => {
+        document.body.innerHTML = HTML;
+    
+        // Setting before name
+        localStorage.setItem('raptor_name', 'BeforeChange');
+        var button = document.createElement('button');
+        button.id = 'raptorNameSubmit';
+
+        require('../root/src/js/raptor_name');
+        var nameElement = document.getElementsByName('raptorName')[0];
+        nameElement.value = 'AfterNameChange';
+        expect(saveName()).toBe('AfterNameChange');
+        
+
+        jest.resetModules();
+    })
+})
