@@ -1,3 +1,5 @@
+const chrome = require('sinon-chrome');
+
 var gh = (function() {
     'use strict';
 
