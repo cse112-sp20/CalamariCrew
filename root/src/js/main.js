@@ -137,7 +137,7 @@ var gh = (function() {
             },
         };
     })();
-
+    /*
     function xhrWithAuth(method, url, interactive, callback) {
         var retry = true;
         var access_token;
@@ -178,17 +178,18 @@ var gh = (function() {
             }
         }
     }
+    */
     // Functions updating the User Interface:
 
     function showButton(button) {
         button.style.display = 'inline';
         button.disabled = false;
     }
-
+    /*
     function hideButton(button) {
         button.style.display = 'none';
     }
-
+    */
     function disableButton(button) {
         button.disabled = true;
     }
@@ -207,6 +208,7 @@ var gh = (function() {
         UNUSED FOR NOW. BUT IF WE WANT TO ALLOW USERS TO SIGN OUT, THIS IS
         HOW WE WOULD DO IT.
      */
+    /*
     function revokeToken() {
         // We are opening the web page that allows user to revoke their token.
         window.open('https://github.com/settings/applications');
@@ -218,7 +220,7 @@ var gh = (function() {
         hideButton(revoke_button);
         showButton(signin_button);
     }
-
+    */
     return {
         //show signin button and allow login on click.
         onload: function() {
@@ -247,5 +249,10 @@ var gh = (function() {
         },
     };
 })();
+/*
+export function disableButton(button) {
+    button.disabled = true;
+}
+*/
 
 window.onload = gh.onload;
