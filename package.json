@@ -36,7 +36,10 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "root/**/*.js"
-    ]
+    ],
+    "globals": {
+      "chrome": {}
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
