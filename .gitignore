@@ -3,3 +3,4 @@ node_modules
 *.DS_Store
 .node-persist
 /coverage/lcov-report/*
+/coverage
