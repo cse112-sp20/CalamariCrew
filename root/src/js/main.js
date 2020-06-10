@@ -180,20 +180,22 @@ var gh = (function() {
     }
     */
     // Functions updating the User Interface:
-
+    /*
     function showButton(button) {
         button.style.display = 'inline';
         button.disabled = false;
     }
+    */
     /*
     function hideButton(button) {
         button.style.display = 'none';
     }
     */
+    /*
     function disableButton(button) {
         button.disabled = true;
     }
-
+    */
     // Handlers for the buttons's onclick events.
     function interactiveSignIn() {
         disableButton(signin_button);
@@ -249,10 +251,14 @@ var gh = (function() {
         },
     };
 })();
-/*
+
 export function disableButton(button) {
     button.disabled = true;
 }
-*/
+
+export function showButton(button) {
+    button.style.display = 'inline';
+    button.disabled = false;
+}
 
 window.onload = gh.onload;
