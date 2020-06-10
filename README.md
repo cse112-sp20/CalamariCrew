@@ -1,34 +1,14 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/51cb08c68edb03532455/maintainability)](https://codeclimate.com/github/cse112-sp20/CalamariCrew/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/51cb08c68edb03532455/test_coverage)](https://codeclimate.com/github/cse112-sp20/CalamariCrew/test_coverage)
+
 # Velocity Raptor Chrome Extension
 
-## Setup / Running the Extension
+## Getting started
 
-* Make sure you have npm installed. If you do not, download [here](https://www.npmjs.com/get-npm).
-
-* From the base directory, install all dependencies using the following
-
-### `npm install`
-
-* Now to run, go ahead and run with the following command:
-
-### `npm start .`
-
-* Now open up Google Chrome, and navigate to [chrome://extensions/](chrome://extensions/)
+* Open up Google Chrome, and navigate to [chrome://extensions/](chrome://extensions/)
 
 * On the top-left corner, click "Load Unpacked".
 * When prompted, select the directory of the cloned repository
 * Now, a raptor icon should appear on the top right corner.
 * Click the icon to open the extension!
-
-# Development 
-
-### `npm run lint`
-
-It will run ESLint across all the typecript and javascript files found in the root folder that are not whitelisted on `.eslintignore`.
-
-It will run HTMLHint across all the HTML files found in the root folder.
-
-It will run StyleLint (CSS Linter) across all CSS files found in the root folder.
-
-### `npm test`
-
-It will run all the unit tests in the `test` directory. The test files have to end with the extension `(test|spec).(ts|tsx|js)` in order to be picked up by jest.

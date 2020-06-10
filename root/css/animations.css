@@ -17,12 +17,14 @@
 
 .background {
   position: absolute;
-  width: 250px;
-  height: 180px;
-  background: url('/root/media/runningRaptor/Spritesheet_Background.png') left center;
+  width: 300px;
+  height: 240px;
+  top: 44px;
+  left: 0;
+  background: url('/root/media/runningRaptor/Spritesheet_Background3.png') left center;
   animation: playBackground calc(var(--raptorSpeed) * 11) steps(38) infinite;
 }
 
 @keyframes playBackground {
-  100% { background-position: -9500px; }
+  100% { background-position: -11400px; }
 }

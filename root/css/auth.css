@@ -1,0 +1,15 @@
+
+div.container {
+  background-color: #f4f1ec;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.name {
+  font-family: Cayetano, sans-serif;
+  text-align: center;
+}

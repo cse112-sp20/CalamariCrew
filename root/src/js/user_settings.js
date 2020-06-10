@@ -25,18 +25,21 @@ uiBtns.forEach(button => {
 // **************************************** To switch between accessories ********************************* //
 
 // **************************************** To Undress the Raptor ********************************* //
-document.getElementById('clearAll').addEventListener('click', function() {
-    const list = ['tail', 'head', 'hand', 'back'];
-    for (const bodyPart of list) {
-        if (localStorage.getItem(bodyPart) != null) {
-            document.getElementById(
-                localStorage.getItem(bodyPart) + '_'
-            ).style.display = 'none';
 
-            localStorage.removeItem(bodyPart);
+document
+    .getElementById('clearAll')
+    .addEventListener('click', function clearAccessory() {
+        const list = ['tail', 'head', 'hand', 'back'];
+        for (const bodyPart of list) {
+            if (localStorage.getItem(bodyPart) != null) {
+                document.getElementById(
+                    localStorage.getItem(bodyPart) + '_'
+                ).style.display = 'none';
+
+                localStorage.removeItem(bodyPart);
+            }
         }
-    }
-});
+    });
 // **************************************** To Undress the Raptor ********************************* //
 
 // **************************************** To show hidden elements + change active status in button ********************************* //
@@ -94,7 +97,9 @@ function displayRaptorName() {
 
     if (localStorage.getItem('raptor_name')) {
         raptorName.innerHTML =
-            "Hi, I'm " + localStorage.getItem('raptor_name') + '!';
+            "Hi, I'm " +
+            localStorage.getItem('raptor_name').substring(0, 11) +
+            '!';
     } else {
         raptorName.innerHTML = 'Close Extension to refresh';
     }
@@ -105,7 +110,7 @@ displayRaptorName(); //initialize function
 // **************************************** To Display Current Raptor Accessories ********************************* //
 if (localStorage.length != 0) {
     const list = ['tail', 'back', 'head', 'hand'];
-    for (bodyPart of list) {
+    for (const bodyPart of list) {
         if (localStorage.getItem(bodyPart) != null) {
             document.getElementById(
                 localStorage.getItem(bodyPart) + '_'

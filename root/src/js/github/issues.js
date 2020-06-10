@@ -1,108 +1,161 @@
-// const token = localStorage.getItem('token');
+window.onload = displayIssues();
 
-// getGithubIssues(token);
+async function displayIssues() {
+    try {
+        let token = fetchToken();
+        let repository = fetchRepository();
+        let username = await fetchUsername(token);
+        await retrieveIssues(token, username, repository);
+    } catch (err) {
+        console.log(err);
+    }
+}
 
-// function getGithubIssues(token) {
-//     var username;
-//     if (localStorage.getItem('github_username')) {
-//         username = localStorage.getItem('github_username');
-//     } else {
-//         fetch('https://api.github.com/user', {
-//             headers: {
-//                 // Include the token in the Authorization header
-//                 Authorization: 'token ' + token,
-//             },
-//         })
-//             .then(res => res.json())
-//             .then(res => (username = res.login));
-//     }
+export function fetchToken() {
+    var token = localStorage.getItem('token');
 
-//     if (localStorage.getItem('repository')) {
-//         var repo = JSON.parse(localStorage.getItem('repository'));
+    if (token) {
+        return token;
+    } else {
+        throw 'No token found';
+    }
+}
 
-//         if (repo.repoId && repo.issueUrl && token) {
-//             fetch(repo.issueUrl, {
-//                 headers: {
-//                     // Include the token in the Authorization header
-//                     Authorization: 'token ' + token,
-//                 },
-//             })
-//                 .then(res => res.json())
-//                 .then(res => {
-//                     res = res.filter(e => {
-//                         if (!e.assignee) {
-//                             return false;
-//                         }
+export function fetchRepository(repository) {
+    var repository = localStorage.getItem('repository');
+    var username = localStorage.getItem('github_username');
 
-//                         var found = false;
-//                         e.assignees.forEach(assignee => {
-//                             if (assignee.login == username) {
-//                                 found = true;
-//                             }
-//                         });
+    if (repository) {
+        var jsonRepo = JSON.parse(repository);
 
-//                         return found;
-//                     });
-//                     var issueList = document.getElementById('githubIssuesList');
-//                     var speed = document.getElementById('div-4');
+        var repoName = document.getElementById('div-5');
+        var url = `https://github.com/${username}/${jsonRepo.repoId}`;
+        if (repoName != null) {
+            repoName.innerHTML = `Repository: <a href=${url} target='_blank'>${jsonRepo.repoId}</a>`;
+        }
 
-//                     res.forEach(issue => {
-//                         let listElement = document.createElement('li');
-//                         listElement.id = issue.number.toString();
+        return jsonRepo;
+    } else {
+        throw 'No repository found';
+    }
+}
 
-//                         let inputElement = document.createElement('input');
-//                         inputElement.type = 'checkbox';
-//                         inputElement.id = 'checkbox' + issue.number.toString();
+export async function fetchUsername(token) {
+    var username = localStorage.getItem('github_username');
 
-//                         inputElement.addEventListener('change', function() {
-//                             if (this.checked) {
-//                                 var response = confirm(
-//                                     'Do you want to close this issue?'
-//                                 );
-//                                 if (response == true) {
-//                                     closeIssue(
-//                                         repo.issueUrl +
-//                                             '/' +
-//                                             issue.number.toString(),
-//                                         token
-//                                     );
-//                                 } else {
-//                                     inputElement.checked = false;
-//                                 }
-//                             }
-//                         });
+    if (username) {
+        return username;
+    } else {
+        await fetch('https://api.github.com/user', {
+            headers: {
+                Authorization: 'token ' + token,
+            },
+        })
+            .then(res => res.json())
+            .then(name => {
+                localStorage.setItem('github_username', name.login);
+                username = name.login;
+            })
+            .catch(err => {
+                throw 'Username could not be retrieved';
+            });
 
-//                         let link = document.createElement('a');
-//                         link.title = issue.title;
-//                         link.href = issue.html_url;
-//                         link.target = '_blank';
+        return username;
+    }
+}
 
-//                         let linkText = document.createTextNode(issue.title);
+export async function retrieveIssues(token, username, repo) {
+    if (repo.repoId && repo.issueUrl && token && username) {
+        await fetch(repo.issueUrl, {
+            headers: {
+                Authorization: 'token ' + token,
+            },
+        })
+            .then(res => res.json())
+            .then(issues => {
+                let filteredIssues = filterAssignedIssues(issues, username);
+                addIssuesToDOM(filteredIssues, repo, token);
+            })
+            .catch(err => {
+                throw 'Issues could not be retrieved';
+            });
+    }
+}
 
-//                         link.appendChild(linkText);
-//                         listElement.appendChild(inputElement);
-//                         listElement.appendChild(link);
-//                         issueList.appendChild(listElement);
-//                     });
-//                 });
-//         }
-//     }
-// }
+export function filterAssignedIssues(issues, username) {
+    return issues.filter(issue => {
+        if (!issue.assignee) {
+            return false;
+        }
 
-// function closeIssue(issueUrl, token) {
-//     fetch(issueUrl, {
-//         method: 'PATCH',
-//         body: JSON.stringify({
-//             state: 'closed',
-//         }),
-//         headers: {
-//             // Include the token in the Authorization header
-//             Authorization: 'token ' + token,
-//         },
-//     })
-//         // Parse the response as JSON
-//         .then(res => res.json())
-//         .then(res => {
-//             console.log(res);
-//         });
-// }
+        var found = false;
+        issue.assignees.forEach(assignee => {
+            if (assignee.login == username) {
+                found = true;
+            }
+        });
+
+        return found;
+    });
+}
+
+export function addIssuesToDOM(issues, repo, token) {
+    var issueList = document.getElementById('githubIssuesList');
+
+    issues.forEach(issue => {
+        let listElement = document.createElement('li');
+        listElement.id = issue.number.toString();
+
+        let inputElement = createIssueCheckbox(issue, repo, token, listElement);
+
+        let link = document.createElement('a');
+        link.title = issue.title;
+        link.href = issue.html_url;
+        link.target = '_blank';
+
+        let linkText = document.createTextNode(issue.title);
+
+        link.appendChild(linkText);
+        listElement.appendChild(inputElement);
+        listElement.appendChild(link);
+        issueList.appendChild(listElement);
+    });
+}
+
+export function createIssueCheckbox(issue, repo, token, listElement) {
+    let inputElement = document.createElement('input');
+    let issueList = document.getElementById('githubIssuesList');
+
+    inputElement.type = 'checkbox';
+    inputElement.id = 'checkbox' + issue.number.toString();
+
+    inputElement.addEventListener('change', function() {
+        if (this.checked) {
+            closeIssue(repo.issueUrl + '/' + issue.number.toString(), token);
+            issueList.removeChild(listElement);
+        }
+    });
+
+    return inputElement;
+}
+
+export async function closeIssue(issueUrl, token) {
+    await fetch(issueUrl, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            state: 'closed',
+        }),
+        headers: {
+            // Include the token in the Authorization header
+            Authorization: 'token ' + token,
+        },
+    })
+        // Parse the response as JSON
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            throw 'Issue could not be closed';
+        });
+}

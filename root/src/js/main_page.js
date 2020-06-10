@@ -10,10 +10,10 @@ const USER_URL = 'https://api.github.com/user';
 if (localStorage.getItem('raptor_name')) {
     document.getElementById(
         'userVelocityRaptorName'
-    ).innerHTML = localStorage.getItem('raptor_name');
+    ).innerHTML = localStorage.getItem('raptor_name').substring(0, 11);
 }
 
-async function getMostRecentMilestone() {
+export async function getMostRecentMilestone() {
     const userName = localStorage.getItem('github_username');
     const repoName = JSON.parse(localStorage.getItem('repository')).repoId;
     const repoUrl = `https://api.github.com/repos/${userName}/${repoName}/milestones`;
@@ -22,16 +22,17 @@ async function getMostRecentMilestone() {
     return milestones && milestones.length > 0 ? milestones[0] : null;
 }
 
-async function setUser() {
+export async function setUser() {
     const res = await fetchUrl(USER_URL);
     localStorage.setItem('github_username', res.login);
     return res;
 }
+
 function getUser() {
     return localStorage.getItem('github_username');
 }
 
-async function fetchUrl(url) {
+export async function fetchUrl(url) {
     const res = await fetch(url, {
         headers: {
             Authorization: 'token ' + token,
@@ -60,13 +61,13 @@ function getNumIssues(milestone) {
     return milestone.open_issues + milestone.closed_issues;
 }
 
-function setTeamVelocity(milestone) {
-    const { open_issues, closed_issues } = milestone;
-    const totalIssues = open_issues + closed_issues;
-    //at this point, total issues should not be 0 because of prior error check
-    const teamVelocity = closed_issues / totalIssues;
-    //TODO: waiting on team velocity textbox to be added
-}
+// function setTeamVelocity(milestone) {
+//     const { open_issues, closed_issues } = milestone;
+//     const totalIssues = open_issues + closed_issues;
+//     //at this point, total issues should not be 0 because of prior error check
+//     const teamVelocity = closed_issues / totalIssues;
+//     //TODO: waiting on team velocity textbox to be added
+// }
 
 async function setUserVelocity(milestone) {
     const { number: milestoneId } = milestone;
@@ -124,7 +125,7 @@ function initAccessories() {
         */
         const list = ['tail', 'back', 'head', 'hand'];
         const token = localStorage.getItem('token');
-        for (bodyPart of list) {
+        for (let bodyPart of list) {
             if (localStorage.getItem(bodyPart) != null) {
                 document.getElementById(
                     localStorage.getItem(bodyPart)
@@ -133,5 +134,15 @@ function initAccessories() {
         }
     }
 }
+function setSpeedErrorMessage(msg) {
+    const speed = document.getElementById('div-4');
+    const textbox = document.getElementById('textbox');
+    const speedErrorMessage = msg;
+    speed.innerHTML = speedErrorMessage;
+    speed.style.left = '0px';
+    textbox.style =
+        'top: 68px;left: -13px;position:absolute;width: 314px;height: auto;margin-bottom: 10px;z-index: 0;';
+}
+
 initAccessories();
 loadVelocity();
