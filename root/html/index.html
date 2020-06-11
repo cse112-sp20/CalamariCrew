@@ -7,29 +7,39 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="/root/css/index.css" type="text/css">
+      <link rel="stylesheet" href="../css/animations.css">
+      <link rel="stylesheet" href="../css/fonts.css">
+
    </head>
    <body>
       <div class="card" id="div-1">
          <div class="card-header" id="div-2">
-            <h5>
-               <div id="userVelocityRaptorName"></div>
-            </h5>
-            <a href="/root/html/user_settings.html" id="a-1"> <i class="fa fa-gear fa-spin" value="settings"></i></a>
-            <a href="/root/html/teams.html" id="a-2"> <i class="fa fa-users "></i></a>
+         
+            <div id="userVelocityRaptorName"></div>
+       
+            <a href="/root/html/user_settings.html" id="a-1"> <img src = "/root/media/icons/Settings.png" alt="Settings"></a>
+            <!-- team page removed -->
+            <!-- <a href="/root/html/teams.html" id="a-2" ><img src = "/root/media/icons/Teams.png"></a> -->
          </div>
          <div class="card-body" id="div-3">
-            <!-- <div class="text-right" style="position: absolute; left: 50%; color: green;">GARY !!!</div> -->
-            <img alt="Raptor Background" src="/root/media/runningRaptor/background.png" width="250" height="180" id="img-1">
-            <img alt="Default Raptor" src="/root/media/runningRaptor/raptor2.png" width="150" height="150" id="img-2">
+
+            <!-- Animated background and raptor -->
+            <div class="background" id="backgroundAni" ></div>
+            <div class="raptor" id ="raptorAni"></div>
+            <img src = "/root/media/icons/Textbox.png" style="top: 141px;left: -5px;position:absolute;width: 200px;height: auto;margin-bottom: 10px;z-index: 0;" alt = "textbox" id = "textbox">
             <!-- Do not change the style values -->
             <img alt="Magic Hat Accessory" src="/root/media/runningRaptor/Magic_hat.png" width="50" height="50" id="Magic_hat">
             <img alt="Crown Accessory" src="/root/media/runningRaptor/Crown.png" width="30" height="30" id="Crown">
-            <img alt="Saber Accesory" src="/root/media/runningRaptor/Saber_blue.png" width="50" height="50" id="Saber_blue">
-            <img alt="Back Angel Wing Accesory" src="/root/media/runningRaptor/Back_AngelWing.png" width="80" height="80" id="Back_AngelWing">
-            <img alt="Spiked Orange Tail Accesory" src="/root/media/runningRaptor/SpikedTail_Orange.png" width="50" height="50" id="SpikedTail_Orange">
-            <img alt="Spiked Green Tail Accesory" src="/root/media/runningRaptor/Tail_SpikedGreen.png" width="50" height="50" id="Tail_SpikedGreen">
-            <img alt="Brown Afro Accesory" src="/root/media/runningRaptor/Head_AfroBrown.png" width="50" height="50" id="Head_AfroBrown">
-            <div class="text-center" id="div-4">Raptor's Speed: 50km/h</div>
+            <img alt="Saber Accessory" src="/root/media/runningRaptor/Saber_blue.png" width="50" height="50" id="Saber_blue">
+            <img alt="Back Angel Wing Accessory" src="/root/media/runningRaptor/Back_AngelWing.png" width="80" height="80" id="Back_AngelWing">
+            <img alt="Spiked Orange Tail Accessory" src="/root/media/runningRaptor/SpikedTail_Orange.png" width="50" height="50" id="SpikedTail_Orange">
+            <img alt="Spiked Green Tail Accessory" src="/root/media/runningRaptor/Tail_SpikedGreen.png" width="50" height="50" id="Tail_SpikedGreen">
+            <img alt="Brown Afro Accessory" src="/root/media/runningRaptor/Head_AfroBrown.png" width="50" height="50" id="Head_AfroBrown">
+            <img alt="Yoyo Accessory" src="/root/media/runningRaptor/Hand_Yoyo.png.png" width="70" height="70" id="Hand_Yoyo">
+            <img alt="Blue Backpack Accessory" src="/root/media/runningRaptor/BackPack_Blue.png" width="30" height="30" id="BackPack_Blue">
+            <img alt="Rocket Booster Accessory" src="/root/media/runningRaptor/RocketBooster.png" width="150" height="150" id="RocketBooster">
+            <img alt="HappyBlob Accessory" src="/root/media/runningRaptor/Back_HappyBlob.png" width="140" height="140" id="Back_HappyBlob"> 
+            <div class="text-center" id="div-4"></div>
          </div>
          <div class="card-footer">
             <div class="card-footer-title text-center" id="div-5">My Github Issues</div>
@@ -37,7 +47,12 @@
             </ul>
          </div>
       </div>
-      <script src="/root/src/js/main_page.js"></script>
-      <script src="/root/src/js/github/issues.js"></script>
+      <!-- <button id="remove_all">CLICK HERE TO RESET APP - DEV ONLY</button>
+      
+       Remove this function in production. Just to easily reset app
+      <script src="/root/src/js/remove_all.js"></script> -->
+      
+      <script type="module" src="/root/src/js/main_page.js"></script>
+      <script type="module" src="/root/src/js/github/issues.js"></script>
    </body>
 </html>

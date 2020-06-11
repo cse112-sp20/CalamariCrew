@@ -1,12 +1,24 @@
+
 div.card#div-1 {
   width: 18rem;
 }
 
 div.card-header#div-2 {
+  background-color: #a8936d;
   display: block;
+  z-index: 2;
+
+  /* margin-bottom: -19px; */
+}
+
+div.card-footer {
+  background-color: #f4f1ec;
+  z-index: 3;
 }
 
 div#userVelocityRaptorName {
+  font-family: Cayetano Round, sans-serif;
+  font-size: large;
   float: left;
 }
 
@@ -81,19 +93,83 @@ img#Head_AfroBrown {
   display: none;
 }
 
-div.text-center#div-4 {
-  color: brown;
+img#Hand_Yoyo {
   position: absolute;
-  left: 50px;
+  bottom: 203px;
+  left: 72px;
+  display: none;
+}
+
+img#BackPack_Blue {
+  position: absolute;
+  bottom: 240px;
+  left: 110px;
+  display: none;
+}
+
+img#RocketBooster {
+  position: absolute;
+  bottom: 174px;
+  left: 67px;
+  display: none;
+}
+
+img#Back_HappyBlob {
+  position: absolute;
+  bottom: 186px;
+  left: 68px;
+  display: none;
+}
+
+div.text-center#div-4 {
+  font-family: Cayetano Round, sans-serif;
+  color: white;
+  position: absolute;
+  left: 18px;
   bottom: 143px;
 }
 
 #div-5 {
-  color: blue;
+  font-family: Bahnschrift, sans-serif;
+  color: #423419;
 }
 
 ul#githubIssuesList {
-  list-style-type: square;
+  font-family: Bahnschrift, sans-serif;
+  list-style-type: none;
   height: 73px;
   overflow: auto;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  background: #978a72;
+  height: 15px;
+  width: 15px;
+  margin-right: 15px;
+  border-radius: 2px;
+}
+
+input[type=checkbox]:checked {
+  -webkit-appearance: checkbox;
+}
+
+input[type="checkbox"]:hover {
+  filter: brightness(90%);
+}
+
+a {
+  color: #978a72;
+}
+
+a:hover {
+  color: #463d2e;
+}
+
+a:active {
+  color: #463d2e;
 }

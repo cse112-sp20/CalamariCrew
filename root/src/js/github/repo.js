@@ -19,7 +19,6 @@ fetch('https://api.github.com/user/repos', {
         res.forEach(repo => {
             if (repo.name) {
                 let issuesUrl = repo.issues_url.replace('{/number}', '');
-
                 let tableCell = document.createElement('td');
                 tableCell.innerHTML = repo.name;
                 tableCell.setAttribute('id', repo.name);

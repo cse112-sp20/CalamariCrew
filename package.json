@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests",
-    "lint": "eslint 'root/**/*.js' && htmlhint root/html/** && npx stylelint root/css/**",
-    "lint-js": "eslint 'root/**/*.js'",
+    "test": "jest --passWithNoTests --coverage",
+    "lint": "eslint root/**/*.js && htmlhint root/html/** && npx stylelint root/css/**",
+    "lint-js": "eslint root/**/*.js",
     "lint-html": "htmlhint root/html/**",
     "lint-css": "npx stylelint root/css/**",
     "lint-fix": "eslint 'root/**/*.js' --fix && htmlhint root/html/** && npx stylelint root/css/** --fix",
-    "start": "node root/backend/app.js"
+    "start": "node root/backend/app.js",
+    "code-coverage-check": "node scripts/code_coverage.js",
+    "chrome-ext": "zip -r Official.zip manifest.json root && cat Official.zip | crx3 -p CalamariCrew.pem"
   },
   "keywords": [],
   "author": "MoHo Khaleqi",
@@ -27,25 +29,40 @@
     ]
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "coverageReporters": [
+      "json-summary",
+      "lcov"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "root/**/*.js"
+    ]
   },
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
     "@types/jest": "^25.2.1",
+    "babel-jest": "^26.0.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "htmlhint": "^0.11.0",
     "husky": "^3.0.4",
     "jest": "^25.0.0",
+    "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0"
   },
   "dependencies": {
+    "babel-core": "^7.0.0-bridge.0",
     "cors": "^2.8.5",
+    "crx3": "^1.1.2",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
+    "leo-profanity": "^1.2.6",
     "node-persist": "^3.0.5",
     "nodemon": "^2.0.3",
     "superagent": "^5.2.2"

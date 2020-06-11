@@ -1,0 +1,24 @@
+body {
+  background-color: #f4f1ec;
+  font-family: Bahnschrift, sans-serif;
+  font-weight: bold;
+  width: 288px;
+  height: auto;
+  text-align: center;
+}
+
+div.card-body#div-4 {
+  height: 150px;
+  overflow: auto;
+}
+
+td.content {
+  width: auto;
+}
+
+.table td {
+  font-weight: normal;
+  padding: 0.75rem;
+  vertical-align: top;
+  width: 700px;
+}
