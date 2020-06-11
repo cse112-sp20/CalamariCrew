@@ -2,6 +2,34 @@ var fs = require('fs');
 var HTML = fs.readFileSync('root/html/index.html', 'utf8');
 import * as Main from '../root/src/js/main_page.js';
 
+class LocalStorageMock {
+    constructor() {
+        this.store = {};
+    }
+
+    clear() {
+        this.store = {};
+    }
+
+    getItem(key) {
+        return this.store[key] || null;
+    }
+
+    setItem(key, value) {
+        if (typeof value === 'object') {
+            this.store[key] = JSON.stringify(value);
+        } else {
+            this.store[key] = value.toString();
+        }
+    }
+
+    removeItem(key) {
+        delete this.store[key];
+    }
+}
+
+global.localStorage = new LocalStorageMock();
+
 const milestone1 = {
     closed_at: null,
     closed_issues: 3,
@@ -75,15 +103,92 @@ test('Get most recent milestone', async () => {
     jest.resetModules();
 });
 
-// test('Set user', async () => {
-//     global.fetch = jest.fn(() =>
-//         Promise.resolve({
-//             json: () => Promise.resolve('testuser'),
-//         })
-//     );
-//     const testObj = { repoId: '' };
-//     // global.JSON.parse = jest.fn(() => testObj);
-//     const username = await Main.getUser();
-//     expect(username).toEqual('testuser');
-//     jest.resetModules();
+test('Set user', async () => {
+    const mockReturnVal = { login: 'testuser' };
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            json: () => Promise.resolve(mockReturnVal),
+        })
+    );
+    await Main.setUser();
+    expect(localStorage.getItem('github_username')).toBe('testuser');
+    jest.resetModules();
+    localStorage.clear();
+});
+
+test('Get user', () => {
+    localStorage.setItem('github_username', 'testuser');
+    const username = Main.getUser();
+    expect(username).toBe('testuser');
+    jest.resetModules();
+    localStorage.clear();
+});
+
+test('Fetch url', async () => {
+    const mockReturnVal = 'test';
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            json: () => Promise.resolve(mockReturnVal),
+        })
+    );
+
+    const res = await Main.fetchUrl('whatever');
+    expect(res).toBe('test');
+    jest.resetModules();
+});
+
+test('Display error no milestones', () => {
+    document.body.innerHTML = HTML;
+    global.speed = document.getElementById('div-4');
+    Main.displayError(1);
+    expect(speed.innerHTML).toBe('No milestone.');
+    jest.resetModules();
+});
+
+test('Display error no issues', () => {
+    document.body.innerHTML = HTML;
+    global.speed = document.getElementById('div-4');
+    Main.displayError(2);
+    expect(speed.innerHTML).toBe('No issues.');
+    jest.resetModules();
+});
+
+test('test num issues', () => {
+    const issues = { open_issues: 2, closed_issues: 3 };
+    const res = Main.getNumIssues(issues);
+    expect(res).toBe(5);
+    jest.resetModules();
+});
+
+test('Set user velocity', async () => {
+    const mockReturnVal = [
+        { state: 'closed' },
+        { state: 'closed' },
+        { state: 'closed' },
+        { state: 'open' },
+    ];
+    const mockMilestone = { number: 2 };
+
+    document.body.innerHTML = HTML;
+    global.speed = document.getElementById('div-4');
+    global.fetch = jest.fn(() =>
+        Promise.resolve({
+            json: () => Promise.resolve(mockReturnVal),
+        })
+    );
+    await Main.setUserVelocity(mockMilestone);
+    expect(speed.innerHTML).toBe("Raptor's speed: 75km/h");
+});
+
+test('initialize accessories', () => {
+    localStorage.setItem('head', 'Crown');
+    localStorage.setItem('raptor_name', 'Drake');
+    Main.initAccessories();
+    document.body.innerHTML = HTML;
+    expect(document.getElementById('Crown').style.display).toBe('');
+});
+
+// test('set speed error message', () => {
+//     document.body.innerHTML = HTML;
+//     expect(document.getElementById('Crown').style.display).toBe('');
 // });

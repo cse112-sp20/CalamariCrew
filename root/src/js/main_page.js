@@ -1,17 +1,10 @@
 const token = localStorage.getItem('token');
-const speed = document.getElementById('div-4');
-const NO_MILESTONE_MSG =
-    'Please add a new milestone to start tracking velocity.';
-const NO_ISSUES_MSG = 'Please add a new issue to start tracking velocity.';
+let speed = document.getElementById('div-4');
+const NO_MILESTONE_MSG = 'No milestone.';
+const NO_ISSUES_MSG = 'No issues.';
 const NO_MILESTONE = 1;
 const NO_ISSUES = 2;
 const USER_URL = 'https://api.github.com/user';
-
-if (localStorage.getItem('raptor_name')) {
-    document.getElementById(
-        'userVelocityRaptorName'
-    ).innerHTML = localStorage.getItem('raptor_name').substring(0, 11);
-}
 
 export async function getMostRecentMilestone() {
     const userName = localStorage.getItem('github_username');
@@ -28,7 +21,7 @@ export async function setUser() {
     return res;
 }
 
-function getUser() {
+export function getUser() {
     return localStorage.getItem('github_username');
 }
 
@@ -41,12 +34,13 @@ export async function fetchUrl(url) {
     return await res.json();
 }
 
-function getRepoName() {
+export function getRepoName() {
     const repo = JSON.parse(localStorage.getItem('repository'));
     return repo.repoId;
 }
 
-function displayError(context) {
+export function displayError(context) {
+    speed = document.getElementById('div-4');
     switch (context) {
         case NO_MILESTONE:
             speed.innerHTML = NO_MILESTONE_MSG;
@@ -55,22 +49,18 @@ function displayError(context) {
             speed.innerHTML = NO_ISSUES_MSG;
             break;
     }
+    speed.style.left = '0px';
+    textbox.style =
+        'top: 68px;left: -13px;position:absolute;width: 314px;height: auto;margin-bottom: 10px;z-index: 0;';
 }
 
-function getNumIssues(milestone) {
+export function getNumIssues(milestone) {
     return milestone.open_issues + milestone.closed_issues;
 }
 
-// function setTeamVelocity(milestone) {
-//     const { open_issues, closed_issues } = milestone;
-//     const totalIssues = open_issues + closed_issues;
-//     //at this point, total issues should not be 0 because of prior error check
-//     const teamVelocity = closed_issues / totalIssues;
-//     //TODO: waiting on team velocity textbox to be added
-// }
-
-async function setUserVelocity(milestone) {
+export async function setUserVelocity(milestone) {
     const { number: milestoneId } = milestone;
+    speed = document.getElementById('div-4');
     const userName = getUser();
     const repoName = getRepoName();
     const url = `https://api.github.com/repos/${userName}/${repoName}/issues?milestone=${milestoneId}&state=all&assignee=${userName}`;
@@ -100,7 +90,7 @@ async function setUserVelocity(milestone) {
     }
 }
 
-async function loadVelocity() {
+export async function loadVelocity() {
     await setUser();
     const milestone = await getMostRecentMilestone();
     if (!milestone) {
@@ -112,19 +102,21 @@ async function loadVelocity() {
         displayError(NO_ISSUES);
         return;
     }
-    //TODO: waiting on team velocity textbox
-    //await setTeamVelocity(milestone);
     await setUserVelocity(milestone);
 }
 
-function initAccessories() {
+export function initAccessories() {
+    if (localStorage.getItem('raptor_name')) {
+        document.getElementById(
+            'userVelocityRaptorName'
+        ).innerHTML = localStorage.getItem('raptor_name').substring(0, 11);
+    }
     if (localStorage.length != 0) {
         /* get everything and activate listeners to dress raptor
            with info from other page switch cases with
            same ids for both
         */
         const list = ['tail', 'back', 'head', 'hand'];
-        const token = localStorage.getItem('token');
         for (let bodyPart of list) {
             if (localStorage.getItem(bodyPart) != null) {
                 document.getElementById(
@@ -134,15 +126,5 @@ function initAccessories() {
         }
     }
 }
-function setSpeedErrorMessage(msg) {
-    const speed = document.getElementById('div-4');
-    const textbox = document.getElementById('textbox');
-    const speedErrorMessage = msg;
-    speed.innerHTML = speedErrorMessage;
-    speed.style.left = '0px';
-    textbox.style =
-        'top: 68px;left: -13px;position:absolute;width: 314px;height: auto;margin-bottom: 10px;z-index: 0;';
-}
-
 initAccessories();
 loadVelocity();
