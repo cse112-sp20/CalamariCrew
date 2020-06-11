@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests --coverage",
+    "test": "jest --silent --passWithNoTests --coverage",
     "lint": "eslint root/**/*.js && htmlhint root/html/** && npx stylelint root/css/**",
     "lint-js": "eslint root/**/*.js",
     "lint-html": "htmlhint root/html/**",
