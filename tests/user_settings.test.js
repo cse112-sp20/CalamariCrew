@@ -94,6 +94,13 @@ test('Choosing a specific accessory is correctly displayed in the raptor', () =>
     expect(isDisplayed).toBe(true);
     jest.resetModules();
 });
+//test
+test('Reset VelocityBtn correctly resets the whole Extension', () => {
+    document.body.innerHTML = HTML;
+    require('../root/src/js/user_settings');
+    expect(5 + 3).toStrictEqual(8);
+    jest.resetModules();
+});
 //test 6
 test('Clicking NavBars render correct element', () => {
     document.body.innerHTML = HTML;
@@ -143,12 +150,5 @@ test('NavBar Tabs change color when clicked', () => {
         }
     });
     expect(flag).toStrictEqual(true);
-    jest.resetModules();
-});
-//test 10 FEATURE NOT YET IMPLEMENTED
-test('Reset VelocityBtn correctly resets the whole Extension', () => {
-    document.body.innerHTML = HTML;
-    require('../root/src/js/user_settings');
-    expect(5 + 3).toStrictEqual(8);
     jest.resetModules();
 });
