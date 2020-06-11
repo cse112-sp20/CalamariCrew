@@ -106,10 +106,13 @@ export async function loadVelocity() {
 }
 
 export function initAccessories() {
-    if (localStorage.getItem('raptor_name')) {
-        document.getElementById(
+    const raptor_name = localStorage.getItem('raptor_name');
+    if (raptor_name) {
+        const userVelocityName = document.getElementById(
             'userVelocityRaptorName'
-        ).innerHTML = localStorage.getItem('raptor_name').substring(0, 11);
+        );
+        const newMsg = localStorage.getItem('raptor_name').substring(0, 11);
+        userVelocityName.innerHTML = newMsg;
     }
     if (localStorage.length != 0) {
         /* get everything and activate listeners to dress raptor
