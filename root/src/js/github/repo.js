@@ -5,38 +5,19 @@ var highlightedRow = {
     issueUrl: undefined,
 };
 
-export function checkRow(tableCell) {
-    if (highlightedRow.repoId) {
-        document
-            .getElementById(highlightedRow.repoId)
-            .removeAttribute('bgcolor');
-    }
-
-    highlightedRow.repoId = tableCell.id;
-    highlightedRow.issueUrl = tableCell.getAttribute('issueUrl');
-    tableCell.setAttribute('bgcolor', '#cebfff');
-
-    if (tableCell) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-export function tableCellUpdate(tableCell, repo, issuesUrl) {
-    tableCell.innerHTML = repo.name;
-    tableCell.setAttribute('id', repo.name);
-    tableCell.setAttribute('issueUrl', issuesUrl);
-    tableCell.onclick = checkRow(tableCell);
-    return tableCell;
-}
-
 export function tableRowUpdate(tableCell, repoTableBody) {
     let tableRow = document.createElement('tr');
     tableRow.appendChild(tableCell);
 
     repoTableBody.appendChild(tableRow);
     return repoTableBody;
+}
+
+export function tableCellUpdate(tableCell, repo, issuesUrl) {
+    tableCell.innerHTML = repo.name;
+    tableCell.setAttribute('id', repo.name);
+    tableCell.setAttribute('issueUrl', issuesUrl);
+    return tableCell;
 }
 
 export async function main() {
@@ -57,6 +38,18 @@ export async function main() {
                     let tableCell = document.createElement('td');
 
                     tableCellUpdate(tableCell, repo, issuesUrl);
+
+                    tableCell.onclick = function() {
+                        if (highlightedRow.repoId) {
+                            document
+                                .getElementById(highlightedRow.repoId)
+                                .removeAttribute('bgcolor');
+                        }
+
+                        highlightedRow.repoId = this.id;
+                        highlightedRow.issueUrl = this.getAttribute('issueUrl');
+                        this.setAttribute('bgcolor', '#cebfff');
+                    };
 
                     tableRowUpdate(tableCell, repoTableBody);
                 }
