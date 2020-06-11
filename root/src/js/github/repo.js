@@ -37,7 +37,7 @@ fetch('https://api.github.com/user/repos', {
                 let issuesUrl = repo.issues_url.replace('{/number}', '');
                 let tableCell = document.createElement('td');
 
-                tableCellUpdate(tableCell, repo, issuesUrl);
+                tableCell = tableCellUpdate(tableCell, repo, issuesUrl);
                 
                 tableCell.onclick = function() {
                     if (highlightedRow.repoId) {
@@ -51,7 +51,7 @@ fetch('https://api.github.com/user/repos', {
                     this.setAttribute('bgcolor', '#cebfff');
                 };
 
-                tableRowUpdate(tableCell, repoTableBody);
+                repoTableBody = tableRowUpdate(tableCell, repoTableBody);
             }
         });
     });
