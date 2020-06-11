@@ -1,7 +1,8 @@
 const token = localStorage.getItem('token');
 let speed = document.getElementById('div-4');
-const NO_MILESTONE_MSG = 'No milestone.';
-const NO_ISSUES_MSG = 'No issues.';
+const NO_MILESTONE_MSG =
+    'Please add a new milestone to start tracking velocity.';
+const NO_ISSUES_MSG = 'Please add a new issue to start tracking velocity.';
 const NO_MILESTONE = 1;
 const NO_ISSUES = 2;
 const USER_URL = 'https://api.github.com/user';
