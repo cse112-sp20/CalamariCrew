@@ -141,7 +141,9 @@ test('Display error no milestones', () => {
     document.body.innerHTML = HTML;
     global.speed = document.getElementById('div-4');
     Main.displayError(1);
-    expect(speed.innerHTML).toBe('No milestone.');
+    expect(speed.innerHTML).toBe(
+        'Please add a new milestone to start tracking velocity.'
+    );
     jest.resetModules();
 });
 
@@ -149,7 +151,9 @@ test('Display error no issues', () => {
     document.body.innerHTML = HTML;
     global.speed = document.getElementById('div-4');
     Main.displayError(2);
-    expect(speed.innerHTML).toBe('No issues.');
+    expect(speed.innerHTML).toBe(
+        'Please add a new issue to start tracking velocity.'
+    );
     jest.resetModules();
 });
 
@@ -158,6 +162,14 @@ test('test num issues', () => {
     const res = Main.getNumIssues(issues);
     expect(res).toBe(5);
     jest.resetModules();
+});
+
+test('initialize accessories', () => {
+    localStorage.setItem('head', 'Crown');
+    localStorage.setItem('raptor_name', 'Drake');
+    Main.initAccessories();
+    document.body.innerHTML = HTML;
+    expect(document.getElementById('Crown').style.display).toBe('');
 });
 
 test('Set user velocity', async () => {
@@ -179,16 +191,3 @@ test('Set user velocity', async () => {
     await Main.setUserVelocity(mockMilestone);
     expect(speed.innerHTML).toBe("Raptor's speed: 75km/h");
 });
-
-test('initialize accessories', () => {
-    localStorage.setItem('head', 'Crown');
-    localStorage.setItem('raptor_name', 'Drake');
-    Main.initAccessories();
-    document.body.innerHTML = HTML;
-    expect(document.getElementById('Crown').style.display).toBe('');
-});
-
-// test('set speed error message', () => {
-//     document.body.innerHTML = HTML;
-//     expect(document.getElementById('Crown').style.display).toBe('');
-// });
