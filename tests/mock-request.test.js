@@ -1,6 +1,4 @@
 //api.test.js
-import { APIRequest } from './api';
-
 describe('testing api', () => {
     beforeEach(() => {
         fetch.resetMocks();
