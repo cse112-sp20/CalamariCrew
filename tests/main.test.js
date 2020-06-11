@@ -34,6 +34,14 @@ test('Image is correctly displayed', () => {
     jest.resetModules();
 });
 //test 5
+test('Empty items in storeAndredirect should result in an empty storage', () => {
+    main.storeAndredirect(null, null, null);
+    expect(localStorage.getItem('token')).toBe(null);
+    expect(localStorage.getItem('raptor_name')).toBe(null);
+    expect(localStorage.getItem('repository')).toBe(null);
+    jest.resetModules();
+});
+//test 6
 test('token correctly stored and other parts are empty', () => {
     main.storeAndredirect('fakeToken', null, null);
     expect(localStorage.getItem('token')).toBe('fakeToken');
@@ -41,7 +49,7 @@ test('token correctly stored and other parts are empty', () => {
     expect(localStorage.getItem('repository')).toBe(null);
     jest.resetModules();
 });
-//test 6
+//test 7
 test('token and raptorName correctly stored and other parts are empty', () => {
     main.storeAndredirect('fakeToken', 'Gary', null);
     expect(localStorage.getItem('token')).toBe('fakeToken');
@@ -49,7 +57,7 @@ test('token and raptorName correctly stored and other parts are empty', () => {
     expect(localStorage.getItem('repository')).toBe(null);
     jest.resetModules();
 });
-//test 7
+//test 8
 test('All items are stored perfectly', () => {
     main.storeAndredirect('fakeToken', 'Gary', 'fake Repo');
     expect(localStorage.getItem('token')).toBe('fakeToken');
@@ -57,7 +65,7 @@ test('All items are stored perfectly', () => {
     expect(localStorage.getItem('repository')).toBe('fake Repo');
     jest.resetModules();
 });
-//test 8
+//test 9
 test('parseRedirectFragment function works as expected', () => {
     var value = main.parseRedirectFragment('#calamaryCrew/&/repo/&/name');
     expect(value).toStrictEqual({
@@ -67,15 +75,21 @@ test('parseRedirectFragment function works as expected', () => {
     });
     jest.resetModules();
 });
-//test 9
+//test 10
 test('parseRedirectFragment function works as expected with empty strings', () => {
     var value = main.parseRedirectFragment('');
     expect(value).toStrictEqual({ '': undefined });
     jest.resetModules();
 });
-//test 10
-test('parseRedirectFragment function works as expected with empty strings', () => {
+//test 11
+test('setToken() works as expected', () => {
     main.setAccessToken('fakeToken');
     expect(localStorage.getItem('token')).toBe('fakeToken');
+    jest.resetModules();
+});
+//test 12
+test('setToken() sets empty string', () => {
+    main.setAccessToken('');
+    expect(localStorage.getItem('token')).toBe('');
     jest.resetModules();
 });
