@@ -1,8 +1,6 @@
 var gh = (function() {
     'use strict';
-
     var signin_button;
-
     var tokenFetcher = (function() {
         // Replace clientId and clientSecret with values obtained by you for your
         // application https://github.com/settings/applications.
@@ -230,21 +228,7 @@ var gh = (function() {
             let oauthToken = localStorage.getItem('token');
             let raptorName = localStorage.getItem('raptor_name');
             let repo = localStorage.getItem('repository');
-
-            if (oauthToken && raptorName && repo) {
-                localStorage.setItem('token', oauthToken);
-                localStorage.setItem('raptor_name', raptorName);
-                localStorage.setItem('repository', repo);
-                window.location.href = '/root/html/index.html';
-            } else if (oauthToken && raptorName) {
-                localStorage.setItem('raptor_name', raptorName);
-                localStorage.setItem('token', oauthToken);
-                window.location.href = '/root/html/setup/choose_repo.html';
-            } else if (oauthToken) {
-                localStorage.setItem('token', oauthToken);
-                window.location.href = '/root/html/setup/raptor_name.html';
-            }
-
+            storeAndredirect(oauthToken, raptorName, repo);
             signin_button = document.querySelector('#signin');
             signin_button.onclick = interactiveSignIn;
             showButton(signin_button);
@@ -259,6 +243,22 @@ export function disableButton(button) {
 export function showButton(button) {
     button.style.display = 'inline';
     button.disabled = false;
+}
+
+export function storeAndredirect(oauthToken, raptorName, repo) {
+    if (oauthToken && raptorName && repo) {
+        localStorage.setItem('token', oauthToken);
+        localStorage.setItem('raptor_name', raptorName);
+        localStorage.setItem('repository', repo);
+        window.location.href = '/root/html/index.html';
+    } else if (oauthToken && raptorName) {
+        localStorage.setItem('raptor_name', raptorName);
+        localStorage.setItem('token', oauthToken);
+        window.location.href = '/root/html/setup/choose_repo.html';
+    } else if (oauthToken) {
+        localStorage.setItem('token', oauthToken);
+        window.location.href = '/root/html/setup/raptor_name.html';
+    }
 }
 
 window.onload = gh.onload;
