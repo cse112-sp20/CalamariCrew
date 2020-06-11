@@ -36,9 +36,9 @@ fetch('https://api.github.com/user/repos', {
             if (repo.name) {
                 let issuesUrl = repo.issues_url.replace('{/number}', '');
                 let tableCell = document.createElement('td');
-
-                tableCell = tableCellUpdate(tableCell, repo, issuesUrl);
-                
+                tableCell.innerHTML = repo.name;
+                tableCell.setAttribute('id', repo.name);
+                tableCell.setAttribute('issueUrl', issuesUrl);
                 tableCell.onclick = function() {
                     if (highlightedRow.repoId) {
                         document
@@ -51,7 +51,10 @@ fetch('https://api.github.com/user/repos', {
                     this.setAttribute('bgcolor', '#cebfff');
                 };
 
-                repoTableBody = tableRowUpdate(tableCell, repoTableBody);
+                let tableRow = document.createElement('tr');
+                tableRow.appendChild(tableCell);
+
+                repoTableBody.appendChild(tableRow);
             }
         });
     });
