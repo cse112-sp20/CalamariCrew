@@ -6,6 +6,8 @@
 
 ## User Guide
 
+For a more detailed guide, click here: https://3.basecamp.com/4479372/buckets/16663023/documents/2738615926
+
 Welcome to Velocity Raptor! The extension that allows you to track your sprint velocity with a cool looking customizable raptor. Your raptor will run faster as you finish your GitHub issues! 
 
 ### Github Authentication
