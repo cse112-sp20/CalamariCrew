@@ -20,6 +20,8 @@ On the first usage of the extension, you will be asked to name your raptor. Note
 
 After naming your raptor, you will be prompted to select a repository. If you accidentally click away from the extension, you will be presented with the main screen of the extension when you return to it. You can add or change repositories by clicking the settings button, and then GitHub Repo, where you will find another list of your repositories.
 
+**In order for issues to appear on the main screen, the repo you are synced to must have issues assigned to you that are also connected to an ongoing milestone.**
+
 In the Settings tab, under "My VelocityRaptor", you can customize your velocityraptor with the given accessories. This customization will be reflected on the velocityraptor on the main screen.
 
 ### Resetting
