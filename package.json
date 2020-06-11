@@ -11,7 +11,8 @@
     "lint-css": "npx stylelint root/css/**",
     "lint-fix": "eslint 'root/**/*.js' --fix && htmlhint root/html/** && npx stylelint root/css/** --fix",
     "start": "node root/backend/app.js",
-    "code-coverage-check": "node scripts/code_coverage.js"
+    "code-coverage-check": "node scripts/code_coverage.js",
+    "chrome-ext": "zip -r Official.zip manifest.json root && cat Official.zip | crx3 -p CalamariCrew.pem"
   },
   "keywords": [],
   "author": "MoHo Khaleqi",
@@ -58,6 +59,7 @@
   "dependencies": {
     "babel-core": "^7.0.0-bridge.0",
     "cors": "^2.8.5",
+    "crx3": "^1.1.2",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "leo-profanity": "^1.2.6",
