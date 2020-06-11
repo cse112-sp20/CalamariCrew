@@ -1,6 +1,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/51cb08c68edb03532455/maintainability)](https://codeclimate.com/github/cse112-sp20/CalamariCrew/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/51cb08c68edb03532455/test_coverage)](https://codeclimate.com/github/cse112-sp20/CalamariCrew/test_coverage)
+
+![Automation Pipeline](https://github.com/cse112-sp20/CalamariCrew/workflows/Automation%20Pipeline/badge.svg?branch=master)
+![Selenium Java CI](https://github.com/cse112-sp20/CalamariCrew/workflows/Selenium%20Java%20CI/badge.svg?branch=DEV-MASTER)
 
 # Velocity Raptor Chrome Extension
 
@@ -19,6 +21,8 @@ Upon opening the extension, you will be taken to a home screen with a link to lo
 On the first usage of the extension, you will be asked to name your raptor. Note that foul language is not permitted. 
 
 After naming your raptor, you will be prompted to select a repository. If you accidentally click away from the extension, you will be presented with the main screen of the extension when you return to it. You can add or change repositories by clicking the settings button, and then GitHub Repo, where you will find another list of your repositories.
+
+**In order for issues to appear on the main screen, the repo you are synced to must have issues assigned to you that are also connected to an ongoing milestone.**
 
 In the Settings tab, under "My VelocityRaptor", you can customize your velocityraptor with the given accessories. This customization will be reflected on the velocityraptor on the main screen.
 

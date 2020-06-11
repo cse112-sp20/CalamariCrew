@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --passWithNoTests --coverage",
+    "test": "jest --silent --passWithNoTests --coverage",
     "lint": "eslint root/**/*.js && htmlhint root/html/** && npx stylelint root/css/**",
     "lint-js": "eslint root/**/*.js",
     "lint-html": "htmlhint root/html/**",
@@ -37,7 +37,10 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "root/**/*.js"
-    ]
+    ],
+    "globals": {
+      "chrome": {}
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -53,6 +56,7 @@
     "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
+    "sinon-chrome": "^3.0.1",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0"
   },
