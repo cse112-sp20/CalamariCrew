@@ -13,6 +13,10 @@ div.card-body#div-2 {
   min-height: 10rem;
 }
 
+.card-body {
+  padding: 0;
+}
+
 body {
   font-weight: bold;
 }

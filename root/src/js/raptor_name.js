@@ -90,6 +90,11 @@ export function isRaptorNameValid(raptorNameText) {
         'whore',
         'wtf',
     ];
+    const whitespaceRegex = RegExp('[ \f\n\r\t\v\u00A0\u2028\u2029]');
+    raptorNameText
+        .split()
+        .filter(ch => whitespaceRegex.test(ch))
+        .join();
     if (bad_words.includes(raptorNameText.trim().toLowerCase())) {
         // alert('Name must be appropriate');
         return false;
