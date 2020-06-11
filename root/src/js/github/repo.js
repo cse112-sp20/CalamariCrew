@@ -5,21 +5,6 @@ var highlightedRow = {
     issueUrl: undefined,
 };
 
-export function tableCellUpdate(tableCell, repo, issuesUrl) {
-    tableCell.innerHTML = repo.name;
-    tableCell.setAttribute('id', repo.name);
-    tableCell.setAttribute('issueUrl', issuesUrl);
-    return tableCell;
-}
-
-export function tableRowUpdate(tableCell, repoTableBody) {
-    let tableRow = document.createElement('tr');
-    tableRow.appendChild(tableCell);
-
-    repoTableBody.appendChild(tableRow);
-    return repoTableBody;
-}
-
 // Call the user info API using the fetch browser library
 fetch('https://api.github.com/user/repos', {
     headers: {
