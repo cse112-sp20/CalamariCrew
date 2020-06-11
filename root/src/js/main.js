@@ -121,65 +121,7 @@ var gh = (function() {
             },
         };
     })();
-    /*
-    function xhrWithAuth(method, url, interactive, callback) {
-        var retry = true;
-        var access_token;
 
-        console.log('xhrWithAuth', method, url, interactive);
-        getToken();
-
-        function getToken() {
-            tokenFetcher.getToken(interactive, function(error, token) {
-                console.log('token fetch', error, token);
-                if (error) {
-                    callback(error);
-                    return;
-                }
-
-                access_token = token;
-                requestStart();
-            });
-        }
-
-        function requestStart() {
-            var xhr = new XMLHttpRequest();
-            xhr.open(method, url);
-            xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
-            xhr.onload = requestComplete;
-            xhr.send();
-        }
-
-        function requestComplete() {
-            console.log('requestComplete', this.status, this.response);
-            if ((this.status < 200 || this.status >= 300) && retry) {
-                retry = false;
-                tokenFetcher.removeCachedToken(access_token);
-                access_token = null;
-                getToken();
-            } else {
-                callback(null, this.status, this.response);
-            }
-        }
-    }
-    */
-    // Functions updating the User Interface:
-    /*
-    function showButton(button) {
-        button.style.display = 'inline';
-        button.disabled = false;
-    }
-    */
-    /*
-    function hideButton(button) {
-        button.style.display = 'none';
-    }
-    */
-    /*
-    function disableButton(button) {
-        button.disabled = true;
-    }
-    */
     // Handlers for the buttons's onclick events.
     function interactiveSignIn() {
         disableButton(signin_button);
@@ -190,23 +132,6 @@ var gh = (function() {
         });
     }
 
-    /*
-        UNUSED FOR NOW. BUT IF WE WANT TO ALLOW USERS TO SIGN OUT, THIS IS
-        HOW WE WOULD DO IT.
-     */
-    /*
-    function revokeToken() {
-        // We are opening the web page that allows user to revoke their token.
-        window.open('https://github.com/settings/applications');
-        // And then clear the user interface, showing the Sign in button only.
-        // If the user revokes the app authorization, they will be prompted to log
-        // in again. If the user dismissed the page they were presented with,
-        // Sign in button will simply sign them in.
-        user_info_div.textContent = '';
-        hideButton(revoke_button);
-        showButton(signin_button);
-    }
-    */
     return {
         //show signin button and allow login on click.
         onload: function() {
@@ -258,7 +183,6 @@ export function parseRedirectFragment(fragment) {
 }
 
 export function setAccessToken(access_token) {
-    //console.log('Setting access_token: ', access_token);
     localStorage.setItem('token', access_token);
     window.location.href = '/root/html/setup/raptor_name.html';
 }
