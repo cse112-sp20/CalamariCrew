@@ -36,7 +36,9 @@ fetch('https://api.github.com/user/repos', {
                 let issuesUrl = repo.issues_url.replace('{/number}', '');
                 let tableCell = document.createElement('td');
 
-                tableCellUpdate(tableCell, repo, issuesUrl);
+                tableCell.innerHTML = repo.name;
+                tableCell.setAttribute('id', repo.name);
+                tableCell.setAttribute('issueUrl', issuesUrl);
 
                 tableCell.onclick = function() {
                     if (highlightedRow.repoId) {
