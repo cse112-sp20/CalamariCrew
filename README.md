@@ -1,6 +1,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/51cb08c68edb03532455/maintainability)](https://codeclimate.com/github/cse112-sp20/CalamariCrew/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/51cb08c68edb03532455/test_coverage)](https://codeclimate.com/github/cse112-sp20/CalamariCrew/test_coverage)
+
+![Automation Pipeline](https://github.com/cse112-sp20/CalamariCrew/workflows/Automation%20Pipeline/badge.svg?branch=master)
+![Selenium Java CI](https://github.com/cse112-sp20/CalamariCrew/workflows/Selenium%20Java%20CI/badge.svg?branch=DEV-MASTER)
 
 # Velocity Raptor Chrome Extension
 
