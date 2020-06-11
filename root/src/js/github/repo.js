@@ -5,14 +5,6 @@ var highlightedRow = {
     issueUrl: undefined,
 };
 
-export function tableRowUpdate(tableCell, repoTableBody) {
-    let tableRow = document.createElement('tr');
-    tableRow.appendChild(tableCell);
-
-    repoTableBody.appendChild(tableRow);
-    return repoTableBody;
-}
-
 export function tableCellUpdate(tableCell, repo, issuesUrl) {
     tableCell.innerHTML = repo.name;
     tableCell.setAttribute('id', repo.name);
@@ -20,7 +12,14 @@ export function tableCellUpdate(tableCell, repo, issuesUrl) {
     return tableCell;
 }
 
-export async function main() {
+export function tableRowUpdate(tableCell, repoTableBody, tableRow) {
+    tableRow.appendChild(tableCell);
+
+    repoTableBody.appendChild(tableRow);
+    return repoTableBody;
+}
+
+function main() {
     // Call the user info API using the fetch browser library
     fetch('https://api.github.com/user/repos', {
         headers: {
@@ -36,6 +35,7 @@ export async function main() {
                 if (repo.name) {
                     let issuesUrl = repo.issues_url.replace('{/number}', '');
                     let tableCell = document.createElement('td');
+                    let tableRow = document.createElement('tr');
 
                     tableCellUpdate(tableCell, repo, issuesUrl);
 
@@ -51,7 +51,7 @@ export async function main() {
                         this.setAttribute('bgcolor', '#cebfff');
                     };
 
-                    tableRowUpdate(tableCell, repoTableBody);
+                    tableRowUpdate(tableCell, repoTableBody, tableRow);
                 }
             });
         });
