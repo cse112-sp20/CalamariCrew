@@ -57,3 +57,25 @@ test('All items are stored perfectly', () => {
     expect(localStorage.getItem('repository')).toBe('fake Repo');
     jest.resetModules();
 });
+//test 8
+test('parseRedirectFragment function works as expected', () => {
+    var value = main.parseRedirectFragment('#calamaryCrew/&/repo/&/name');
+    expect(value).toStrictEqual({
+        '#calamaryCrew/': undefined,
+        '/name': undefined,
+        '/repo/': undefined,
+    });
+    jest.resetModules();
+});
+//test 9
+test('parseRedirectFragment function works as expected with empty strings', () => {
+    var value = main.parseRedirectFragment('');
+    expect(value).toStrictEqual({ '': undefined });
+    jest.resetModules();
+});
+//test 10
+test('parseRedirectFragment function works as expected with empty strings', () => {
+    main.setAccessToken('fakeToken');
+    expect(localStorage.getItem('token')).toBe('fakeToken');
+    jest.resetModules();
+});
