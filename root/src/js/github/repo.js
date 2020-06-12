@@ -50,10 +50,7 @@ fetch('https://api.github.com/user/repos', {
                     this.setAttribute('bgcolor', '#cebfff');
                 };
 
-                let tableRow = document.createElement('tr');
-                tableRow.appendChild(tableCell);
-
-                repoTableBody.appendChild(tableRow);
+                tableRowUpdate(tableCell, repoTableBody);
             }
         });
     });
