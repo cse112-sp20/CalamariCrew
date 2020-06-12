@@ -14,17 +14,17 @@ const mockReturnVal = {Authorization: '12345'};
 
 
 describe('Repo Function Testing', () => {
-    // test('checkRow Test', () => {
+    test('changeHighlightedRow Test', () => {
         
-    //     document.body.innerHTML = HTML;
-    //     require('../root/src/js/github/repo.js');
+        document.body.innerHTML = HTML;
+        require('../root/src/js/github/repo.js');
 
 
-    //     let tableCell = document.createElement('td');
-    //     let selectedRow = repo_test.highlightedRow;
-    //     expect(repo_test.checkRow(document, tableCell, selectedRow)).toBe(true);
-    //     jest.resetModules();
-    // });
+        let tableCell = document.createElement('td');
+        let selectedRow = repo_test.highlightedRow;
+        expect(repo_test.changeHighlightedRow(document, selectedRow, tableCell)).toBe(true);
+        jest.resetModules();
+    });
     test('tableCellUpdate Test', () => {
         global.fetch = jest.fn(() =>
             Promise.resolve({

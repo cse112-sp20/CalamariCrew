@@ -20,6 +20,22 @@ export function tableRowUpdate(tableCell, repoTableBody) {
     return repoTableBody;
 }
 
+export function changeHighlightedRow(document, highlightedRow, item) {
+    if (highlightedRow.repoId) {
+        document
+            .getElementById(highlightedRow.repoId)
+            .removeAttribute('bgcolor');
+    }
+    highlightedRow.repoId = item.id;
+    highlightedRow.issueUrl = item.getAttribute('issueUrl');
+    item.setAttribute('bgcolor', '#cebfff');
+    if (highlightedRow) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 export async function main() {
     // Call the user info API using the fetch browser library
     fetch('https://api.github.com/user/repos', {
@@ -39,14 +55,7 @@ export async function main() {
                     let tableCell = document.createElement('td');
                     tableCellUpdate(tableCell, repo, issuesUrl);
                     tableCell.onclick = function() {
-                        if (highlightedRow.repoId) {
-                            document
-                                .getElementById(highlightedRow.repoId)
-                                .removeAttribute('bgcolor');
-                        }
-                        highlightedRow.repoId = this.id;
-                        highlightedRow.issueUrl = this.getAttribute('issueUrl');
-                        this.setAttribute('bgcolor', '#cebfff');
+                        changeHighlightedRow(document, highlightedRow, this);
                     };
                     tableRowUpdate(tableCell, repoTableBody);
                 }
