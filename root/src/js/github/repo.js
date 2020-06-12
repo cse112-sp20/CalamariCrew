@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 
-var highlightedRow = {
+export var highlightedRow = {
     repoId: undefined,
     issueUrl: undefined,
 };
@@ -32,6 +32,7 @@ export async function main() {
         .then(res => res.json())
         .then(res => {
             let repoTableBody = document.getElementById('repoTableBody');
+            let selectedRow = highlightedRow;
             res.forEach(repo => {
                 if (repo.name) {
                     let issuesUrl = repo.issues_url.replace('{/number}', '');
