@@ -36,21 +36,17 @@ export async function main() {
                 if (repo.name) {
                     let issuesUrl = repo.issues_url.replace('{/number}', '');
                     let tableCell = document.createElement('td');
-
                     tableCellUpdate(tableCell, repo, issuesUrl);
-
                     tableCell.onclick = function() {
                         if (highlightedRow.repoId) {
                             document
                                 .getElementById(highlightedRow.repoId)
                                 .removeAttribute('bgcolor');
                         }
-
                         highlightedRow.repoId = this.id;
                         highlightedRow.issueUrl = this.getAttribute('issueUrl');
                         this.setAttribute('bgcolor', '#cebfff');
                     };
-
                     tableRowUpdate(tableCell, repoTableBody);
                 }
             });
