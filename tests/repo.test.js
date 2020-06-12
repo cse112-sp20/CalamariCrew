@@ -56,12 +56,12 @@ describe('Repo Function Testing', () => {
         expect(repo_test.tableRowUpdate(tableCell, repoTableBody)).toBe(repoTableBody);
         jest.resetModules();
     });
-    // test('main Test', () => {
-    //     // global.fetch = jest.fn(() =>Promise.resolve(milestone1));
-    //     document.body.innerHTML = HTML;
-    //     require('../root/src/js/github/repo.js');
+    test('main Test', () => {
+        // global.fetch = jest.fn(() =>Promise.resolve(milestone1));
+        document.body.innerHTML = HTML;
+        require('../root/src/js/github/repo.js');
 
-    //     expect(repo_test.main()).toEqual(Promise());
-    //     jest.resetModules();
-    // });
+        expect(repo_test.main()).toEqual(expect.anything());
+        jest.resetModules();
+    });
 });
